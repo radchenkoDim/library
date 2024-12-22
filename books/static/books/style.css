@@ -26,3 +26,8 @@ table {
 td {
     border: 2px solid black;
 }
+
+.highlight {
+    background-color: yellow;
+    color: black;
+}

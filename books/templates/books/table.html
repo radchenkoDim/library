@@ -13,13 +13,13 @@
 {% block body %}
 <div class="container" id="books-data">
     <div class="input">
-        <input type="text" placeholder="search">
-        <input type="submit">
+        <input type="text" id="filterInput" placeholder="search">
+        {% comment %} <input type="submit"> {% endcomment %}
     </div>
     <table>
         <thead>
             <tr>
-                <th>Num</th>
+                <th><button id="sortButton">Num</button></th>
                 <th>Name</th>
                 <th>Author</th>
                 <th>Category</th>

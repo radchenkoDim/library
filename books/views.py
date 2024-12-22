@@ -6,7 +6,7 @@ import json
 # Create your views here.
 def index(request):
     return render(request, "books/index.html", {
-        "books": len(Book.objects.all())
+        "books": Book.objects.all().count()
     })
 
 def table(request):

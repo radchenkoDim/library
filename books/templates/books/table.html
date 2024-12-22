@@ -1,0 +1,43 @@
+{% extends "books/layout.html" %}
+{% load static %}
+
+{% block head %}
+
+<script>
+    const data={{ books_json|safe }};
+</script>
+    
+{% endblock %}
+
+
+{% block body %}
+<div class="container" id="books-data">
+    <div class="input">
+        <input type="text" placeholder="search">
+        <input type="submit">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Num</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>SubCategory</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% comment %} {% for book in books %}
+            <tr>
+                <td>{{ book.num }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.category }}</td>
+                <td>{{ book.subcategory }}</td>
+            </tr>
+            {% endfor %} {% endcomment %}
+        </tbody>
+    </table>
+</div>
+<script src="{% static 'books/script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,28 @@
+* {
+    font-family: sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+}
+
+.container {
+    width: 90%;
+    height: auto;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.input {
+    padding: 30px 30px 20px;
+}
+
+table {
+    padding: 0px 20px 20px;
+}
+
+td {
+    border: 2px solid black;
+}

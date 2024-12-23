@@ -1,38 +1,3 @@
-/* * {
-    font-family: sans-serif;
-}
-
-body{
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-}
-
-.container {
-    width: 90%;
-    height: auto;
-    background-color: #fff;
-    border-radius: 20px;
-}
-
-.input {
-    padding: 30px 30px 20px;
-}
-
-table {
-    padding: 0px 20px 20px;
-}
-
-td {
-    border: 2px solid black;
-}
-
-.highlight {
-    background-color: yellow;
-    color: black;
-} */
-
-/* Загальні стилі */
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -41,6 +6,49 @@ body {
     background-color: #f9f9f9;
     color: #333;
 }
+
+/* Стиль для head */
+.head {
+    display: flex;
+    justify-content: center; /* Вирівнюємо посилання по центру */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007bff; /* Фонова заливка */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тінь для header */
+}
+
+/* Стиль для посилань */
+.head a {
+    color: white; /* Колір тексту */
+    text-decoration: none; /* Забираємо підкреслення */
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 15px; /* Відступи між посиланнями */
+    padding: 8px 12px; /* Відступи всередині */
+    border-radius: 4px; /* Округлені кути */
+    transition: background-color 0.3s ease; /* Плавний перехід кольору */
+}
+
+/* Ефект наведення на посилання */
+.head a:hover {
+    background-color: white; /* Фон при наведенні */
+    color: #007bff; /* Колір тексту при наведенні */
+    text-decoration: underline; /* Підкреслення при наведенні */
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 600px) {
+    .head {
+        flex-wrap: wrap; /* Розташовуємо посилання у кілька рядків */
+        padding: 15px 10px;
+    }
+
+    .head a {
+        font-size: 14px;
+        margin: 5px; /* Менший відступ між посиланнями */
+    }
+}
+
 
 .container {
     max-width: 800px;
@@ -112,7 +120,11 @@ td {
     font-size: 14px;
 }
 
-/* Кнопки */
+td a {
+    text-decoration: none;
+    color: inherit;
+}
+
 button {
     padding: 8px 12px;
     background-color: #007bff;
@@ -132,7 +144,6 @@ button:hover {
     color: black;
 } 
 
-/* Мобильная адаптивность */
 @media (max-width: 600px) {
     .container {
         padding: 10px;

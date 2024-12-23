@@ -29,11 +29,11 @@ function renderTable(filteredBooks, query) {
         const bookf = book['fields']; // Дістаємо дані книги
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${bookf['num']}</td>
-            <td>${highlight(bookf['title'], query)}</td>
-            <td>${highlight(bookf['author'], query)}</td>
-            <td>${highlight(bookf['category'], query)}</td>
-            <td>${highlight(bookf['subcategory'], query)}</td>
+            <td><a href="/books/table/${bookf['num']}">${bookf['num']}</td>
+            <td><a href="/books/table/${bookf['num']}">${highlight(bookf['title'], query)}</td>
+            <td><a href="/books/table/${bookf['num']}">${highlight(bookf['author'], query)}</td>
+            <td><a href="/books/table/${bookf['num']}">${highlight(bookf['category'], query)}</td>
+            <td><a href="/books/table/${bookf['num']}">${highlight(bookf['subcategory'], query)}</td>
         `;
         tableBody.appendChild(row);
     });

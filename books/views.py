@@ -17,5 +17,11 @@ def table(request):
         "books_json": json_data
     })
 
+def book(request, book_num):
+    book = Book.objects.filter(num=book_num)
+    return render(request, "books/book.html", {
+        "book": book
+    })
+
 def log_in(request):
     return render(request, "books/log-in.html")

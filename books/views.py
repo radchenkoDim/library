@@ -17,3 +17,5 @@ def table(request):
         "books_json": json_data
     })
 
+def log_in(request):
+    return render(request, "books/log-in.html")

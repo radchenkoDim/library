@@ -2,17 +2,16 @@
 {% load static %}
 
 {% block head %}
-
-<script>
-    const data={{ books_json|safe }};
-</script>
-    
+    <link rel="stylesheet" href="{% static 'books/styles.css' %}">
+    <script>
+        const data={{ books_json|safe }};
+    </script>
 {% endblock %}
-
 
 {% block body %}
 <div class="container" id="books-data">
-    <div class="input">
+    <h1>Majbutni lib-data</h1>
+    <div class="input-table">
         <input type="text" id="filterInput" placeholder="search">
         {% comment %} <input type="submit"> {% endcomment %}
     </div>

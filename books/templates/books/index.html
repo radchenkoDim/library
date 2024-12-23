@@ -1,6 +1,17 @@
 {% extends "books/layout.html" %}
 
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'books/style.css' %}">
+{% endblock %}
+
 {% block body %}
-    <p>hello</p>
-    <p>{{ books }}</p>
+    <div class="container">
+        <div class="input-container">
+            <a href="{% url 'log_in' %}">Log in</a>
+            <a href="{% url 'table' %}">Table</a>
+            <a href="#">Form</a>
+        </div>
+    </div>
 {% endblock %}

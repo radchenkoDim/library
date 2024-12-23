@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'books/style-table.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'books/style-table.css' %}"> {% endcomment %}
     <script>
         const data={{ books_json|safe }};
     </script>
@@ -10,7 +10,7 @@
 
 {% block body %}
 <div class="container" id="books-data">
-    <h1>Majbutni lib-data</h1>
+    <h1>Maibutni lib data</h1>
     <div class="input-table">
         <input type="text" id="filterInput" placeholder="search">
         {% comment %} <input type="submit"> {% endcomment %}

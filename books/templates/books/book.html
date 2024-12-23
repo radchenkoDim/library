@@ -1,17 +1,12 @@
 {% extends "books/layout.html" %}
-{% load static %}
-
-{% block head %}
-    <link rel="stylesheet" href="{% static 'books/style-book.css' %}">
-{% endblock %}
 
 {% block body %}
 <div class="container">
     {% for item in book %}
-        <h2>{{ item.title }}</h2>
+        <h1>{{ item.title }}</h1>
         <p>Автор: {{ item.author }}</p>
         <p>Номер: {{ item.num }}</p>
-        <p>Категорія: <a href="#">{{ item.category }}</a></p>
+        <p>Категорія: {{ item.category }}</p>
         <p>Підкатегорія: {{ item.subcategory }}</p>
         <p>Рік видання: {{ item.year }}</p>
         <p>Кількість томів: {{ item.tom }}</p>

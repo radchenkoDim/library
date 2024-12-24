@@ -7,6 +7,17 @@
 
 {% block body %}
 <div class="container">
-    <p>asd</p>
+    <h1>Log in</h1>
+    <form action="">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <button type="submit" class="btn btn-primary">Log in</button>
+            <a href="{% url 'create_account' %}">Create Account</a>
+        </div>
+    </form>
 </div>
 {% endblock %}

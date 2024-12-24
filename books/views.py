@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.serializers import serialize
 from .models import Book
+from django.http import HttpResponse
 import json
 
 # Create your views here.
@@ -25,3 +26,9 @@ def book(request, book_num):
 
 def log_in(request):
     return render(request, "books/log-in.html")
+
+def log_out(request):
+    return HttpResponse("Logged out")
+
+def create_account(request):
+    return render(request, "books/create-account.html")

@@ -1,0 +1,30 @@
+{% extends "books/layout.html" %}
+
+{% block body %}
+<div class="container">
+    <form action="">
+        <h1>Create Account</h1>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email">
+            
+            <label for="username">Name</label>
+            <input type="text" class="form-control" id="username" name="username">
+
+            <label for="telegram">Telegram</label>
+            <input type="text" class="form-control" id="telegram" name="telegram">
+            
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+            
+            <label for="confirm_password">Confirm Password</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+            
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            
+            <button type="submit">Create Account</button>
+        </div>
+    </form>
+    <a href="{% url 'log_in' %}">Back</a>
+</div>
+{% endblock %}

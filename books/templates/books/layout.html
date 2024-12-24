@@ -18,10 +18,9 @@
             {% if user.is_authenticated %}
                 <a class="head-link" href="{% url 'log_out' %}">Log out</a>
             {% else %}
-                <a class="head-link" href="#">Sign up</a>
+                <a class="head-link" href="{% url 'create_account' %}">Sign up</a>
+                <a class="head-link" href="{% url 'log_in' %}">Log in</a>
             {% endif %}
-            
-            <a class="head-link" href="{% url 'log_in' %}">Log in</a>
         </div>
     </div>
     {% block body %}

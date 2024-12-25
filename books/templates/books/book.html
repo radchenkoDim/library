@@ -1,7 +1,6 @@
 {% extends "books/layout.html" %}
 
 {% block body %}
-<div class="container">
     {% for item in book %}
         <h1>{{ item.title }}</h1>
         <p>Автор: {{ item.author }}</p>
@@ -15,5 +14,4 @@
     {% empty %}
         <p>No books found.</p>
     {% endfor %}
-</div>
 {% endblock %}

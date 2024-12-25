@@ -11,7 +11,7 @@ def index(request):
     })
 
 def table(request):
-    queryset = Book.objects.all()
+    queryset = Book.objects.all().select_related("category", "subcategory")
     json_data = serialize('json', queryset, use_natural_foreign_keys=True)
     return render(request, "books/table.html", {
         "books": queryset,
@@ -23,12 +23,3 @@ def book(request, book_num):
     return render(request, "books/book.html", {
         "book": book
     })
-
-def log_in(request):
-    return render(request, "books/log-in.html")
-
-def log_out(request):
-    return HttpResponse("Logged out")
-
-def create_account(request):
-    return render(request, "books/create-account.html")

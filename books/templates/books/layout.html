@@ -16,7 +16,7 @@
             <a class="head-link" href="#">Взяти книгу</a>
             <a class="head-link" href="{% url 'table' %}">Таблиця</a>
             {% if user.is_authenticated %}
-                <a class="head-link" href="#">Log out</a>
+                <a class="head-link" href="{% url 'profile' %}">{{ user }}</a>
             {% else %}
                 <a class="head-link" href="#">Sign up</a>
                 <a class="head-link" href="{% url 'login' %}">Log in</a>

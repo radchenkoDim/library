@@ -36,11 +36,7 @@ body {
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-}
-@media (max-width: 600px) {
-  .container {
-    padding: 10px;
-  }
+  overflow-x: auto;
 }
 
 h1 {
@@ -98,11 +94,6 @@ table tbody tr td a {
   text-decoration: none;
   color: inherit;
 }
-@media (max-width: 600px) {
-  table {
-    font-size: 12px;
-  }
-}
 
 button {
   padding: 8px 12px;
@@ -119,12 +110,6 @@ button:hover {
   background-color: white;
   color: #9ac7e9;
   text-decoration: underline;
-}
-@media (max-width: 600px) {
-  button {
-    font-size: 12px;
-    padding: 6px 8px;
-  }
 }
 
 .highlight {

@@ -44,10 +44,7 @@ body {
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-
-    @media (max-width: 600px) {
-        padding: 10px;
-    }
+    overflow-x: auto; // Add this line to allow horizontal scrolling if needed
 }
 
 h1 {
@@ -115,10 +112,6 @@ table {
             }
         }
     }
-
-    @media (max-width: 600px) {
-        font-size: 12px;
-    }
 }
 
 // sort button
@@ -137,11 +130,6 @@ button {
         background-color: white;
         color: $light-blue;
         text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-        font-size: 12px;
-        padding: 6px 8px;
     }
 }
 

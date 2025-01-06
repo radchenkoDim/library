@@ -1,0 +1,12 @@
+{% extends "books/layout.html" %}
+
+{% block body %}
+    <h1>Take Book</h1>
+    <form action="{% url 'take_book:take_book' book.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Take Book</button>
+    </form>
+
+
+{% endblock %}

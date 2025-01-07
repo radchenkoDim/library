@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.serializers import serialize
 from .models import Book
 
@@ -12,7 +12,10 @@ def table(request):
     })
 
 def book(request, book_num):
-    book = Book.objects.filter(num=book_num)
+    book = get_object_or_404(Book, num=book_num)
     return render(request, "books/book.html", {
         "book": book
     })
+
+def how_take(request):
+    return render(request, "books/how_take.html")

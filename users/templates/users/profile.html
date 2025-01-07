@@ -6,6 +6,6 @@
     <p>Email: {{ user.email }}</p>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <button type="submit">Logout</button>
+        <button class="orange" type="submit">Logout</button>
     </form>
 {% endblock %}

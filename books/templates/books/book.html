@@ -1,17 +1,16 @@
 {% extends "books/layout.html" %}
 
 {% block body %}
-    {% for item in book %}
-        <h1>{{ item.title }}</h1>
-        <p>Автор: {{ item.author }}</p>
-        <p>Номер: {{ item.num }}</p>
-        <p>Категорія: {{ item.category }}</p>
-        <p>Підкатегорія: {{ item.subcategory }}</p>
-        <p>Рік видання: {{ item.year }}</p>
-        <p>Кількість томів: {{ item.tom }}</p>
-        <p>Видавництво: {{ item.publisher }}</p>
-        <p>Примітка: {{ item.ntoes }}</p>
-    {% empty %}
-        <p>No books found.</p>
-    {% endfor %}
+    <h1>{{ book.title }}</h1>
+    <p>Автор: {{ book.author }}</p>
+    <p>Номер: {{ book.num }}</p>
+    <p>Категорія: {{ book.category }}</p>
+    <p>Підкатегорія: {{ book.subcategory }}</p>
+    <p>Рік видання: {{ book.year }}</p>
+    <p>Кількість томів: {{ book.tom }}</p>
+    <p>Видавництво: {{ book.publisher }}</p>
+
+    <a href="{% url 'take_book:take_book' book.id %}">Взяти книгу</a>
+    <br>
+    <a href="{% url 'table' %}">Повернутись</a>
 {% endblock %}

@@ -9,13 +9,13 @@
 {% block body %}
     <h1>Home page</h1>
     {% if user.is_authenticated %}
-        <h1>Hello, {{ user }}</h1>
+        <h2>Hello, {{ user }}</h2>
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button>Logout</button>
+            <button class="orange">Logout</button>
         </form>
     {% else %}
-        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'register' %}">Register</a>
+        <h2>Hello, guest</h2>
+        <a href="{% url 'login' %}">Log in</a>
     {% endif %}
-
 {% endblock %}

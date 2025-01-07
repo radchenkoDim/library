@@ -1,12 +1,14 @@
 {% extends "books/layout.html" %}
 
 {% block body %}
-    <h1>Take Book</h1>
+    <h1>Взяти книгу</h1>
+    <h2>{{ book.title }}</h2>
+    <p>Введіть дані про себе:</p>
     <form action="{% url 'take_book:take_book' book.id %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Take Book</button>
+        <button class="light-blue" type="submit">Take Book</button>
     </form>
 
-
+    <a href="{% url 'book' book.id %}">Повернутись</a>
 {% endblock %}

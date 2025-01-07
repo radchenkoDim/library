@@ -30,13 +30,12 @@ body {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 20px auto;
   padding: 20px;
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  overflow-x: auto;
 }
 
 h1 {
@@ -95,7 +94,29 @@ table tbody tr td a {
   color: inherit;
 }
 
-button {
+.highlight {
+  background-color: yellow;
+  color: black;
+}
+
+.blue {
+  padding: 8px 12px;
+  background-color: #436CA2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.blue:hover {
+  background-color: white;
+  text-decoration: underline;
+  color: #436CA2;
+}
+
+.light-blue {
   padding: 8px 12px;
   background-color: #9ac7e9;
   color: white;
@@ -106,17 +127,25 @@ button {
   font-size: 14px;
   transition: 0.2s;
 }
-button:hover {
+.light-blue:hover {
   background-color: white;
-  color: #9ac7e9;
   text-decoration: underline;
-}
-
-.highlight {
-  background-color: yellow;
-  color: black;
+  color: #9ac7e9;
 }
 
 .orange {
+  padding: 8px 12px;
+  background-color: #ef8368;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.orange:hover {
+  background-color: white;
+  text-decoration: underline;
   color: #ef8368;
 }/*# sourceMappingURL=style.css.map */

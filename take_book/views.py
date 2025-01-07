@@ -3,14 +3,17 @@ from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django import forms
 
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
 from books.models import Book
 from .models import TakingBook
 
 # Create your views here.
 class TakeBookForm(forms.Form):
-    name = forms.CharField(label='User name', max_length=100)
-    surname = forms.CharField(label='User surname', max_length=100)
-    telegram = forms.CharField(label='User telegram', max_length=100)
+    name = forms.CharField(label='Імʼя', max_length=100)
+    surname = forms.CharField(label='Прізвище', max_length=100)
+    telegram = forms.CharField(label='Telegram', max_length=100)
 
     # def take_book(self):
     #     book_id = self.cleaned_data['book_id']
@@ -41,7 +44,9 @@ def take_book(request, book_id):
 
 def detail(request, taking_book_id):
     taking_book = get_object_or_404(TakingBook, id=taking_book_id)
+    return_date = taking_book.take_date + relativedelta(months=1)
     return render(request, 'take_book/detail.html', {
         'taking_book': taking_book,
+        'return_date': return_date,
     })
 

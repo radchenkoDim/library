@@ -10,7 +10,7 @@
     <p>Кількість томів: {{ book.tom }}</p>
     <p>Видавництво: {{ book.publisher }}</p>
 
-    <a href="{% url 'take_book:take_book' book.id %}">Взяти книгу</a>
+    <a href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a>
     <br>
     <a href="{% url 'table' %}">Повернутись</a>
 {% endblock %}

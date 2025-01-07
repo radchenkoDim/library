@@ -2,13 +2,13 @@
 
 {% block body %}
     <h1>Взяти книгу</h1>
-    <h2>{{ book.title }}</h2>
+    {% comment %} <h2>{{ book.title }}</h2> {% endcomment %}
     <p>Введіть дані про себе:</p>
-    <form action="{% url 'take_book:take_book' book.id %}" method="post">
+    <form action="{% url 'take_book:take_book' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="light-blue" type="submit">Take Book</button>
     </form>
 
-    <a href="{% url 'book' book.id %}">Повернутись</a>
+    {% comment %} <a href="{% url 'book' %}">Повернутись</a> {% endcomment %}
 {% endblock %}

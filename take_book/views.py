@@ -11,6 +11,7 @@ from .models import TakingBook
 
 # Create your views here.
 class TakeBookForm(forms.Form):
+    num = forms.IntegerField(label="Номер")
     name = forms.CharField(label='Імʼя', max_length=100)
     surname = forms.CharField(label='Прізвище', max_length=100)
     telegram = forms.CharField(label='Telegram', max_length=100)
@@ -22,11 +23,11 @@ class TakeBookForm(forms.Form):
     #     return_date = self.cleaned_data['return_date']
     #     book = get_object_or_404(Book, id=book_id)
 
-def take_book(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
+def take_book(request):
     if request.method == 'POST':
         form = TakeBookForm(request.POST)
         if form.is_valid():
+            book = get_object_or_404(Book, num=form.cleaned_data['num'])
             taking_book = TakingBook.objects.create(
                 book=book,
                 name=form.cleaned_data['name'],
@@ -35,10 +36,14 @@ def take_book(request, book_id):
             )
             return HttpResponseRedirect(reverse('take_book:detail', args=(taking_book.id,)))
     else:
-        form = TakeBookForm()
+        initial = {}
+        if 'book_num' in request.GET:
+            book = get_object_or_404(Book, num=request.GET['book_num'])
+            initial['num'] = book.num
+
+        form = TakeBookForm(initial=initial)
 
     return render(request, 'take_book/take_book.html', {
-        'book': book,
         'form': form,
     })
 

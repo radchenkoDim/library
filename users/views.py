@@ -11,26 +11,13 @@ def hello(request):
 def profile(request):
     return render(request, "users/profile.html")
 
-class Register(View):
-
-    template_names = 'registration/register.html'
-
-    def get(self, request):
-        context = {
-            'form': UserCreationForm()
-        }
-        return render(request, self.template_names, context)
-    
-    def post(self, request):
+def register(request):
+    if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
+            user = form.save()
             login(request, user)
-            return redirect('login')
-        context = {
-            'form': form
-        }
-        return render(request, self.template_names, context)
+            return redirect("index")
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/register.html', {'form': form})

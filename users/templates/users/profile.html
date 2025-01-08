@@ -3,7 +3,12 @@
 {% block body %}
     <h1>Profile</h1>
     <p>Username: {{ user.username }}</p>
+    <p>First name: {{ user.first_name }}</p>
+    <p>Last name: {{ user.last_name }}</p>
     <p>Email: {{ user.email }}</p>
+    <p>Grade: {{ user.role }}</p>
+    <p>Telegram: {{ user.telegram_tag }}</p>
+    <a href="#">Edit profile</a>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button class="orange" type="submit">Logout</button>

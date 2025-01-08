@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django import forms
 
@@ -42,23 +43,16 @@ from .forms import TakeBookForm
 #     book_num = forms.IntegerField(label="Номер книги")
 #     username = forms.CharField(label='Username', max_length=100)
 
+@login_required
 def take_book(request):
     book_global = None
-    initial = {'username': request.user.username} 
+    initial = {} 
     
     if request.method == 'POST':
         form = TakeBookForm(request.POST)
         if form.is_valid():
             book_number = form.cleaned_data['book_num']
-            username = form.cleaned_data['username']
-
-            try:
-                user = User.objects.get(username=username)
-            except User.DoesNotExist:
-                return render(request, 'take_book/take_book.html', {
-                    'form': form,
-                    'error': 'Не знайдено користувача з таким ім\'ям',
-                })
+            user = request.user
 
             taking_book = TakingBook.objects.create(
                 user=user,
@@ -78,8 +72,8 @@ def take_book(request):
                 
 def detail(request, taking_book_id):
     taking_book = get_object_or_404(TakingBook, id=taking_book_id)
-    return_date = taking_book.take_date + relativedelta(months=1)
+    need_to_return_date = taking_book.take_date + relativedelta(months=1)
     return render(request, 'take_book/detail.html', {
         'taking_book': taking_book,
-        'return_date': return_date,
+        'need_to_return_date': need_to_return_date,
     })

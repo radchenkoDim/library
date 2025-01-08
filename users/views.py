@@ -4,15 +4,24 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from users.forms import UserCreationForm
 from .forms import UserChengeForm
+from take_book.models import TakingBook
+from dateutil.relativedelta import relativedelta
+from datetime import datetime
 
-
-# Create your views here.
-# def hello(request):
-#     return render(request, "users/test.html")
 
 @login_required
 def profile(request):
-    return render(request, "users/profile.html")
+    taking_books = TakingBook.objects.filter(user=request.user)
+
+    # def i_am(one_book):
+    #     return one_book.user == request.user
+    
+    # books = filter(lambda x: x.user == request.user, books)
+    # books = filter(i_am, books)
+    # # for i in books:
+    # #     print(i)
+    return render(request, "users/profile.html", {"taking_books": taking_books})
+
 
 def register(request):
     if request.method == "POST":
@@ -24,6 +33,7 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
 
 @login_required
 def edit_profile(request):

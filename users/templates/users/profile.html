@@ -2,6 +2,7 @@
 
 {% block body %}
     <h1>Profile</h1>
+
     <p>Information about account:</p>
     <ul>
     <li>Username: {{ user.username }}</li>
@@ -11,6 +12,24 @@
     <li>Grade: {{ user.role }}</li>
     <li>Telegram: {{ user.telegram_tag }}</li>
     </ul>
+
+    <p>Взяті книги:</p>
+    {% comment %} TODO: додати стилі до саблиці {% endcomment %}
+    <table>
+        <thead>
+            <tr>
+                <th>Книга</th>
+                <th>Дата взяття</th>
+            </tr>
+        </thead>
+    {% for book in taking_books %}
+        <tr>
+            <td>{{ book.book }}</td>
+            <td>{{ book.take_date }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
     <a href="{% url 'edit_profile' %}">Edit profile</a>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}

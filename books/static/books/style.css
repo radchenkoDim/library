@@ -148,4 +148,9 @@ table tbody tr td a {
   background-color: white;
   text-decoration: underline;
   color: #ef8368;
+}
+
+.italic {
+  font-style: italic;
+  color: blue;
 }/*# sourceMappingURL=style.css.map */

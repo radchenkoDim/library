@@ -11,19 +11,14 @@ from .models import TakingBook
 
 # Create your views here.
 class TakeBookForm(forms.Form):
-    num = forms.IntegerField(label="Номер")
+    num = forms.IntegerField(label="Номер книги")
     name = forms.CharField(label='Імʼя', max_length=100)
     surname = forms.CharField(label='Прізвище', max_length=100)
     telegram = forms.CharField(label='Telegram', max_length=100)
 
-    # def take_book(self):
-    #     book_id = self.cleaned_data['book_id']
-    #     user_id = self.cleaned_data['user_id']
-    #     take_date = self.cleaned_data['take_date']
-    #     return_date = self.cleaned_data['return_date']
-    #     book = get_object_or_404(Book, id=book_id)
 
 def take_book(request):
+    book_global = None
     if request.method == 'POST':
         form = TakeBookForm(request.POST)
         if form.is_valid():
@@ -40,11 +35,12 @@ def take_book(request):
         if 'book_num' in request.GET:
             book = get_object_or_404(Book, num=request.GET['book_num'])
             initial['num'] = book.num
+            book_global = book.title
 
         form = TakeBookForm(initial=initial)
-
     return render(request, 'take_book/take_book.html', {
         'form': form,
+        'book': book_global,
     })
 
 def detail(request, taking_book_id):

@@ -151,3 +151,7 @@ table {
     @include button($orange);
 }
 
+.italic {
+    font-style: italic;
+    color: blue;
+}

@@ -20,18 +20,27 @@
             <tr>
                 <th>Книга</th>
                 <th>Дата взяття</th>
+                <th>Дата повернення</th>
             </tr>
         </thead>
     {% for book in taking_books %}
         <tr>
             <td>{{ book.book }}</td>
             <td>{{ book.take_date }}</td>
+            <td>{{ book.return_date }}</td>
+            {% comment %} <td>
+                <form action="{% url 'take_book:return_book' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="book_num" value="{{ book.book_num }}">
+                    <button class="orange" type="submit">Return</button>
+                </form>
+            </td> {% endcomment %}
         </tr>
     {% endfor %}
     </table>
 
-    <a href="{% url 'edit_profile' %}">Edit profile</a>
-    <form action="{% url 'logout' %}" method="post">
+    <a href="{% url 'users:edit_profile' %}">Edit profile</a>
+    <form action="{% url 'users:logout' %}" method="post">
         {% csrf_token %}
         <button class="orange" tylie="submit">Logout</button>
     </form>

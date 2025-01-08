@@ -4,4 +4,4 @@ class TakeBookForm(forms.Form):
     book_num = forms.IntegerField(label="Номер книги")
 
 class ReturnBookForm(forms.Form):
-    pass
+    book_num = forms.IntegerField(label="Номер книги")

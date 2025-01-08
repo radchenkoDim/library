@@ -11,7 +11,7 @@ from datetime import datetime
 
 @login_required
 def profile(request):
-    taking_books = TakingBook.objects.filter(user=request.user)
+    taking_books = TakingBook.objects.filter(user=request.user, return_date__isnull=True).order_by('take_date')
 
     # def i_am(one_book):
     #     return one_book.user == request.user

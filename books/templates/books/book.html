@@ -12,5 +12,5 @@
 
     <a href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a>
     <br>
-    <a href="{% url 'table' %}">Повернутись</a>
+    <a href="javascript:history.back()">Повернутись</a>
 {% endblock %}

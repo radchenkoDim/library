@@ -1,0 +1,13 @@
+{% extends "books/layout.html" %}
+
+{% block body %}
+    <h1>Книгу успішно повернуто!</h1>
+
+    <p>Повернута книга: {{ taking_book.book }}</p>
+    
+    <a href="{% url 'index' %}">Головна сторінка</a>
+    <br>
+    <a href="{% url 'take_book:return_book' %}">Повернути ще одну книгу</a>
+    <br>
+    <a href="{% url 'books:table' %}">Таблиця</a>
+{% endblock %}

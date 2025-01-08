@@ -8,7 +8,7 @@
         {% endif %}
         <p>
             Щоб взяти книгу введіть її номер, що написаний на одній з перших сторінок біля печатки "Майбутні". 
-            Знайти книгу можна у таблиці на сторінці <a href="{% url 'table' %}">Таблиця</a>.
+            Знайти книгу можна у таблиці на сторінці <a href="{% url 'books:table' %}">Таблиця</a>.
             При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.
         </p>
         <form action="{% url 'take_book:take_book' %}" method="post">
@@ -18,8 +18,8 @@
         </form>
     {% else %}
         <p>Для того щоб взяти книгу вам потрібно увійти на сайт.</p>
-        <a href="{% url 'register' %}">Зареєструватися</a> |
-        <a href="{% url 'login' %}">Увійти</a>
+        <a href="{% url 'users:register' %}">Зареєструватися</a> |
+        <a href="{% url 'users:login' %}">Увійти</a>
     {% endif %}
     <br>
     <a href="javascript:history.back()">Повернутися назад</a>

@@ -1,0 +1,28 @@
+{% extends "books/layout.html" %}
+
+{% block body %}
+    <h1>Повернути книгу</h1>
+    {% if user.is_authenticated %}
+        <p>
+            Щоб повернути книгу введіть її номер, що написаний на одній з перших сторінок біля печатки "Майбутні". 
+            Знайти книгу можна у таблиці на сторінці <a href="{% url 'books:table' %}">Таблиця</a>. 
+            При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.
+        </p>
+        
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form action="{% url 'take_book:return_book' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="light-blue" type="submit">Return Book</button>
+        </form>
+    {% else %}
+        <p>Для того щоб повернути книгу вам потрібно увійти на сайт.</p>
+        <a href="{% url 'register' %}">Зареєструватися</a> |
+        <a href="{% url 'login' %}">Увійти</a>
+    {% endif %}
+    <br>
+    <a href="javascript:history.back()">Повернутися назад</a>
+{% endblock %}

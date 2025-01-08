@@ -2,11 +2,9 @@ from django.db import models
 
 # Create your models here.
 class TakingBook(models.Model):
+    user = models.ForeignKey("users.User", on_delete=models.CASCADE, default=1)
     book = models.ForeignKey("books.Book", on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    surname = models.CharField(max_length=100)
-    telegram = models.CharField(max_length=100)
-    take_date = models.DateField(auto_now=True)
+    take_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f'{self.name} {self.surname} - {self.book} - {self.take_date}'
+        return f"{self.user} - {self.book} - {self.take_date}"

@@ -153,4 +153,12 @@ table tbody tr td a {
 .italic {
   font-style: italic;
   color: blue;
+}
+
+.errorlist {
+  padding: 0;
+}
+.errorlist li {
+  color: red;
+  list-style: none;
 }/*# sourceMappingURL=style.css.map */

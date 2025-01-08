@@ -44,7 +44,6 @@ from django.utils.timezone import now
 #     book_num = forms.IntegerField(label="Номер книги")
 #     username = forms.CharField(label='Username', max_length=100)
 
-@login_required
 def take_book(request):
     book_global = None
     initial = {} 
@@ -70,34 +69,16 @@ def take_book(request):
     
     return render(request, 'take_book/take_book.html', {'form': form, 'book': book_global})
 
+
 @login_required
-def return_book(request):
+def return_book(request):    
     if request.method == 'POST':
-        form = ReturnBookForm(request.POST)
+        form = ReturnBookForm(request.POST, user=request.user)
         if form.is_valid():
             book_num = form.cleaned_data['book_num']
-
-            try:
-                taking_books = TakingBook.objects.filter(book__num=book_num, return_date__isnull=True)
-                if not taking_books:
-                    return render(request, 'take_book/return_book.html', {
-                        'form': form, 
-                        'error': f'Книгу з номером {book_num} не було взято, або такої книги немає в бібліотеці.'
-                    })
-                
-                taking_book = taking_books.first()
-            except TakingBook.DoesNotExist:
-                return render(request, 'take_book/return_book.html', {
-                    'form': form, 
-                    'error': f'Книгу з номером {book_num} не було взято, або такої книги немає в бібліотеці.'
-                })
             
-            if taking_book.user != request.user:
-                return render(request, 'take_book/return_book.html', {
-                    'form': form, 
-                    'error': 'Цю книгу взяв інший користувач.'
-                })
-            
+            taking_books = TakingBook.objects.filter(book__num=book_num, return_date__isnull=True)
+            taking_book = taking_books.first()
             taking_book.return_date = now()
             taking_book.save()
             return redirect('take_book:success_return', taking_book_id=taking_book.id)

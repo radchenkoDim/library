@@ -8,10 +8,6 @@
             Знайти книгу можна у таблиці на сторінці <a href="{% url 'books:table' %}">Таблиця</a>. 
             При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.
         </p>
-        
-        {% if error %}
-            <p class="error">{{ error }}</p>
-        {% endif %}
 
         <form action="{% url 'take_book:return_book' %}" method="post">
             {% csrf_token %}
@@ -20,8 +16,8 @@
         </form>
     {% else %}
         <p>Для того щоб повернути книгу вам потрібно увійти на сайт.</p>
-        <a href="{% url 'register' %}">Зареєструватися</a> |
-        <a href="{% url 'login' %}">Увійти</a>
+        <a href="{% url 'users:register' %}">Зареєструватися</a> |
+        <a href="{% url 'users:login' %}">Увійти</a>
     {% endif %}
     <br>
     <a href="javascript:history.back()">Повернутися назад</a>

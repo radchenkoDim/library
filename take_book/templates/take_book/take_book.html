@@ -2,18 +2,25 @@
 
 {% block body %}
     <h1>Взяти книгу</h1>
-    {% if book %}
-        <h2>{{ book }}</h2>
+    {% if user.is_authenticated %}
+        {% if book %}
+            <h2>{{ book }}</h2>
+        {% endif %}
+        <p>
+            Щоб взяти книгу введіть її номер, що написаний на одній з перших сторінок біля печатки "Майбутні". 
+            Знайти книгу можна у таблиці на сторінці <a href="{% url 'table' %}">Таблиця</a>.
+            При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.
+        </p>
+        <form action="{% url 'take_book:take_book' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="light-blue" type="submit">Take Book</button>
+        </form>
+    {% else %}
+        <p>Для того щоб взяти книгу вам потрібно увійти на сайт.</p>
+        <a href="{% url 'register' %}">Зареєструватися</a> |
+        <a href="{% url 'login' %}">Увійти</a>
     {% endif %}
-    <p>
-        Щоб взяти книгу введіть її номер, що написаний на одній з перших сторінок біля печатки "Майбутні". Також заповніть інші поля відповідно до їх назви. Переконайтесь, що ви вказали телеґрам правильно.
-        При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.
-    </p>
-    <form action="{% url 'take_book:take_book' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="light-blue" type="submit">Take Book</button>
-    </form>
-
+    <br>
     <a href="javascript:history.back()">Повернутися назад</a>
 {% endblock %}

@@ -9,7 +9,7 @@ from dateutil.relativedelta import relativedelta
 from books.models import Book
 from users.models import User
 from .models import TakingBook
-# from .forms import TakeBookForm
+from .forms import TakeBookForm
 
 # Create your views here.
 # def take_book(request):
@@ -38,11 +38,14 @@ from .models import TakingBook
 #         'book': book_global,
 #     })
 
-class TakeBookForm(forms.Form):
-    book_num = forms.IntegerField(label="Номер книги")
-    username = forms.CharField(label='Username', max_length=100)
+# class TakeBookForm(forms.Form):
+#     book_num = forms.IntegerField(label="Номер книги")
+#     username = forms.CharField(label='Username', max_length=100)
 
 def take_book(request):
+    book_global = None
+    initial = {'username': request.user.username} 
+    
     if request.method == 'POST':
         form = TakeBookForm(request.POST)
         if form.is_valid():
@@ -63,9 +66,14 @@ def take_book(request):
             )
             return redirect('take_book:detail', taking_book_id=taking_book.id)
     else:
-        form = TakeBookForm()
+        if 'book_num' in request.GET:
+            book = get_object_or_404(Book, num=request.GET['book_num'])
+            initial['book_num'] = book.num
+            book_global = f"{book.num}. {book.title}"
+        
+        form = TakeBookForm(initial=initial)
     
-    return render(request, 'take_book/take_book.html', {'form': form})
+    return render(request, 'take_book/take_book.html', {'form': form, 'book': book_global})
 
                 
 def detail(request, taking_book_id):

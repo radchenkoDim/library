@@ -2,15 +2,18 @@
 
 {% block body %}
     <h1>Profile</h1>
-    <p>Username: {{ user.username }}</p>
-    <p>First name: {{ user.first_name }}</p>
-    <p>Last name: {{ user.last_name }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Grade: {{ user.role }}</p>
-    <p>Telegram: {{ user.telegram_tag }}</p>
-    <a href="#">Edit profile</a>
+    <p>Information about account:</p>
+    <ul>
+    <li>Username: {{ user.username }}</li>
+    <li>First name: {{ user.first_name }}</li>
+    <li>Last name: {{ user.last_name }}</li>
+    <li>Email: {{ user.email }}</li>
+    <li>Grade: {{ user.role }}</li>
+    <li>Telegram: {{ user.telegram_tag }}</li>
+    </ul>
+    <a href="{% url 'edit_profile' %}">Edit profile</a>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
-        <button class="orange" type="submit">Logout</button>
+        <button class="orange" tylie="submit">Logout</button>
     </form>
 {% endblock %}

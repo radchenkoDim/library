@@ -7,6 +7,7 @@ from books.models import Book
 from .models import TakingBook
 from .forms import TakeBookForm, ReturnBookForm
 from django.utils.timezone import now
+from django.contrib import messages
 
 
 @login_required
@@ -39,7 +40,6 @@ def take_book(request):
 @login_required
 def return_book(request):
     book = None
-    initial = {}
 
     if request.method == 'POST':
         form = ReturnBookForm(request.POST, user=request.user)
@@ -50,13 +50,14 @@ def return_book(request):
             taking_book = taking_books.first()
             taking_book.return_date = now()
             taking_book.save()
-            return redirect('take_book:success_return', taking_book_id=taking_book.id)
+
+            messages.success(request, f'Книгу з номером {book_num} успішно повернено.')
+            return redirect('users:profile')
     else:
         if 'book_num' in request.GET:
             book = get_object_or_404(Book, num=request.GET['book_num'])
-            initial['book_num'] = book.num
 
-        form = ReturnBookForm(initial=initial)
+        form = ReturnBookForm()
 
     return render(request, 'take_book/return_book.html', {'form': form, 'book': book})
 

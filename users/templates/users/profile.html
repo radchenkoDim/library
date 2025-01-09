@@ -13,8 +13,18 @@
     <li>Telegram: {{ user.telegram_tag }}</li>
     </ul>
 
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% if taking_books %}
     <p>Взяті книги:</p>
-    {% comment %} TODO: додати стилі до саблиці {% endcomment %}
+    <form action="{% url 'take_book:return_book' %}" method="post">
+    {% csrf_token %}
     <table class="profile-table">
         <thead>
             <tr>
@@ -27,11 +37,14 @@
         <tr>
             <td>{{ book.book }}</td>
             <td>{{ book.take_date }}</td>
-            <td><a class="orange" href="{% url 'take_book:return_book' %}?book_num={{ book.book.num }}">Повернути</a></td>
-            
+            <td><button class="orange" type="submit" name="book_num" value="{{ book.book.num }}">Повернути</button></td>
         </tr>
     {% endfor %}
     </table>
+    </form>
+    {% else %}
+    <p>Ви ще не взяли жодної книги. Це можна зробити на сторінці <a href="{% url 'take_book:take_book' %}">Взяти книгу</a>.</p>
+    {% endif %}
 
     <a href="{% url 'users:edit_profile' %}">Edit profile</a>
     <form action="{% url 'users:logout' %}" method="post">

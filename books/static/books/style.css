@@ -193,4 +193,8 @@ h1 {
 .errorlist li {
   color: red;
   list-style: none;
+}
+
+.success {
+  color: green;
 }/*# sourceMappingURL=style.css.map */

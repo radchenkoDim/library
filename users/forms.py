@@ -10,7 +10,7 @@ class UserCreationForm(UserCreationForm):
         model = User
         fields = ['username', 'first_name', 'last_name', 'email', 'role', 'telegram_tag', 'password1', 'password2']
         labels = {
-            'username': 'Ім\'я користувача',
+            'username': 'Username',
             'first_name': 'Ім\'я',
             'last_name': 'Прізвище',
             'email': 'E-mail',

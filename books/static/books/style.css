@@ -62,34 +62,66 @@ h1 {
   box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
 }
 
-table {
+.profile-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
 }
-table thead {
+.profile-table thead {
   background-color: #9ac7e9;
   color: #fff;
 }
-table thead th {
+.profile-table thead th {
   padding: 10px;
   text-align: left;
   font-size: 14px;
 }
-table tbody tr {
+.profile-table tbody tr {
   border-bottom: 1px solid #ddd;
 }
-table tbody tr:nth-child(even) {
+.profile-table tbody tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-table tbody tr:hover {
-  background-color: #e9ecef;
+.profile-table tbody tr:hover {
+  background-color: None;
 }
-table tbody tr td {
+.profile-table tbody tr td {
   padding: 10px;
   font-size: 14px;
 }
-table tbody tr td a {
+.profile-table tbody tr td a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.book-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.book-data-table thead {
+  background-color: #9ac7e9;
+  color: #fff;
+}
+.book-data-table thead th {
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+.book-data-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+.book-data-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.book-data-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+.book-data-table tbody tr td {
+  padding: 10px;
+  font-size: 14px;
+}
+.book-data-table tbody tr td a {
   text-decoration: none;
   color: inherit;
 }

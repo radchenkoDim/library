@@ -15,7 +15,7 @@
 
     <p>Взяті книги:</p>
     {% comment %} TODO: додати стилі до саблиці {% endcomment %}
-    <table>
+    <table class="profile-table">
         <thead>
             <tr>
                 <th>Книга</th>
@@ -27,14 +27,8 @@
         <tr>
             <td>{{ book.book }}</td>
             <td>{{ book.take_date }}</td>
-            <td>{{ book.return_date }}</td>
-            {% comment %} <td>
-                <form action="{% url 'take_book:return_book' %}" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="book_num" value="{{ book.book_num }}">
-                    <button class="orange" type="submit">Return</button>
-                </form>
-            </td> {% endcomment %}
+            <td><a class="orange" href="{% url 'take_book:return_book' %}?book_num={{ book.book.num }}">Повернути</a></td>
+            
         </tr>
     {% endfor %}
     </table>

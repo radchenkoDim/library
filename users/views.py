@@ -7,6 +7,7 @@ from .forms import UserChengeForm
 from take_book.models import TakingBook
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
+from django.contrib.auth.views import LoginView
 
 
 @login_required

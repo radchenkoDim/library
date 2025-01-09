@@ -1,5 +1,6 @@
 from django import forms
 from .models import TakingBook
+from books.models import Book
 
 class TakeBookForm(forms.Form):
     book_num = forms.IntegerField(label="Номер книги")
@@ -7,8 +8,13 @@ class TakeBookForm(forms.Form):
     def clean_book_num(self):
         book_num = self.cleaned_data['book_num']
         taking_books = TakingBook.objects.filter(book__num=book_num, return_date__isnull=True)
-        if not taking_books:
+        if taking_books:
+            raise forms.ValidationError(f'Книгу з номером {book_num} хтось вже взяв.')
+        
+        if not Book.objects.filter(num=book_num):
             raise forms.ValidationError(f'Книги з номером {book_num} немає в бібліотеці.')
+
+        return book_num
 
 
 class ReturnBookForm(forms.Form):

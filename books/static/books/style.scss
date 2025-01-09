@@ -72,14 +72,13 @@ h1 {
     }
 }
 
-// table
-table {
+@mixin table($color, $hover-color, $color-link) {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
 
     thead {
-        background-color: $light-blue;
+        background-color: $color;
         color: #fff;
 
         th {
@@ -98,7 +97,7 @@ table {
             }
 
             &:hover {
-                background-color: #e9ecef;
+                background-color: $hover-color;
             }
 
             td {
@@ -107,12 +106,63 @@ table {
 
                 a {
                     text-decoration: none;
-                    color: inherit;
+                    color: $color-link;
                 }
             }
         }
     }
 }
+
+.profile-table {
+    @include table($light-blue, None, #fff);
+}
+.book-data-table {
+    @include table($light-blue, #e9ecef, inherit);
+}
+
+
+
+// // table
+// table {
+//     width: 100%;
+//     border-collapse: collapse;
+//     margin-top: 10px;
+
+//     thead {
+//         background-color: $light-blue;
+//         color: #fff;
+
+//         th {
+//             padding: 10px;
+//             text-align: left;
+//             font-size: 14px;
+//         }
+//     }
+
+//     tbody {
+//         tr {
+//             border-bottom: 1px solid #ddd;
+
+//             &:nth-child(even) {
+//                 background-color: #f2f2f2;
+//             }
+
+//             &:hover {
+//                 background-color: #e9ecef;
+//             }
+
+//             td {
+//                 padding: 10px;
+//                 font-size: 14px;
+
+//                 a {
+//                     text-decoration: none;
+//                     color: inherit;
+//                 }
+//             }
+//         }
+//     }
+// }
 
 .highlight {
     background-color: yellow;

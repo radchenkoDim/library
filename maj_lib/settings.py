@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'users:profile'
+LOGIN_URL = 'users:login'
 LOGOUT_REDIRECT_URL = 'index'
 
 INTERNAL_IPS = [
@@ -118,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Kyiv'
 
 USE_I18N = True
 

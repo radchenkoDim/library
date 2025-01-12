@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from debug_toolbar.toolbar import debug_toolbar_urls
+# from debug_toolbar.toolbar import debug_toolbar_urls
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -26,4 +26,4 @@ urlpatterns = [
     path('books/', include("books.urls")),
     path('take_book/', include("take_book.urls")),
     path('users/', include('users.urls')),
-] + debug_toolbar_urls()
+] # + debug_toolbar_urls()

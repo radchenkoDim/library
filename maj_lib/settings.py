@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-a_erwb5qekn0g19we^uqlr*e6p_+!clgs-s8upygfws%gz&url
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['library-production-7a60.up.railway.app', '127.0.0.1']
 
 AUTH_USER_MODEL = 'users.User'
 

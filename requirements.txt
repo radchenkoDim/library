@@ -2,3 +2,4 @@ Django==4.2.6
 gunicorn==23.0.0
 django-debug-toolbar
 uwsgi
+python-dateutil

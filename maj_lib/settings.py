@@ -27,8 +27,8 @@ SECRET_KEY = 'django-insecure-a_erwb5qekn0g19we^uqlr*e6p_+!clgs-s8upygfws%gz&url
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['library-production-7a60.up.railway.app', '127.0.0.1']
-
+ALLOWED_HOSTS = ['https://library-production-7a60.up.railway.app', '127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ["https://library-production-7a60.up.railway.app"]
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'users:profile'

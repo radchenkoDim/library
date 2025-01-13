@@ -6,6 +6,12 @@ body {
   background-color: #ebebeb;
   color: #333;
 }
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    background-color: white;
+  }
+}
 
 .head {
   display: flex;
@@ -73,12 +79,12 @@ body {
     top: 100%;
     right: 0;
     background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px 0, 0, 0, 0.1;
     border-radius: 4px;
     width: 100%;
   }
   .head .menu a {
-    margin: 10px 20px;
+    margin: 5px 20px;
   }
   .head .menu.active {
     display: flex;
@@ -86,12 +92,18 @@ body {
 }
 
 .container {
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 20px auto;
   padding: 20px;
   background: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .container {
+    border-radius: none;
+    box-shadow: none;
+  }
 }
 
 h1 {
@@ -180,6 +192,36 @@ h1 {
 .book-data-table tbody tr td a {
   text-decoration: none;
   color: inherit;
+}
+@media (max-width: 768px) {
+  .book-data-table thead {
+    display: none;
+  }
+  .book-data-table tbody tr {
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ef8368;
+  }
+  .book-data-table tbody tr td {
+    padding: 5px 10px;
+    display: block;
+    text-align: left;
+    background-color: #f2f2f2;
+    position: relative;
+  }
+  .book-data-table tbody tr td:first-child {
+    position: relative;
+    font-weight: bold;
+    padding-left: 35px;
+  }
+  .book-data-table tbody tr td:first-child:before {
+    content: "ID";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #333;
+    padding: 5px 0 5px 10px;
+  }
 }
 
 .highlight {

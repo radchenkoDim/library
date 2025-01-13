@@ -9,6 +9,11 @@ body {
     padding: 0;
     background-color: #ebebeb;
     color: #333;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        background-color: white;
+    }
 }
 
 // header
@@ -87,12 +92,12 @@ body {
             top: 100%;
             right: 0;
             background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px (0, 0, 0, 0.1);
             border-radius: 4px;
             width: 100%;
     
             a {
-                margin: 10px 20px;
+                margin: 5px 20px;
             }
         }
     
@@ -105,12 +110,17 @@ body {
 
 // container
 .container {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
     background: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+
+    @media (max-width: 768px) {
+        border-radius: none;
+        box-shadow: none;
+    }
 }
 
 h1 {
@@ -178,6 +188,44 @@ h1 {
             }
         }
     }
+
+    // @media (max-width: 768px) {
+    //     thead {
+    //         display: none;
+    //     }
+
+    //     tbody {
+    //         tr {
+    //             display: block;
+    //             margin-bottom: 10px;
+    //             border-bottom: 2px solid $orange;
+
+    //             td {
+    //                 padding: 5px 10px;
+    //                 display: block;
+    //                 text-align: left;
+    //                 // padding-left: 50%;
+    //                 background-color: #f2f2f2;
+    //                 position: relative;
+    //             }
+
+    //             td:first-child {
+    //                 position: relative;
+    //                 font-weight: bold;
+    //                 padding-left: 35px;
+
+    //                 &:before {
+    //                     content: 'ID';
+    //                     position: absolute;
+    //                     left: 0;
+    //                     top: 0;
+    //                     color: #333;
+    //                     padding: 5px 0 5px 10px;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 }
 
 .profile-table {
@@ -185,6 +233,43 @@ h1 {
 }
 .book-data-table {
     @include table($light-blue, #e9ecef, inherit);
+    @media (max-width: 768px) {
+        thead {
+            display: none;
+        }
+
+        tbody {
+            tr {
+                display: block;
+                margin-bottom: 10px;
+                border-bottom: 2px solid $orange;
+
+                td {
+                    padding: 5px 10px;
+                    display: block;
+                    text-align: left;
+                    // padding-left: 50%;
+                    background-color: #f2f2f2;
+                    position: relative;
+                }
+
+                td:first-child {
+                    position: relative;
+                    font-weight: bold;
+                    padding-left: 35px;
+
+                    &:before {
+                        content: 'ID';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        color: #333;
+                        padding: 5px 0 5px 10px;
+                    }
+                }
+            }
+        }
+    }
 }
 
 .highlight {

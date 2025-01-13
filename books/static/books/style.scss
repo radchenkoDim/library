@@ -1,6 +1,8 @@
 $blue: #436CA2;
 $light-blue: #9ac7e9;
 $orange: #ef8368;
+$base-font-size: 16px;
+$base-padding: 8px 12px;
 
 body {
     font-family: 'Arial', sans-serif;
@@ -26,14 +28,13 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
 
-    .head-link {
+    .head-link, .menu a {
         color: #333;
         text-decoration: none;
-        font-size: 16px;
+        font-size: $base-font-size;
         font-weight: bold;
         margin: 0 15px;
-        padding: 8px 12px;
-        margin-left: 100px;
+        padding: $base-padding;
         border-radius: 4px;
         transition: background-color 0.3s ease;
 
@@ -45,25 +46,10 @@ body {
     .menu {
         display: flex;
         flex-direction: row;
-        
-        a {
-            color: #333;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            margin: 0 15px;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
-            
-            &:hover {
-                color: $orange;
-            }
-        }
     }
     
     .menu-toggle {
-        display: none; // Приховано за замовчуванням
+        display: none;
         font-size: 24px;
         background: none;
         border: none;
@@ -71,9 +57,7 @@ body {
     }
     
     @media (max-width: 768px) {
-        .head {
-            justify-content: space-between;
-        }
+        justify-content: space-between;
 
         .head-link.left {
             margin-right: auto;
@@ -81,32 +65,31 @@ body {
         }
     
         .menu-toggle {
-            display: block; // Показати кнопку-гамбургер
+            display: block;
         }
     
         .menu {
-            display: none; // Приховати меню
+            display: none;
             flex-direction: column;
             align-items: center;
             position: absolute;
             top: 100%;
             right: 0;
             background: white;
-            box-shadow: 0 4px 8px (0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 4px;
             width: 100%;
-    
+
             a {
-                margin: 5px 20px;
+                margin: 0 20px;
             }
         }
     
         .menu.active {
-            display: flex; // Показати меню, якщо активне
+            display: flex;
         }
     }
 }
-
 
 // container
 .container {
@@ -129,12 +112,12 @@ h1 {
     margin-top: 5px;
 }
 
-
 // table page
 .input-table {
     margin-bottom: 20px;
     padding: 0 20px 0 0;
 }
+
 #filterInput {
     width: 100%;
     padding: 10px;
@@ -152,7 +135,7 @@ h1 {
 @mixin table($color, $hover-color, $color-link) {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin: 10px 0 20px;
 
     thead {
         background-color: $color;
@@ -188,51 +171,15 @@ h1 {
             }
         }
     }
-
-    // @media (max-width: 768px) {
-    //     thead {
-    //         display: none;
-    //     }
-
-    //     tbody {
-    //         tr {
-    //             display: block;
-    //             margin-bottom: 10px;
-    //             border-bottom: 2px solid $orange;
-
-    //             td {
-    //                 padding: 5px 10px;
-    //                 display: block;
-    //                 text-align: left;
-    //                 // padding-left: 50%;
-    //                 background-color: #f2f2f2;
-    //                 position: relative;
-    //             }
-
-    //             td:first-child {
-    //                 position: relative;
-    //                 font-weight: bold;
-    //                 padding-left: 35px;
-
-    //                 &:before {
-    //                     content: 'ID';
-    //                     position: absolute;
-    //                     left: 0;
-    //                     top: 0;
-    //                     color: #333;
-    //                     padding: 5px 0 5px 10px;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 .profile-table {
     @include table($light-blue, None, #fff);
 }
+
 .book-data-table {
     @include table($light-blue, #e9ecef, inherit);
+    margin: 0;
     @media (max-width: 768px) {
         thead {
             display: none;
@@ -248,13 +195,11 @@ h1 {
                     padding: 5px 10px;
                     display: block;
                     text-align: left;
-                    // padding-left: 50%;
                     background-color: #f2f2f2;
                     position: relative;
                 }
 
                 td:first-child {
-                    position: relative;
                     font-weight: bold;
                     padding-left: 35px;
 
@@ -276,12 +221,10 @@ h1 {
     background-color: yellow;
     color: black;
 }
-// end table page
-
 
 // загальний стиль кнопок
 @mixin button($color) {
-    padding: 8px 12px;
+    padding: $base-padding;
     background-color: $color;
     color: white;
     font-weight: bold;
@@ -311,7 +254,6 @@ h1 {
 
 .italic {
     font-style: italic;
-    color: blue;
 }
 
 .errorlist {
@@ -324,4 +266,24 @@ h1 {
 
 .success {
     color: green;
+}
+
+.little {
+    font-size: 13px;
+    padding: 5px;
+    color: #777;
+    margin: 0;
+}
+
+.text-link {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: 500;
+    transition: color 0.1s ease;
+}
+
+.text-link:hover, 
+.text-link:focus {
+    color: #0056b3;
+    text-decoration: underline;
 }

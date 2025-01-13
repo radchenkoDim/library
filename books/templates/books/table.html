@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block head %}
-    {% comment %} <link rel="stylesheet" href="{% static 'books/style-table.css' %}"> {% endcomment %}
     <script>
         const data={{ books_json|safe }};
     </script>
@@ -10,31 +9,32 @@
 
 {% block body %}
 <div id="books-data">
-    <h1>Maibutni lib data</h1>
+    <h1>Таблиця книг</h1>
     <div class="input-table">
+        <p class="little">Знайти книгу:</p>
         <input type="text" id="filterInput" placeholder="search">
-        {% comment %} <input type="submit"> {% endcomment %}
     </div>
+    <p class="little">Натиснувши на книгу можна перейти на сторінку книги.</p>
     <table class="book-data-table">
         <thead>
             <tr>
-                <th><button class="light-blue" id="sortButton">Num</button></th>
-                <th>Name</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>SubCategory</th>
+                <th><button class="light-blue" id="sortButton">№</button></th>
+                <th>Назва</th>
+                <th>Автор</th>
+                <th>Категорія</th>
+                <th>Підкатегорія</th>
             </tr>
         </thead>
         <tbody>
-            {% comment %} {% for book in books %}
+            {% comment %} js
             <tr>
-                <td>{{ book.num }}</td>
-                <td>{{ book.title }}</td>
-                <td>{{ book.author }}</td>
-                <td>{{ book.category }}</td>
-                <td>{{ book.subcategory }}</td>
+                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.num }}</a></td>
+                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.title }}</a></td>
+                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.author }}</a></td>
+                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.category }}</a></td>
+                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.subcategory }}</a></td>
             </tr>
-            {% endfor %} {% endcomment %}
+            {% endcomment %}
         </tbody>
     </table>
 </div>

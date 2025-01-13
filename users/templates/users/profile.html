@@ -1,15 +1,15 @@
 {% extends "books/layout.html" %}
 
 {% block body %}
-    <h1>Profile</h1>
+    <h1>Профіль</h1>
 
-    <p>Information about account:</p>
+    <p>Інформація про акаунт: </p>
     <ul>
     <li>Username: {{ user.username }}</li>
-    <li>First name: {{ user.first_name }}</li>
-    <li>Last name: {{ user.last_name }}</li>
+    <li>Іʼмя: {{ user.first_name }}</li>
+    <li>Прізвище: {{ user.last_name }}</li>
     <li>Email: {{ user.email }}</li>
-    <li>Grade: {{ user.role }}</li>
+    <li>Клас: {{ user.role }}</li>
     <li>Telegram: {{ user.telegram_tag }}</li>
     </ul>
 
@@ -30,7 +30,7 @@
             <tr>
                 <th>Книга</th>
                 <th>Дата взяття</th>
-                <th>Дата повернення</th>
+                <th>Повернути</th>
             </tr>
         </thead>
     {% for book in taking_books %}
@@ -46,7 +46,7 @@
     <p>Ви ще не взяли жодної книги. Це можна зробити на сторінці <a href="{% url 'take_book:take_book' %}">Взяти книгу</a>.</p>
     {% endif %}
 
-    <a href="{% url 'users:edit_profile' %}">Edit profile</a>
+    <a class="text-link" href="{% url 'users:edit_profile' %}">Редагувати профіль</a> <br>
     <form action="{% url 'users:logout' %}" method="post">
         {% csrf_token %}
         <button class="orange" tylie="submit">Logout</button>

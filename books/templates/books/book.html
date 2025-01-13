@@ -9,8 +9,7 @@
     <p>Рік видання: {{ book.year }}</p>
     <p>Кількість томів: {{ book.tom }}</p>
     <p>Видавництво: {{ book.publisher }}</p>
-
-    <a href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a>
+    <a class="text-link" href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a>
     <br>
-    <a href="javascript:history.back()">Повернутись</a>
+    <a class="text-link" href="javascript:history.back()">Повернутись</a>
 {% endblock %}

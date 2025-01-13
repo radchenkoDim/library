@@ -9,13 +9,26 @@
 {% block body %}
     <h1>Home page</h1>
     {% if user.is_authenticated %}
-        <h2>Hello, {{ user }}</h2>
-        <form action="{% url 'users:logout' %}" method="post">
-            {% csrf_token %}
-            <button class="orange">Logout</button>
-        </form>
+        <h2>Вітаю, {{ user }}</h2>
+        <p>
+            Щоб взяти книгу в бібліотеці, перейдіть на сторінку 
+            <a class="text-link" href="{% url 'take_book:take_book' %}">"Взяти книгу"</a>. 
+            Та виконайте подальші інструкції.
+        </p>
+        <p>
+            Якщо перейти у <a class="text-link" href="{% url 'users:profile' %}">профіль</a>, 
+            можна переглянути книги, які ви взяли та можна їх повернути.
+        </p>
     {% else %}
-        <h2>Hello, guest</h2>
+        <h2>Вітаю, guest</h2>
+        <p>
+            Щоб взяти книгу в бібліотеці треба <a class="text-link" href="{% url 'users:register' %}">зареєструватися
+            </a> або <a class="text-link" href="{% url 'users:login' %}">увійти в систему</a>. Без реєстрації можна переглянути 
+            <a class="text-link" href="{% url 'books:table' %}">таблицю книг</a>.
+        </p>
     {% endif %}
-    <p>Це пробна версія застосунку бібліотеки. Не всі функції працюють досконало. При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.</p>
+    <p>
+        Це пробна версія застосунку бібліотеки. Не всі функції працюють досконало. 
+        При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.
+    </p>
 {% endblock %}

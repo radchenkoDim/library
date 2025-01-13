@@ -1,12 +1,12 @@
 {% extends "books/layout.html" %}
 
 {% block body %}
-    <h1>Edit profile</h1>
+    <h1>Редагувати профіль</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="blue" type="submit">Save</button>
+        <button class="blue" type="submit">Зберегти</button>
     </form>
 
-    <a href="{% url 'users:profile' %}">Back to profile</a>
+    <a class="text-link" href="{% url 'users:profile' %}">Повернутись до профілю</a>
 {% endblock %}

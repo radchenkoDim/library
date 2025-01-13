@@ -6,9 +6,6 @@
     <p>Взята книга: {{ taking_book.book }}</p>
     <p>Коли варто повернути? Через 1 місяць, це буде <strong>{{ need_to_return_date }}</strong></p>
     
-    <a href="{% url 'index' %}">Головна сторінка</a>
-    <br>
-    <a href="{% url 'take_book:take_book' %}">Взяти ще одну книгу</a>
-    <br>
-    <a href="{% url 'books:table' %}">Таблиця</a>
+    <a class="text-link" href="{% url 'take_book:take_book' %}">Взяти ще одну книгу</a> <br>
+    <a class="text-link" href="{% url 'users:profile' %}">Профіль</a>
 {% endblock %}

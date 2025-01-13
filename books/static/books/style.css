@@ -22,36 +22,22 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
 }
-.head .head-link {
+.head .head-link, .head .menu a {
   color: #333;
   text-decoration: none;
   font-size: 16px;
   font-weight: bold;
   margin: 0 15px;
   padding: 8px 12px;
-  margin-left: 100px;
   border-radius: 4px;
   transition: background-color 0.3s ease;
 }
-.head .head-link:hover {
+.head .head-link:hover, .head .menu a:hover {
   color: #ef8368;
 }
 .head .menu {
   display: flex;
   flex-direction: row;
-}
-.head .menu a {
-  color: #333;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0 15px;
-  padding: 8px 12px;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-.head .menu a:hover {
-  color: #ef8368;
 }
 .head .menu-toggle {
   display: none;
@@ -61,7 +47,7 @@ body {
   cursor: pointer;
 }
 @media (max-width: 768px) {
-  .head .head {
+  .head {
     justify-content: space-between;
   }
   .head .head-link.left {
@@ -79,12 +65,12 @@ body {
     top: 100%;
     right: 0;
     background: white;
-    box-shadow: 0 4px 8px 0, 0, 0, 0.1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     width: 100%;
   }
   .head .menu a {
-    margin: 5px 20px;
+    margin: 0 20px;
   }
   .head .menu.active {
     display: flex;
@@ -133,7 +119,7 @@ h1 {
 .profile-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin: 10px 0 20px;
 }
 .profile-table thead {
   background-color: #9ac7e9;
@@ -165,7 +151,8 @@ h1 {
 .book-data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin: 10px 0 20px;
+  margin: 0;
 }
 .book-data-table thead {
   background-color: #9ac7e9;
@@ -210,7 +197,6 @@ h1 {
     position: relative;
   }
   .book-data-table tbody tr td:first-child {
-    position: relative;
     font-weight: bold;
     padding-left: 35px;
   }
@@ -282,7 +268,6 @@ h1 {
 
 .italic {
   font-style: italic;
-  color: blue;
 }
 
 .errorlist {
@@ -295,4 +280,24 @@ h1 {
 
 .success {
   color: green;
+}
+
+.little {
+  font-size: 13px;
+  padding: 5px;
+  color: #777;
+  margin: 0;
+}
+
+.text-link {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: 500;
+  transition: color 0.1s ease;
+}
+
+.text-link:hover,
+.text-link:focus {
+  color: #0056b3;
+  text-decoration: underline;
 }/*# sourceMappingURL=style.css.map */

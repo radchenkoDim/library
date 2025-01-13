@@ -28,11 +28,8 @@ class UserCreationForm(UserCreationForm):
 class UserChengeForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'role', 'telegram_tag']
+        fields = ['email', 'role', 'telegram_tag']
         labels = {
-            'username': 'Ім\'я користувача',
-            'first_name': 'Ім\'я',
-            'last_name': 'Прізвище',
             'email': 'E-mail',
             'role': 'Роль',
             'telegram_tag': 'Тег в Telegram',

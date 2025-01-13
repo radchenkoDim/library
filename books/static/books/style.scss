@@ -19,6 +19,7 @@ body {
     padding: 10px 20px;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
 
     .head-link {
         color: #333;
@@ -27,6 +28,7 @@ body {
         font-weight: bold;
         margin: 0 15px;
         padding: 8px 12px;
+        margin-left: 100px;
         border-radius: 4px;
         transition: background-color 0.3s ease;
 
@@ -34,7 +36,72 @@ body {
             color: $orange;
         }
     }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        
+        a {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 15px;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            
+            &:hover {
+                color: $orange;
+            }
+        }
+    }
+    
+    .menu-toggle {
+        display: none; // Приховано за замовчуванням
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+        .head {
+            justify-content: space-between;
+        }
+
+        .head-link.left {
+            margin-right: auto;
+            margin-left: 0;
+        }
+    
+        .menu-toggle {
+            display: block; // Показати кнопку-гамбургер
+        }
+    
+        .menu {
+            display: none; // Приховати меню
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            width: 100%;
+    
+            a {
+                margin: 10px 20px;
+            }
+        }
+    
+        .menu.active {
+            display: flex; // Показати меню, якщо активне
+        }
+    }
 }
+
 
 // container
 .container {
@@ -119,50 +186,6 @@ h1 {
 .book-data-table {
     @include table($light-blue, #e9ecef, inherit);
 }
-
-
-
-// // table
-// table {
-//     width: 100%;
-//     border-collapse: collapse;
-//     margin-top: 10px;
-
-//     thead {
-//         background-color: $light-blue;
-//         color: #fff;
-
-//         th {
-//             padding: 10px;
-//             text-align: left;
-//             font-size: 14px;
-//         }
-//     }
-
-//     tbody {
-//         tr {
-//             border-bottom: 1px solid #ddd;
-
-//             &:nth-child(even) {
-//                 background-color: #f2f2f2;
-//             }
-
-//             &:hover {
-//                 background-color: #e9ecef;
-//             }
-
-//             td {
-//                 padding: 10px;
-//                 font-size: 14px;
-
-//                 a {
-//                     text-decoration: none;
-//                     color: inherit;
-//                 }
-//             }
-//         }
-//     }
-// }
 
 .highlight {
     background-color: yellow;

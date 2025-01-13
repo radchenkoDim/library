@@ -12,7 +12,8 @@
 <body>
     <div class="head">
         <a class="head-link left" href="{% url 'index' %}">Головна</a>
-        <div class="head-right">
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="menu">
             <a class="head-link" href="{% url 'books:table' %}">Таблиця</a>
             <a class="head-link" href="{% url 'take_book:take_book' %}">Взяти книгу</a>
             {% if user.is_authenticated %}
@@ -27,5 +28,16 @@
         {% block body %}
         {% endblock %}
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.querySelector(".menu-toggle");
+            const menu = document.querySelector(".menu");
+
+            toggleButton.addEventListener("click", function () {
+                menu.classList.toggle("active");
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 {% extends "books/layout.html" %}
 
+{% block menu_table %}active{% endblock %}
+
 {% block body %}
     <h1>{{ book.title }}</h1>
     <p>Автор: {{ book.author }}</p>

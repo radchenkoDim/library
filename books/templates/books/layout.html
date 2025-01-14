@@ -14,13 +14,13 @@
         <a class="head-link left" href="{% url 'index' %}">Головна</a>
         <button class="menu-toggle" aria-label="Toggle menu">☰</button>
         <div class="menu">
-            <a class="head-link" href="{% url 'books:table' %}">Таблиця</a>
-            <a class="head-link" href="{% url 'take_book:take_book' %}">Взяти книгу</a>
+            <a class="head-link {% block menu_table %}{% endblock %}" href="{% url 'books:table' %}">Таблиця</a>
+            <a class="head-link {% block menu_take_book %}{% endblock %}" href="{% url 'take_book:take_book' %}">Взяти книгу</a>
             {% if user.is_authenticated %}
-                <a class="head-link" href="{% url 'users:profile' %}">{{ user }}</a>
+                <a class="head-link {% block menu_profile %}{% endblock %}" href="{% url 'users:profile' %}">{{ user }}</a>
             {% else %}
-                <a class="head-link" href="{% url 'users:register' %}">Sign up</a>
-                <a class="head-link" href="{% url 'users:login' %}">Log in</a>
+                <a class="head-link {% block menu_register %}{% endblock %}" href="{% url 'users:register' %}">Sign up</a>
+                <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'users:login' %}">Log in</a>
             {% endif %}
         </div>
     </div>

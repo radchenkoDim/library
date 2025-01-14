@@ -5,6 +5,6 @@
     },
     "deploy": {
         "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput",
-        "preDeployCommand": "cp prod.setting.py setting.py"
+        "preDeployCommand": "cp maj_lib/prod.setting.py maj_lib/setting.py"
     }
 }

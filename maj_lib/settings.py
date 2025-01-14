@@ -1,6 +1,6 @@
 import os
 
-if os.environ.get("DJANGO_ENV") == "PRODUCTION":
+if os.environ.get("RAILWAY_ENVIRONMENT_NAME") == "production":
     from .settings_prod import *
 else:
     from .settings_local import *

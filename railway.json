@@ -4,7 +4,6 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput",
-        "preDeployCommand": "cp maj_lib/prod.settings.py maj_lib/settings.py && chmod 666 maj_lib/settings.py"
+        "startCommand": "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn --timeout 500 maj_lib.wsgi"    
     }
 }

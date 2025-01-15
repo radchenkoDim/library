@@ -4,6 +4,6 @@
         "builder": "NIXPACKS"
     },
     "deploy": {
-        "startCommand": "python manage.py migrate && manage.py shell -c \"from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'radchenko.dim@gmail.com', 'admin')\" && python manage.py collectstatic --noinput && gunicorn --timeout 500 maj_lib.wsgi"    
+        "startCommand": "python manage.py migrate && manage.py shell -c \"from users.models import User; User.objects.create_superuser('admin', 'radchenko.dim@gmail.com', 'admin')\" && python manage.py collectstatic --noinput && gunicorn --timeout 500 maj_lib.wsgi"    
     }
 }

@@ -18,10 +18,10 @@
                 <td><a href="{% url 'books:book' book.num %}">{{ book.title }}</a></td>
                 <td>{{ book.author }}</td>
                 <td>
-                {% if book.category %}
-                <a href="{% url 'books:category' book.category.name %}">{{ book.category }}</a>
-                {% endif %}
-            </td>
+                    {% if book.category %}
+                        <a href="{% url 'books:category' book.category.name %}">{{ book.category }}</a>
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
     </table>

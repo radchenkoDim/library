@@ -179,6 +179,7 @@ h1 {
 
 @mixin mobile-table() {
     @media (max-width: 768px) {
+        margin-top: 50px;
         thead {
             display: none;
         }
@@ -228,7 +229,7 @@ h1 {
 .category-table {
     @include table($light-blue, #e9ecef, inherit);
     @include mobile-table();
-    margin: 0;
+    // margin: 0;
 }
 
 .highlight {

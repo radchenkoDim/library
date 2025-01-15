@@ -37,5 +37,14 @@ def subcategory(request, subcategory_name):
     })
 
 
+def publisher(request, publisher_name):
+    queryset = Book.objects.filter(publisher=publisher_name).all()
+    print(queryset)
+    return render(request, "books/publisher.html", {
+        "publisher": publisher_name,
+        "books": queryset
+    })
+
+
 def work(request):
     return render(request, "work.html")

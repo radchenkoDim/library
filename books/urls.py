@@ -8,5 +8,6 @@ urlpatterns = [
     path("table/<int:book_num>/", views.book, name="book"),
     path("table/category/<str:category_name>/", views.category, name="category"),
     path("table/subcategory/<str:subcategory_name>/", views.subcategory, name="subcategory"),
+    path("table/publisher/<str:publisher_name>/", views.publisher, name="publisher"),
     path("work/", views.work, name="work"),
 ]

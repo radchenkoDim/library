@@ -1,6 +1,6 @@
-Django==4.2.6
+Django==5.1.5
 gunicorn==23.0.0
-django-debug-toolbar==4.4.6
+django-debug-toolbar==5.0.0
 uWSGI==2.0.28
 python-dateutil==2.9.0
 whitenoise==6.8.2

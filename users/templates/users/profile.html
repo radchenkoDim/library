@@ -1,54 +1,65 @@
-{% extends "books/layout.html" %}
+{% extends "layout.html" %}
+
+{% block menu_profile %}active{% endblock %}
 
 {% block body %}
     <h1>Профіль</h1>
 
     <p>Інформація про акаунт: </p>
     <ul>
-    <li>Username: {{ user.username }}</li>
-    <li>Іʼмя: {{ user.first_name }}</li>
-    <li>Прізвище: {{ user.last_name }}</li>
-    <li>Email: {{ user.email }}</li>
-    <li>Клас: {{ user.role }}</li>
-    <li>Telegram: {{ user.telegram_tag }}</li>
+        <li>Username: {{ user.username }}</li>
+        <li>Іʼмя: {{ user.first_name }}</li>
+        <li>Прізвище: {{ user.last_name }}</li>
+        <li>Email: {{ user.email }}</li>
+        <li>Клас: {{ user.role }}</li>
+        <li>Telegram: {{ user.telegram_tag }}</li>
     </ul>
 
     {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-    </ul>
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
     {% endif %}
 
     {% if taking_books %}
-    <p>Взяті книги:</p>
-    <form action="{% url 'take_book:return_book' %}" method="post">
-    {% csrf_token %}
-    <table class="profile-table">
-        <thead>
-            <tr>
-                <th>Книга</th>
-                <th>Дата взяття</th>
-                <th>Повернути</th>
-            </tr>
-        </thead>
-    {% for book in taking_books %}
-        <tr>
-            <td>{{ book.book }}</td>
-            <td>{{ book.take_date }}</td>
-            <td><button class="orange" type="submit" name="book_num" value="{{ book.book.num }}">Повернути</button></td>
-        </tr>
-    {% endfor %}
-    </table>
-    </form>
+
+        <p>Взяті книги:</p>
+        <form action="{% url 'take_book:return_book' %}" method="post">
+            {% csrf_token %}
+            <table class="profile-table">
+                <thead>
+                    <tr>
+                        <th>Книга</th>
+                        <th>Дата взяття</th>
+                        <th>Повернути</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in taking_books %}
+                        <tr>
+                            <td><a href="/books/table/{{ book.book.num }}">{{ book.book }}</a></td>
+                            <td>{{ book.take_date }}</td>
+                            <td>
+                                <button class="orange" type="submit" name="book_num" value="{{ book.book.num }}">
+                                    Повернути
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
     {% else %}
-    <p>Ви ще не взяли жодної книги. Це можна зробити на сторінці <a href="{% url 'take_book:take_book' %}">Взяти книгу</a>.</p>
+        <p>Ви ще не взяли жодної книги. Це можна зробити на сторінці 
+            <a class="text-link" href="{% url 'take_book:take_book' %}">Взяти книгу</a>.
+        </p>
     {% endif %}
 
     <a class="text-link" href="{% url 'users:edit_profile' %}">Редагувати профіль</a> <br>
     <form action="{% url 'users:logout' %}" method="post">
         {% csrf_token %}
-        <button class="orange" tylie="submit">Logout</button>
+        <button class="orange" type="submit">Logout</button>
     </form>
 {% endblock %}

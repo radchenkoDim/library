@@ -1,15 +1,16 @@
-{% extends "books/layout.html" %}
+{% extends "layout.html" %}
 
 {% block body %}
     <h1>Книгу успішно повернуто!</h1>
 
     <p>Повернута книга: {{ taking_book.book }}</p>
     
-    <a href="{% url 'index' %}">Головна сторінка</a>
+    <a class="text-link" href="{% url 'index' %}">Головна сторінка</a>
     <br>
-    <a href="{% url 'take_book:return_book' %}">Повернути ще одну книгу</a>
+    <a class="text-link" href="{% url 'take_book:return_book' %}">Повернути ще одну книгу</a>
     <br>
-    <a href="{% url 'books:table' %}">Таблиця</a>
+    <a class="text-link" href="{% url 'books:table' %}">Таблиця</a>
     <br>
-    <a href="{% url 'users:profile' %}">Профіль</a>
+    <a class="text-link" href="{% url 'users:profile' %}">Профіль</a>
+{% endblock %}
 {% endblock %}

@@ -11,11 +11,31 @@ def table(request):
         "books_json": json_data
     })
 
+
 def book(request, book_num):
     book = get_object_or_404(Book, num=book_num)
     return render(request, "books/book.html", {
         "book": book
     })
 
-def how_take(request):
-    return render(request, "books/how_take.html")
+
+def category(request, category_name):
+    queryset = Book.objects.filter(category__name=category_name).all()
+    json_data = serialize('json', queryset, use_natural_foreign_keys=True)
+    return render(request, "books/category.html", {
+        "category": category_name,
+        "books": queryset,
+        "books_json": json_data
+    })
+
+
+def subcategory(request, subcategory_name):
+    queryset = Book.objects.filter(subcategory__name=subcategory_name).all()
+    return render(request, "books/subcategory.html", {
+        "subcategory": subcategory_name,
+        "books": queryset
+    })
+
+
+def work(request):
+    return render(request, "work.html")

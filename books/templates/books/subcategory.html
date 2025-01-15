@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Підкатегорія: {{ subcategory }}</h1>
+
+    <table class="category-table">
+        <thead>
+            <tr>
+                <th>Номер</th>
+                <th>Назва</th>
+                <th>Автор</th>
+                <th>Категорія</th>
+            </tr>
+        </thead>
+        {% for book in books %}
+            <tr>
+                <td><a href="{% url 'books:book' book.num %}">{{ book.num }}</a></td>
+                <td><a href="{% url 'books:book' book.num %}">{{ book.title }}</a></td>
+                <td>{{ book.author }}</td>
+                <td><a href="{% url 'books:category' book.category %}">{{ book.category }}</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

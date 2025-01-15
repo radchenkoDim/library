@@ -1,4 +1,6 @@
-{% extends "books/layout.html" %}
+{% extends "layout.html" %}
+
+{% block menu_take_book %}active{% endblock %}
 
 {% block body %}
     <h1>Взяти книгу</h1>
@@ -20,8 +22,8 @@
 
     {% else %}
         <p>Для того щоб взяти книгу вам потрібно увійти на сайт.</p>
-        <a href="{% url 'users:register' %}">Зареєструватися</a> |
-        <a href="{% url 'users:login' %}">Увійти</a>
+        <a class="text-link" href="{% url 'users:register' %}">Зареєструватися</a> |
+        <a class="text-link" href="{% url 'users:login' %}">Увійти</a>
     {% endif %}
     <br>
     <a class="text-link" href="javascript:history.back()">Повернутися назад</a>

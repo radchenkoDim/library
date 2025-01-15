@@ -1,9 +1,11 @@
-{% extends "books/layout.html" %}
+{% extends "layout.html" %}
+
 {% load static %}
 
 {% block head %}
     <script>
         const data={{ books_json|safe }};
+        console.log(data);
     </script>
 {% endblock %}
 
@@ -30,11 +32,11 @@
         <tbody>
             {% comment %} js
             <tr>
-                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.num }}</a></td>
-                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.title }}</a></td>
-                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.author }}</a></td>
-                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.category }}</a></td>
-                <td><a href="{% url 'books:book' <int:book_num> %}">{{ book.subcategory }}</a></td>
+                <td><a href="/books/table/...">{{ book.num }}</a></td>
+                <td><a href="/books/table/...">{{ book.title }}</a></td>
+                <td><a href="/books/table/...">{{ book.author }}</a></td>
+                <td><a href="/books/table/...">{{ book.category }}</a></td>
+                <td><a href="/books/table/...">{{ book.subcategory }}</a></td>
             </tr>
             {% endcomment %}
         </tbody>

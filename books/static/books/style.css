@@ -137,7 +137,7 @@ h1 {
   background-color: #f2f2f2;
 }
 .profile-table tbody tr:hover {
-  background-color: None;
+  background-color: #e9ecef;
 }
 .profile-table tbody tr td {
   padding: 10px;
@@ -145,7 +145,10 @@ h1 {
 }
 .profile-table tbody tr td a {
   text-decoration: none;
-  color: #fff;
+  color: #333;
+}
+.profile-table tbody tr td a:hover {
+  text-decoration: underline;
 }
 
 .book-data-table {
@@ -180,6 +183,9 @@ h1 {
   text-decoration: none;
   color: inherit;
 }
+.book-data-table tbody tr td a:hover {
+  text-decoration: underline;
+}
 @media (max-width: 768px) {
   .book-data-table thead {
     display: none;
@@ -210,12 +216,78 @@ h1 {
   }
 }
 
+.category-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 20px;
+  margin: 0;
+}
+.category-table thead {
+  background-color: #9ac7e9;
+  color: #fff;
+}
+.category-table thead th {
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+.category-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+.category-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+.category-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+.category-table tbody tr td {
+  padding: 10px;
+  font-size: 14px;
+}
+.category-table tbody tr td a {
+  text-decoration: none;
+  color: inherit;
+}
+.category-table tbody tr td a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 768px) {
+  .category-table thead {
+    display: none;
+  }
+  .category-table tbody tr {
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ef8368;
+  }
+  .category-table tbody tr td {
+    padding: 5px 10px;
+    display: block;
+    text-align: left;
+    background-color: #f2f2f2;
+    position: relative;
+  }
+  .category-table tbody tr td:first-child {
+    font-weight: bold;
+    padding-left: 35px;
+  }
+  .category-table tbody tr td:first-child:before {
+    content: "ID";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #333;
+    padding: 5px 0 5px 10px;
+  }
+}
+
 .highlight {
   background-color: yellow;
   color: black;
 }
 
 .blue {
+  margin: 5px;
   padding: 8px 12px;
   background-color: #436CA2;
   color: white;
@@ -228,11 +300,12 @@ h1 {
 }
 .blue:hover {
   background-color: white;
-  text-decoration: underline;
   color: #436CA2;
+  text-decoration: underline;
 }
 
 .light-blue {
+  margin: 5px;
   padding: 8px 12px;
   background-color: #9ac7e9;
   color: white;
@@ -245,11 +318,12 @@ h1 {
 }
 .light-blue:hover {
   background-color: white;
-  text-decoration: underline;
   color: #9ac7e9;
+  text-decoration: underline;
 }
 
 .orange {
+  margin: 5px;
   padding: 8px 12px;
   background-color: #ef8368;
   color: white;
@@ -262,12 +336,8 @@ h1 {
 }
 .orange:hover {
   background-color: white;
-  text-decoration: underline;
   color: #ef8368;
-}
-
-.italic {
-  font-style: italic;
+  text-decoration: underline;
 }
 
 .errorlist {
@@ -279,7 +349,7 @@ h1 {
 }
 
 .success {
-  color: green;
+  color: #28a745;
 }
 
 .little {
@@ -302,7 +372,10 @@ h1 {
   text-decoration: underline;
 }
 
-.active {
-  background-color: #9ac7e9;
-  color: white;
+.active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #436CA2;
 }/*# sourceMappingURL=style.css.map */

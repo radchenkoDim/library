@@ -70,6 +70,10 @@ filterInput.addEventListener('input', () => {
     renderTable(filteredBooks, filterValue); // Передаємо фільтрований список і запит для підсвічування
 });
 
+// Початкове рендерингу таблиці з сортуванням за зростанням
+const sortedData = [...data].sort((a, b) => a['fields']['num'] - b['fields']['num']);
+renderTable(sortedData, '');
+
 sortButton.addEventListener('click', () => {
     const sortedBooks = [...data].sort((a, b) => {
         if (isDescending) {

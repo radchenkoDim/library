@@ -39,8 +39,8 @@ class Book(models.Model):
         on_delete=models.SET_NULL, 
         related_name="books",
         default="-")
-    year = models.CharField(max_length=20, default="No data")
-    tom = models.CharField(max_length=5, default="No data")
+    year = models.CharField(max_length=64, default="No data")
+    tom = models.CharField(max_length=64, default="No data")
     publisher = models.CharField(max_length=64, default="No data")
     notes = models.CharField(max_length=64, default="No notes")
 

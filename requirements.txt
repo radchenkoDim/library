@@ -1,6 +1,7 @@
 Django==4.2.6
 gunicorn==23.0.0
-django-debug-toolbar
-uwsgi
-python-dateutil
-whitenoise
+django-debug-toolbar==4.4.6
+uWSGI==2.0.28
+python-dateutil==2.9.0.post0
+whitenoise==6.8.2
+tablib==3.7.0

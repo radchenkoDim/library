@@ -1,0 +1,309 @@
+$blue: #436CA2;
+$light-blue: #9ac7e9;
+$orange: #ef8368;
+$base-font-size: 16px;
+$base-padding: 8px 12px;
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #ebebeb;
+    color: #333;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        background-color: white;
+    }
+}
+
+// header
+.head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+
+    .head-link, .menu a {
+        color: #333;
+        text-decoration: none;
+        font-size: $base-font-size;
+        font-weight: bold;
+        margin: 0 15px;
+        padding: $base-padding;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            color: $orange;
+        }
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .menu-toggle {
+        display: none;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 768px) {
+        justify-content: space-between;
+
+        .head-link.left {
+            margin-right: auto;
+            margin-left: 0;
+        }
+    
+        .menu-toggle {
+            display: block;
+        }
+    
+        .menu {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            width: 100%;
+
+            a {
+                margin: 0 20px;
+            }
+        }
+    
+        .menu.active {
+            display: flex;
+        }
+    }
+}
+
+// container
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    @media (max-width: 768px) {
+        border-radius: none;
+        box-shadow: none;
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #444;
+    margin-top: 5px;
+}
+
+// table page
+.input-table {
+    margin-bottom: 20px;
+    padding: 0 20px 0 0;
+}
+
+#filterInput {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+
+    &:focus {
+        outline: none;
+        border-color: $light-blue;
+        box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+    }
+}
+
+@mixin table($color, $hover-color, $color-link) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 20px;
+
+    thead {
+        background-color: $color;
+        color: #fff;
+
+        th {
+            padding: 10px;
+            text-align: left;
+            font-size: 14px;
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid #ddd;
+
+            &:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            &:hover {
+                background-color: $hover-color;
+            }
+
+            td {
+                padding: 10px;
+                font-size: 14px;
+
+                a {
+                    text-decoration: none;
+                    color: $color-link;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin mobile-table() {
+    @media (max-width: 768px) {
+        margin-top: 50px;
+        thead {
+            display: none;
+        }
+
+        tbody {
+            tr {
+                display: block;
+                margin-bottom: 10px;
+                border-bottom: 2px solid $orange;
+
+                td {
+                    padding: 5px 10px;
+                    display: block;
+                    text-align: left;
+                    background-color: #f2f2f2;
+                    position: relative;
+                }
+
+                td:first-child {
+                    font-weight: bold;
+                    padding-left: 35px;
+
+                    &:before {
+                        content: 'ID';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        color: #333;
+                        padding: 5px 0 5px 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.profile-table {
+    @include table($light-blue, #e9ecef, #333);
+}
+
+.book-data-table {
+    @include table($light-blue, #e9ecef, inherit);
+    @include mobile-table();
+    margin: 0;
+}
+
+.category-table {
+    @include table($light-blue, #e9ecef, inherit);
+    @include mobile-table();
+    // margin: 0;
+}
+
+.highlight {
+    background-color: yellow;
+    color: black;
+}
+
+// загальний стиль кнопок
+@mixin button($color) {
+    margin: 5px;
+    padding: $base-padding;
+    background-color: $color;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+
+    &:hover {
+        background-color: white;
+        color: $color;
+        text-decoration: underline;
+    }
+}
+
+// стиль кнопок по класах
+.blue {
+    @include button($blue);
+}
+.light-blue {
+    @include button($light-blue);
+}
+.orange {
+    @include button($orange);
+}
+
+.errorlist {
+    li {
+        color: red;
+        list-style: none;
+    }
+    padding: 0;
+}
+.success {
+    color: #28a745;
+}
+
+.little {
+    font-size: 13px;
+    padding: 5px;
+    color: #777;
+    margin: 0;
+}
+
+.text-link {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: 500;
+    transition: color 0.1s ease;
+}
+
+.text-link:hover, 
+.text-link:focus {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $blue;
+}
+

@@ -4,7 +4,7 @@ from .models import Book
 
 # Create your views here.
 def table(request):
-    queryset = Book.objects.all().select_related("category", "subcategory")
+    queryset = Book.objects.all().select_related("category")
     json_data = serialize('json', queryset, use_natural_foreign_keys=True)
     return render(request, "books/table.html", {
         "books": queryset,
@@ -26,14 +26,6 @@ def category(request, category_name):
         "category": category_name,
         "books": queryset,
         "books_json": json_data
-    })
-
-
-def subcategory(request, subcategory_name):
-    queryset = Book.objects.filter(subcategory__name=subcategory_name).all()
-    return render(request, "books/subcategory.html", {
-        "subcategory": subcategory_name,
-        "books": queryset
     })
 
 

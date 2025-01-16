@@ -39,20 +39,10 @@ function renderTable(filteredBooks, query) {
             <td><a href="/books/table/${bookf['num']}">${highlight(bookf['title'], query)}</a></td>
             <td>${highlight(bookf['author'], query)}</td>
             <td><a href="/books/table/category/${bookf['category']}">${highlight(bookf['category'], query)}</a></td>
-            <td><a href="/books/table/subcategory/${bookf['subcategory']}">${highlight(bookf['subcategory'], query)}</a></td>
         `;
         tableBody.appendChild(row);
     });
 }
-
-// !! Книги, що з однаковим номером
-// x = 1;
-// for (let i = 0; i < data.length; i++) {
-//     if (data[i]['fields']['num'] === x) {
-//         console.log(data[i]['fields']['num']);
-//     }
-//     x = data[i]['fields']['num'];
-// }
 
 // Початкове рендерингу таблиці
 renderTable(data, '');
@@ -64,8 +54,7 @@ filterInput.addEventListener('input', () => {
         book['fields']['num'].toString().includes(filterValue) || 
         book['fields']['title'].toLowerCase().includes(filterValue) ||
         book['fields']['author'].toLowerCase().includes(filterValue) ||
-        book['fields']['category'].toLowerCase().includes(filterValue) ||
-        book['fields']['subcategory'].toLowerCase().includes(filterValue)
+        book['fields']['category'].toLowerCase().includes(filterValue)
     );
     renderTable(filteredBooks, filterValue); // Передаємо фільтрований список і запит для підсвічування
 });
@@ -90,8 +79,7 @@ sortButton.addEventListener('click', () => {
         book['fields']['num'].toString().includes(filterValue) ||
         book['fields']['title'].toLowerCase().includes(filterValue) ||
         book['fields']['author'].toLowerCase().includes(filterValue) ||
-        book['fields']['category'].toLowerCase().includes(filterValue) ||
-        book['fields']['subcategory'].toLowerCase().includes(filterValue) 
+        book['fields']['category'].toLowerCase().includes(filterValue) 
     ), filterValue);
 });
 

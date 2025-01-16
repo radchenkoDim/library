@@ -101,10 +101,12 @@ def want_book(request):
     return render(request, 'take_book/want_book.html', {'form': form})
 
 
+@login_required
 def want_book_success(request):
     return render(request, 'take_book/want_book_success.html')
 
 
+@login_required
 def taking_books(request):
     taking_books = TakingBook.objects.all()
     return render(request, 'take_book/taking_books.html', {'books': taking_books})

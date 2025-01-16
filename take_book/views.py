@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from dateutil.relativedelta import relativedelta
 
 from books.models import Book
-from .models import TakingBook
-from .forms import TakeBookForm, ReturnBookForm
+from .models import TakingBook, WantBook
+from .forms import TakeBookForm, ReturnBookForm, WantBookForm
 from django.utils.timezone import now
 from django.contrib import messages
 
@@ -74,3 +74,37 @@ def detail(request, taking_book_id):
         'taking_book': taking_book,
         'need_to_return_date': need_to_return_date,
     })
+
+
+@login_required
+def want_book(request):
+    if request.method == 'POST':
+        form = WantBookForm(request.POST)
+        if form.is_valid():
+            title = form.cleaned_data['title']
+            author = form.cleaned_data['author']
+            publisher = form.cleaned_data['publisher']
+            where = form.cleaned_data['where']
+            user = request.user
+
+            taking_book = WantBook.objects.create(
+                user=user,
+                title=title,
+                author=author,
+                publisher=publisher,
+                where=where,
+            )
+            return redirect('take_book:want_book_success')
+    else:
+        form = WantBookForm()
+    
+    return render(request, 'take_book/want_book.html', {'form': form})
+
+
+def want_book_success(request):
+    return render(request, 'take_book/want_book_success.html')
+
+
+def taking_books(request):
+    taking_books = TakingBook.objects.all()
+    return render(request, 'take_book/taking_books.html', {'books': taking_books})

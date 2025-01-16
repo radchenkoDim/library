@@ -37,3 +37,10 @@ class ReturnBookForm(forms.Form):
             raise forms.ValidationError(f'Книгу з номером {book_num} взяв інший користувач.')
 
         return book_num
+    
+
+class WantBookForm(forms.Form):
+    title = forms.CharField(label="Назва книги")
+    author = forms.CharField(label="Автор")
+    publisher = forms.CharField(label="Видавництво")
+    where = forms.CharField(label="Де можна знайти")

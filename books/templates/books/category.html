@@ -20,6 +20,7 @@
                 <td><a href="{% url 'books:book' book.num %}">{{ book.title }}</a></td>
                 <td>{{ book.author }}</td>
                 <td>
+                    {% comment %} TODO: if book.subcategory.name == '-': ... else: ...  {% endcomment %}
                     {% if book.subcategory and subcategory.name %}
                         <a href="{% url 'books:subcategory' book.subcategory.name %}">{{ book.subcategory.name }}</a>
                     {% endif %}

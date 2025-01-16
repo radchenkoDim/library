@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block menu_table %}active{% endblock %}
+
 {% block body %}
     <h1>Видавництво: {{ publisher }}</h1>
 
@@ -25,7 +27,4 @@
             </tr>
         {% endfor %}
     </table>
-{% endblock %}
-
-{% block menu_table %}active
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block menu_taking_books %}active{% endblock %}
+
+{% block body %}
+    <h1>Взяті книги</h1>
+    
+    <table class="book-data-table">
+        <thead>
+            <tr>
+                <th>Хто взяв</th>
+                <th>Номер</th>
+                <th>Назва</th>
+                <th>Дата взяття</th>
+                <th>Дата повернення</th>
+                <th>Повернути</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.user }}</td>
+                    <td><a href="{% url 'books:book' book.book.num %}">{{ book.book.num }}</a></td>
+                    <td><a href="{% url 'books:book' book.book.num %}">{{ book.book.title }}</a></td>
+                    <td>{{ book.take_date }}</td>
+                    <td>{{ book.return_date }}</td>
+                    <td><a href="{% url 'take_book:return_book' %}?book_num={{ book.book.num }}">Повернути</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Category, Publisher, Book
+from django.db.models import Max
 
 # Налаштування для Category
 @admin.register(Category)
@@ -28,16 +29,19 @@ class BookAdmin(admin.ModelAdmin):
             'fields': ('num', 'title', 'author', 'category')
         }),
         ('Додаткові дані', {
-            'fields': ('year', 'tom', 'publisher', 'notes')
+            'fields': ('year', 'tom', 'quantity', 'publisher', 'notes')
         }),
     )
 
     # Поля для автозаповнення
     autocomplete_fields = ['category', 'publisher']
 
+    # Додавання початкових значень
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        max_num = Book.objects.aggregate(Max('num'))['num__max']
+        form.base_fields['num'].initial = max_num + 1
+        return form
+
     # Додавання кастомної дії
     actions = ['mark_as_classic']
-
-    @admin.action(description='Позначити книги як класичні (до 2000 року)')
-    def mark_as_classic(self, request, queryset):
-        queryset.update(notes='Classic')  # Оновлення поля notes для вибраних записів

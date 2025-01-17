@@ -25,7 +25,7 @@ class BookAdmin(admin.ModelAdmin):
     # Секції для редагування полів
     fieldsets = (
         ('Основна інформація', {
-            'fields': ('num', 'title', 'author', 'category', 'subcategory')
+            'fields': ('num', 'title', 'author', 'category')
         }),
         ('Додаткові дані', {
             'fields': ('year', 'tom', 'publisher', 'notes')

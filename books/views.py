@@ -37,5 +37,13 @@ def publisher(request, publisher_name):
     })
 
 
+def author(request, author_name):
+    books = Book.objects.filter(author=author_name)
+    return render(request, "books/author.html", {
+        "author": author_name,
+        "books": books
+    })
+
+
 def work(request):
     return render(request, "work.html")

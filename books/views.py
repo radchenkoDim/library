@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.core.serializers import serialize
 from .models import Book
 
-# Create your views here.
+
 def table(request):
-    queryset = Book.objects.all().select_related("category")
-    json_data = serialize('json', queryset, use_natural_foreign_keys=True)
+    queryset = Book.objects.all().select_related("category") #.values("num", "title", "author", "category")
+    json_data = serialize('json', queryset, use_natural_foreign_keys=True, fields=('num', 'title', 'author', 'category'))
     return render(request, "books/table.html", {
         "books": queryset,
         "books_json": json_data

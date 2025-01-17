@@ -31,6 +31,15 @@ function highlight(text, query) {
 // Функція для рендерингу таблиці з підсвічуванням
 function renderTable(filteredBooks, query) {
     tableBody.innerHTML = ''; // Очищаємо таблицю
+
+    if (filteredBooks.length === 0) {
+        // Відображаємо повідомлення, якщо нічого не знайдено
+        const row = document.createElement('tr');
+        row.innerHTML = '<td colspan="4">Нічого не знайдено</td>';
+        tableBody.appendChild(row);
+        return;
+    }
+
     filteredBooks.forEach(book => {
         const bookf = book['fields']; // Дістаємо дані книги
         const row = document.createElement('tr');
@@ -44,24 +53,25 @@ function renderTable(filteredBooks, query) {
     });
 }
 
-// Початкове рендерингу таблиці
-renderTable(data, '');
+// Функція для фільтрування книг
+function filterBooks(query) {
+    return data.filter(book => {
+        const bookf = book['fields'];
+        return (
+            bookf['num'].toString().includes(query) ||
+            bookf['title'].toLowerCase().includes(query) ||
+            bookf['author'].toLowerCase().includes(query) ||
+            bookf['category'].toLowerCase().includes(query)
+        );
+    });
+}
 
 // Додаємо подію для фільтру
 filterInput.addEventListener('input', () => {
     const filterValue = filterInput.value.toLowerCase();
-    const filteredBooks = data.filter(book =>
-        book['fields']['num'].toString().includes(filterValue) || 
-        book['fields']['title'].toLowerCase().includes(filterValue) ||
-        book['fields']['author'].toLowerCase().includes(filterValue) ||
-        book['fields']['category'].toLowerCase().includes(filterValue)
-    );
-    renderTable(filteredBooks, filterValue); // Передаємо фільтрований список і запит для підсвічування
+    const filteredBooks = filterBooks(filterValue);
+    renderTable(filteredBooks, filterValue);
 });
-
-// Початкове рендерингу таблиці з сортуванням за зростанням
-const sortedData = [...data].sort((a, b) => a['fields']['num'] - b['fields']['num']);
-renderTable(sortedData, '');
 
 sortButton.addEventListener('click', () => {
     const sortedBooks = [...data].sort((a, b) => {

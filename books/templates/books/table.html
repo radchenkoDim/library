@@ -29,14 +29,14 @@
             </tr>
         </thead>
         <tbody>
-            {% comment %} js
-            <tr>
-                <td><a href="/books/table/...">{{ book.num }}</a></td>
-                <td><a href="/books/table/...">{{ book.title }}</a></td>
-                <td><a href="/books/table/...">{{ book.author }}</a></td>
-                <td><a href="/books/table/...">{{ book.category }}</a></td>
-            </tr>
-            {% endcomment %}
+            {% for book in books %}
+                <tr>
+                    <td><a href="{% url 'books:book' book.num %}">{{ book.num }}</a></td>
+                    <td><a href="{% url 'books:book' book.num %}">{{ book.title }}</a></td>
+                    <td><a href="#">{{ book.author }}</a></td>
+                    <td><a href="{% url 'books:category' book.category %}">{{ book.category }}</a></td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>

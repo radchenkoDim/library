@@ -4,12 +4,17 @@
 
 {% block body %}
     <h1>{{ book.title }}</h1>
-    <p>Автор: {{ book.author }}</p>
     <p>Номер: {{ book.num }}</p>
-    <p>Категорія: <a class="text-link" href="{% url 'books:category' book.category %}">{{ book.category }}</a></p>
-    <p>Рік видання: {{ book.year }}</p>
-    <p>Кількість томів: {{ book.tom }}</p>
-    <p>Видавництво: <a class="text-link" href="{% url 'books:publisher' book.publisher %}">{{ book.publisher }}</a></p>
+    <p>Автор: {{ book.author|default:"<i>Немає даних</i>" }}</p>
+    {% if book.category %}
+        <p>Категорія: <a class="text-link" href="{% url 'books:category' book.category.name %}">{{ book.category }}</a></p>
+    {% else %}
+        <p>Категорія: <i>Немає даних</i></p>
+    {% endif %}
+    <p>Рік видання: {{ book.year|default:"<i>Немає даних</i>" }}</p>
+    <p>Кількість копій: {{ book.quantity|default:"<i>Немає даних</i>" }}</p>
+    <p>Видавництво: {{ book.publisher.name|default:"<i>Немає даних</i>" }}</p>
+    
     <a class="text-link" href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a> 
     <br>
     <a class="text-link" href="javascript:history.back()">Повернутись</a>

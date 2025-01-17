@@ -30,11 +30,10 @@ def category(request, category_name):
 
 
 def publisher(request, publisher_name):
-    queryset = Book.objects.filter(publisher=publisher_name).all()
-    print(queryset)
+    books = Book.objects.filter(publisher__name=publisher_name)
     return render(request, "books/publisher.html", {
         "publisher": publisher_name,
-        "books": queryset
+        "books": books
     })
 
 

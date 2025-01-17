@@ -18,7 +18,13 @@
             <tr>
                 <td><a href="{% url 'books:book' book.num %}">{{ book.num }}</a></td>
                 <td><a href="{% url 'books:book' book.num %}">{{ book.title }}</a></td>
-                <td>{{ book.author }}</td>
+                <td>
+                    {% if book.author %}
+                        <a href="{% url 'books:author' book.author %}">{{ book.author }}
+                    {% else %}
+                        <i>Немає даних</i>
+                    {% endif %}
+                </td>
                 <td>
                     {% if book.category %}
                         <a href="{% url 'books:category' book.category.name %}">{{ book.category }}</a>

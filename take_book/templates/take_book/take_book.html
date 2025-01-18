@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Взяти книгу</h1>
     {% if book %}
-        <h2>{{ book }}</h2>
+        <h2>{{ book.num }}. {{ book.title }}</h2>
     {% endif %}
     <p>
         Щоб взяти книгу введіть її номер, що написаний на одній з перших сторінок біля печатки "Майбутні". 
@@ -13,7 +13,7 @@
         При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.
     </p>
 
-    <form action="{% url 'take_book:take_book' %}" method="post">
+    <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button class="light-blue" type="submit">Взяти книгу</button>

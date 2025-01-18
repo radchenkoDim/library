@@ -19,10 +19,10 @@
             <a class="head-link {% block menu_want_book %}{% endblock %}" href="{% url 'take_book:want_book' %}">Хочу книгу</a>
             {% if user.is_authenticated %}
                 {% if user.is_staff %}
-                    <a class="head-link {% block menu_admin %}{% endblock %}" href="{% url 'admin:index' %}">Admin</a>
                     <a class="head-link {% block menu_taking_books %}{% endblock %}" href="{% url 'take_book:taking_books' %}">Взяті книги</a>
+                    <a class="head-link {% block menu_admin %}{% endblock %}" href="{% url 'admin:index' %}">Admin</a>
                 {% endif %}
-                <a class="head-link {% block menu_profile %}{% endblock %}" href="{% url 'users:profile' %}">{{ user }}</a>
+                <a class="head-link {% block menu_profile %}{% endblock %}" href="{% url 'users:profile' %}">{{ user.username }}</a>
             {% else %}
                 <a class="head-link {% block menu_register %}{% endblock %}" href="{% url 'users:register' %}">Sign up</a>
                 <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'users:login' %}">Log in</a>

@@ -1,18 +1,19 @@
 from django import forms
 from .models import TakingBook
 from books.models import Book
+from utils import get_object_or_none
 
 class TakeBookForm(forms.Form):
     book_num = forms.IntegerField(label="Номер книги")
 
     def clean_book_num(self):
         book_num = self.cleaned_data['book_num']
-        taking_books = TakingBook.objects.filter(book__num=book_num, return_date__isnull=True)
-        if taking_books:
-            raise forms.ValidationError(f'Книгу з номером {book_num} хтось вже взяв.')
-        
-        if not Book.objects.filter(num=book_num):
+        book = get_object_or_none(Book, num=book_num)
+        if book is None:
             raise forms.ValidationError(f'Книги з номером {book_num} немає в бібліотеці.')
+        taking_books_count = TakingBook.objects.filter(book=book, return_date__isnull=True).count()
+        if taking_books_count >= book.quantity:
+            raise forms.ValidationError(f'Книгу з номером {book_num} хтось вже взяв.')
 
         return book_num
 

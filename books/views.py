@@ -14,9 +14,11 @@ def table(request):
 
 def book(request, book_num):
     book = get_object_or_404(Book, num=book_num)
+    taked_by = book.takingbook_set.filter(return_date__isnull=True).values_list("user__username", flat=True)
     return render(request, "books/book.html", {
         "book": book,
         "publisher": book.publisher,
+        "taked_by": taked_by
     })
 
 

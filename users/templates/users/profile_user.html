@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block menu_profile %}active{% endblock %}
+
+{% block body %}
+    <h1>{{ user_n.username }}</h1>
+
+    <p>Інформація про користувача: </p>
+    <ul>
+        <li>Username: {{ user_n.username }}</li>
+        <li>Імʼя: {{ user_n.first_name }}</li>
+        <li>Прізвище: {{ user_n.last_name }}</li>
+        <li>Email: {{ user_n.email }}</li>
+        <li>Клас: {{ user_n.role }}</li>
+        <li>Telegram: {{ user_n.telegram_tag }}</li>
+    </ul>
+
+    {% if taking_books %}
+
+        <p>Взяті книги:</p>
+        <form action="{% url 'take_book:return_book' %}" method="post">
+            {% csrf_token %}
+            <table class="profile-table">
+                <thead>
+                    <tr>
+                        <th>Книга</th>
+                        <th>Дата взяття</th>
+                        <th>Дата повернення</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in taking_books %}
+                        <tr>
+                            <td><a href="/books/table/{{ book.book.num }}">{{ book.book }}</a></td>
+                            <td>{{ book.take_date }}</td>
+                            <td>{{ book.return_date|default:"<i>Книга ще не повернена</i>" }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    {% else %}
+        <p>Користувач ще не взяв жодної книги.</p>
+    {% endif %}
+{% endblock %}

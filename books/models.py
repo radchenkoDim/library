@@ -43,3 +43,6 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.num}. {self.title}"
+    
+    def free_quantity(self):
+        return self.quantity - self.takingbook_set.filter(return_date__isnull=True).count()

@@ -1,18 +1,20 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from users.forms import UserCreationForm
 from .forms import UserChengeForm
 from take_book.models import TakingBook
+from users.models import User
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
 from django.contrib.auth.views import LoginView
 
 
 @login_required
-def profile(request):
+def profile_own(request):
     taking_books = TakingBook.objects.filter(user=request.user, return_date__isnull=True).order_by('take_date')
+    username = request.user.username
 
     # def i_am(one_book):
     #     return one_book.user == request.user
@@ -21,7 +23,13 @@ def profile(request):
     # books = filter(i_am, books)
     # # for i in books:
     # #     print(i)
-    return render(request, "users/profile.html", {"taking_books": taking_books})
+    return render(request, "users/profile.html", {"taking_books": taking_books, "username": username})
+
+
+def profile_user(request, user_id):
+    taking_books = TakingBook.objects.filter(user=user_id).order_by('take_date')
+    user_n = get_object_or_404(User, id=user_id)
+    return render(request, "users/profile_user.html", {"user_n": user_n, "taking_books": taking_books})
 
 
 def register(request):

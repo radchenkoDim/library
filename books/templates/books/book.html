@@ -12,8 +12,11 @@
         <p>Категорія: <i>Немає даних</i></p>
     {% endif %}
     <p>Рік видання: {{ book.year|default:"<i>Немає даних</i>" }}</p>
-    <p>Кількість копій: {{ book.quantity|default:"<i>Немає даних</i>" }}</p>
     <p>Видавництво: {{ book.publisher.name|default:"<i>Немає даних</i>" }}</p>
+    <p>Кількість копій: {{ book.quantity|default:"<i>Немає даних</i>" }}</p>
+    <p>Кількість вільних копій: {{ book.free_quantity }}</p>
+
+    <p>Хто взяв: {{ taked_by|join:", "|default:"<i>Книга вільна</i>" }}</p>
     
     <a class="text-link" href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a> 
     <br>

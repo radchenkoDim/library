@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from users.forms import UserCreationForm
@@ -11,23 +11,20 @@ from datetime import datetime
 from django.contrib.auth.views import LoginView
 
 
+def is_admin(user):
+    return user.is_staff
+
+
 @login_required
 def profile_own(request):
     taking_books = TakingBook.objects.filter(user=request.user, return_date__isnull=True).order_by('take_date')
     username = request.user.username
-
-    # def i_am(one_book):
-    #     return one_book.user == request.user
-    
-    # books = filter(lambda x: x.user == request.user, books)
-    # books = filter(i_am, books)
-    # # for i in books:
-    # #     print(i)
     return render(request, "users/profile.html", {"taking_books": taking_books, "username": username})
 
 
+@user_passes_test(is_admin)
 def profile_user(request, user_id):
-    taking_books = TakingBook.objects.filter(user=user_id).order_by('take_date')
+    taking_books = TakingBook.objects.filter(user=user_id).order_by('return_date')
     user_n = get_object_or_404(User, id=user_id)
     return render(request, "users/profile_user.html", {"user_n": user_n, "taking_books": taking_books})
 

@@ -51,13 +51,17 @@ def register(request):
 
 class CustomPasswordResetView(PasswordResetView):
     template_name = 'registration/custom_password_reset_form.html'
-    form_class = CustomPasswordResetForm
-    success_url = reverse_lazy('password_reset_done')
+    email_template_name = 'registration/password_reset_email.html'
+    success_url = reverse_lazy('users:password_reset_done')
 
     def form_valid(self, form):
         messages.success(self.request, 'Лист з інструкціями по скиданню пароля відправлено на вашу пошту.')
         return super().form_valid(form)
+    
 
+def password_reset_confirm(request):
+    return render(request, 'registration/password_reset_confirm.html')
+    
 
 @login_required
 def edit_profile(request):

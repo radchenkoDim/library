@@ -345,6 +345,25 @@ h1 {
   text-decoration: underline;
 }
 
+.disabled {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #ccc;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+  cursor: not-allowed;
+}
+.disabled:hover {
+  background-color: white;
+  color: #ccc;
+  text-decoration: underline;
+}
+
 .errorlist {
   padding: 0;
 }

@@ -1,6 +1,7 @@
 $blue: #436CA2;
 $light-blue: #9ac7e9;
 $orange: #ef8368;
+$disabled: #ccc;
 $base-font-size: 16px;
 $base-padding: 8px 12px;
 
@@ -266,6 +267,10 @@ h1 {
 }
 .orange {
     @include button($orange);
+}
+.disabled {
+    @include button($disabled);
+    cursor: not-allowed;
 }
 
 .errorlist {

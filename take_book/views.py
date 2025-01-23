@@ -87,6 +87,7 @@ def want_book(request):
     })
 
 
+@login_required
 def vote(request, want_book_id):
     want_book = get_object_or_404(WantBook, id=want_book_id)
 
@@ -106,7 +107,11 @@ def vote(request, want_book_id):
 def voted_book(request, want_book_id):
     want_book = get_object_or_404(WantBook, id=want_book_id)
     voted_users = Vote.objects.filter(want_book=want_book)
-    return render(request, 'take_book/voted_book.html', {'voted_users': voted_users})
+    users = [vote.user for vote in voted_users]
+    return render(request, 'take_book/voted_book.html', {
+        'book': want_book, 
+        'users': users
+    })
 
 
 @login_required

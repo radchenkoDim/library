@@ -4,15 +4,18 @@
     <h1>{{ book }}</h1>
     <p>Автор: {{ book.author }}</p>
     <p>Видавництво: {{ book.publisher }}</p>
+
     {% if book.where|urlize != book.where %}
-        <p>Де можна знайти: <a href="{{ book.where }}">{{ book.where }}</a></p>
+        <p>Де можна знайти: <a class="text-link" href="{{ book.where }}">Посилання</a></p>
     {% else %}
         <p>Де можна знайти: {{ book.where }}</p>
     {% endif %}
+
     {% if book.votes > 0 %}
         <p>Кількість голосів: {{ book.votes }}</p>
         <p>Проголосували: {{ users|join:", " }}</p>
     {% else %}
         <p><i>За книгу ще ніхто не проголосував</i></p>
     {% endif %}
+
 {% endblock %}

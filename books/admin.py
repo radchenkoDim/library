@@ -18,9 +18,9 @@ class PublisherAdmin(admin.ModelAdmin):
 # Налаштування для Book
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('num', 'title', 'author', 'category', 'year', 'tom', 'quantity', 'publisher', 'notes')  # Поля для списку
-    search_fields = ('title', 'author', 'publisher', 'notes')  # Додавання пошуку за текстовими полями
-    list_filter = ('category', 'year', 'publisher')  # Додавання фільтрів за полями
+    list_display = ('num', 'title', 'author', 'category', 'year', 'tom', 'quantity', 'publisher')  # Поля для списку
+    search_fields = ('title', 'author', 'publisher__name', 'notes')  # Додавання пошуку за текстовими полями
+    list_filter = ('category', 'publisher', 'year')  # Додавання фільтрів за полями
     ordering = ('num', )  
 
     # Секції для редагування полів

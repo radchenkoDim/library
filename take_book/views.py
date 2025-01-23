@@ -90,8 +90,8 @@ def want_book(request):
 def vote(request, want_book_id):
     want_book = get_object_or_404(WantBook, id=want_book_id)
 
-    # if want_book.user == request.user:
-    #     return redirect('take_book:want_book')
+    if want_book.user == request.user:
+        return redirect('take_book:want_book')
     
     if Vote.objects.filter(user=request.user, want_book=want_book).exists():
         return redirect('take_book:want_book')
@@ -114,19 +114,7 @@ def want_book_form(request):
     if request.method == 'POST':
         form = WantBookForm(request.POST)
         if form.is_valid():
-            title = form.cleaned_data['title']
-            author = form.cleaned_data['author']
-            publisher = form.cleaned_data['publisher']
-            where = form.cleaned_data['where']
-            user = request.user
-
-            WantBook.objects.create(
-                user=user,
-                title=title,
-                author=author,
-                publisher=publisher,
-                where=where,
-            )
+            form.save(user=request.user)
             return redirect('take_book:want_book_success')
     else:
         form = WantBookForm()

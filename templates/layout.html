@@ -14,7 +14,7 @@
         <a class="head-link left" href="{% url 'index' %}">Головна</a>
         <button class="menu-toggle" aria-label="Toggle menu">☰</button>
         <div class="menu">
-            <a class="head-link {% block menu_table %}{% endblock %}" href="{% url 'books:table' %}">Таблиця</a>
+            <a class="head-link {% block menu_table %}{% endblock %}" href="{% url 'books:table' %}">Книги</a>
             <a class="head-link {% block menu_take_book %}{% endblock %}" href="{% url 'take_book:take_book' %}">Взяти книгу</a>
             <a class="head-link {% block menu_want_book %}{% endblock %}" href="{% url 'take_book:want_book' %}">Хочу книгу</a>
             <a class="head-link {% block menu_taking_books %}{% endblock %}" href="{% url 'take_book:taking_books' %}">Взяті книги</a>

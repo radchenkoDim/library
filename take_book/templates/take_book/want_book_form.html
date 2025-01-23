@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block menu_want_book %}active{% endblock %}
+
+{% block body %}
+    <h1>Хочу книгу</h1>
+    <p>
+        Тут ви можете написати яку книгу ви хотіли б бачити у бібліотеці. 
+    </p>
+    <form action="{% url 'take_book:want_book_form' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="orange" type="submit">Хочу книгу</button>
+    </form>
+{% endblock %}

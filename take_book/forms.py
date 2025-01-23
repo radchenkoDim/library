@@ -1,5 +1,5 @@
 from django import forms
-from .models import TakingBook
+from .models import TakingBook, WantBook
 from books.models import Book
 from utils import get_object_or_none
 
@@ -45,3 +45,14 @@ class WantBookForm(forms.Form):
     author = forms.CharField(label="Автор")
     publisher = forms.CharField(label="Видавництво")
     where = forms.CharField(label="Де можна знайти")
+
+    # class Meta:
+    #     model = WantBook
+    #     fields = ['title', 'author', 'publisher', 'where']
+
+    # def save(self, user):
+    #     want_book = super().save(commit=False)
+    #     want_book.user = user
+    #     want_book.save()
+    #     return want_book
+    

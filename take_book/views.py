@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from dateutil.relativedelta import relativedelta
 
 from books.models import Book
-from .models import TakingBook, WantBook
+from .models import TakingBook, WantBook, Vote
 from .forms import TakeBookForm, ReturnBookForm, WantBookForm
 from django.utils.timezone import now
 from django.contrib import messages
@@ -75,6 +75,42 @@ def detail(request, taking_book_id):
 
 @login_required
 def want_book(request):
+    books = WantBook.objects.all()
+    voted_books = []
+
+    if request.user.is_authenticated:
+        voted_books = Vote.objects.filter(user=request.user).values_list('want_book_id', flat=True)
+
+    return render(request, 'take_book/want_book.html', {
+        'books': books, 
+        'voted_books': voted_books
+    })
+
+
+def vote(request, want_book_id):
+    want_book = get_object_or_404(WantBook, id=want_book_id)
+
+    # if want_book.user == request.user:
+    #     return redirect('take_book:want_book')
+    
+    if Vote.objects.filter(user=request.user, want_book=want_book).exists():
+        return redirect('take_book:want_book')
+    
+    Vote.objects.create(user=request.user, want_book=want_book)
+    want_book.votes += 1
+    want_book.save()
+
+    return redirect('take_book:want_book')
+
+
+def voted_book(request, want_book_id):
+    want_book = get_object_or_404(WantBook, id=want_book_id)
+    voted_users = Vote.objects.filter(want_book=want_book)
+    return render(request, 'take_book/voted_book.html', {'voted_users': voted_users})
+
+
+@login_required
+def want_book_form(request):
     if request.method == 'POST':
         form = WantBookForm(request.POST)
         if form.is_valid():
@@ -84,7 +120,7 @@ def want_book(request):
             where = form.cleaned_data['where']
             user = request.user
 
-            taking_book = WantBook.objects.create(
+            WantBook.objects.create(
                 user=user,
                 title=title,
                 author=author,
@@ -95,7 +131,7 @@ def want_book(request):
     else:
         form = WantBookForm()
     
-    return render(request, 'take_book/want_book.html', {'form': form})
+    return render(request, 'take_book/want_book_form.html', {'form': form})
 
 
 @login_required

@@ -46,13 +46,13 @@ class WantBookForm(forms.Form):
     publisher = forms.CharField(label="Видавництво")
     where = forms.CharField(label="Де можна знайти")
 
-    # class Meta:
-    #     model = WantBook
-    #     fields = ['title', 'author', 'publisher', 'where']
-
-    # def save(self, user):
-    #     want_book = super().save(commit=False)
-    #     want_book.user = user
-    #     want_book.save()
-    #     return want_book
-    
+    def save(self, user):
+        want_book = WantBook(
+            user = user,
+            title = self.cleaned_data['title'],
+            author = self.cleaned_data['author'],
+            publisher = self.cleaned_data['publisher'],
+            where = self.cleaned_data['where']
+        )
+        want_book.save()
+        return want_book

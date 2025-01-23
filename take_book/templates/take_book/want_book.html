@@ -28,9 +28,9 @@
                         <td>{{ book.title }}</td>
                         <td>{{ book.votes }}</td>
                         <td>
-                            {% comment %} {% if book.created_by == user %}
-                                <span>Ви створили цю книгу</span> {% endcomment %}
-                            {% if user.is_authenticated and book.id in voted_books %}
+                            {% if book.user == user %}
+                                <i>Ви створили цю книгу</i>
+                            {% elif user.is_authenticated and book.id in voted_books %}
                                 <i>Ви вже проголосували</i>
                             {% else %}
                                 <button class="orange" type="submit">Проголосувати</button>

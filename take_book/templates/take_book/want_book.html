@@ -25,7 +25,7 @@
                 <tr>
                     <form action="{% url 'take_book:vote' book.id %}" method="post">
                         {% csrf_token %}
-                        <td>{{ book.title }}</td>
+                        <td><a href="{% url 'take_book:voted_book' book.id %}">{{ book.title }}</td>
                         <td>{{ book.votes }}</td>
                         <td>
                             {% if book.user == user %}

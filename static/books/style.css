@@ -1,9 +1,10 @@
+@charset "UTF-8";
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #ebebeb;
+  background-color: #fff;
   color: #333;
 }
 @media (max-width: 768px) {
@@ -19,8 +20,8 @@ body {
   align-items: center;
   padding: 10px 20px;
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
+  border-bottom: 3px solid #ef8368;
 }
 .head .head-link, .head .menu a {
   color: #333;
@@ -78,12 +79,9 @@ body {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
 }
 @media (max-width: 768px) {
   .container {
@@ -96,6 +94,40 @@ h1 {
   text-align: center;
   color: #444;
   margin-top: 5px;
+}
+
+.help-index {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Мінімум 200px, максимум - динамічно */
+  gap: 20px; /* Відступи між блоками */
+  justify-content: center;
+}
+
+.help-index > div {
+  border-radius: 8px;
+  background-color: #ef8368;
+  padding: 15px;
+  text-align: left;
+}
+.help-index > div:hover {
+  background-color: #9ac7e9;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+.help-index > div h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: white;
+  text-align: center;
+}
+.help-index > div p {
+  color: white;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.help-index > div a {
+  color: white;
+  text-decoration: underline;
 }
 
 .input-table {
@@ -287,8 +319,8 @@ h1 {
 }
 
 .highlight {
-  background-color: yellow;
-  color: black;
+  background-color: #436CA2;
+  color: white;
 }
 
 .blue {
@@ -383,6 +415,10 @@ h1 {
   margin: 0;
 }
 
+.margin-top {
+  margin-top: 20px;
+}
+
 .text-link {
   text-decoration: none;
   color: #007BFF;
@@ -402,4 +438,22 @@ h1 {
   width: 100%;
   height: 2px;
   background-color: #436CA2;
+}
+
+.form {
+  display: block;
+  width: 40%;
+}
+.form input {
+  width: 90%;
+  padding: 7px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 5px 0;
+}
+.form input:focus {
+  outline: none;
+  border-color: #9ac7e9;
+  box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
 }/*# sourceMappingURL=style.css.map */

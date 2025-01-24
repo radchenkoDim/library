@@ -46,7 +46,7 @@ function renderTable(filteredBooks, query) {
         row.innerHTML = `
             <td><a href="/books/table/${bookf['num']}">${highlight(bookf['num'].toString(), query)}</a></td>
             <td><a href="/books/table/${bookf['num']}">${highlight(bookf['title'], query)}</a></td>
-            <td>${highlight(bookf['author'], query)}</td>
+            <td><a href="/books/table/author/${bookf['author']}">${highlight(bookf['author'], query)}</td>
             <td><a href="/books/table/category/${bookf['category']}">${highlight(bookf['category'], query)}</a></td>
         `;
         tableBody.appendChild(row);

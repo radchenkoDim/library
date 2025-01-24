@@ -9,7 +9,7 @@
         <form action="{% url 'take_book:want_book_form' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="orange" type="submit">Хочу книгу</button>
+            <button class="light-blue" type="submit">Хочу книгу</button>
         </form>
     </div>
 {% endblock %}

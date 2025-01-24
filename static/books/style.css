@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -21,7 +21,6 @@ body {
   padding: 10px 20px;
   background-color: white;
   position: relative;
-  border-bottom: 3px solid #ef8368;
 }
 .head .head-link, .head .menu a {
   color: #333;
@@ -105,12 +104,12 @@ h1 {
 
 .help-index > div {
   border-radius: 8px;
-  background-color: #ef8368;
+  background-color: #9ac7e9;
   padding: 15px;
   text-align: left;
 }
 .help-index > div:hover {
-  background-color: #9ac7e9;
+  background-color: #ef8368;
   transform: scale(1.02);
   transition: all 0.3s ease;
 }
@@ -447,7 +446,7 @@ h1 {
   align-items: center;
   padding: 20px;
   border-radius: 8px;
-  border: 3px solid #ef8368;
+  border: 3px solid #9ac7e9;
 }
 .form input {
   width: 90%;

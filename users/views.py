@@ -1,18 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.contrib import messages
 from users.forms import UserCreationForm
 from .forms import UserChengeForm
 from take_book.models import TakingBook
 from users.models import User
-from dateutil.relativedelta import relativedelta
-from datetime import datetime
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.views import PasswordResetView
-from django.contrib.auth.forms import PasswordResetForm
-from users.forms import CustomPasswordResetForm
-from django.urls import reverse_lazy
 
 
 def is_admin(user):
@@ -43,24 +36,6 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
-
-
-# def custom_password_reset(request):
-#     form = PasswordResetForm(request.POST)
-#     return render(request, 'registration/password_reset_form.html', {'form': form})
-
-class CustomPasswordResetView(PasswordResetView):
-    template_name = 'registration/custom_password_reset_form.html'
-    # email_template_name = 'registration/password_reset_email.html'
-    success_url = reverse_lazy('users:password_reset_done')
-
-    def form_valid(self, form):
-        messages.success(self.request, 'Лист з інструкціями по скиданню пароля відправлено на вашу пошту.')
-        return super().form_valid(form)
-    
-
-def password_reset_confirm(request):
-    return render(request, 'registration/password_reset_confirm.html')
     
 
 @login_required

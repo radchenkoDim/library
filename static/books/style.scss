@@ -28,6 +28,7 @@ body {
     padding: 10px 20px;
     background-color: white;
     position: relative;
+    z-index: 100;
     // border-bottom: 3px solid $orange;
 
     .head-link, .menu a {
@@ -98,14 +99,9 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    // background: #fff;
-    // border-radius: 8px;
 
-    @media (max-width: 768px) {
-        width: 100%;
-        border-radius: none;
-        box-shadow: none;
-    }
+    // @media (max-width: 768px) {
+    // }
 }
 
 h1 {
@@ -219,7 +215,6 @@ h1 {
 
 @mixin mobile-table() {
     @media (max-width: 768px) {
-        margin-top: 50px;
         thead {
             display: none;
         }
@@ -228,7 +223,7 @@ h1 {
             tr {
                 display: block;
                 margin-bottom: 10px;
-                border-bottom: 2px solid $orange;
+                border-bottom: 2px solid $light-blue;
 
                 td {
                     padding: 5px 10px;
@@ -236,20 +231,11 @@ h1 {
                     text-align: left;
                     background-color: #f2f2f2;
                     position: relative;
+                    z-index: 1;
                 }
 
                 td:first-child {
                     font-weight: bold;
-                    padding-left: 35px;
-
-                    &:before {
-                        content: 'ID';
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        color: #333;
-                        padding: 5px 0 5px 10px;
-                    }
                 }
             }
         }
@@ -429,6 +415,17 @@ h1 {
     button {
         @include button($color_button);
     }
+
+    .ml {
+        margin-left: 25%;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        .ml {
+            margin-left: 0;
+        }
+    }
 }
 
 .form-login {
@@ -456,8 +453,4 @@ h1 {
     color: #777;
     font-size: 14px;
     margin-top: 5px;
-}
-
-.ml {
-    margin-left: 25%;
 }

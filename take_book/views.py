@@ -49,7 +49,7 @@ def return_book(request):
             taking_book.save()
 
             messages.success(request, f'Книгу з номером {book_num} успішно повернено.')
-            return redirect('users:profile')
+            return redirect('profile')
     else:
         if 'book_num' in request.GET:
             book = get_object_or_404(Book, num=request.GET['book_num'])

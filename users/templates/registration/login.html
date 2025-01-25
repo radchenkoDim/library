@@ -13,12 +13,13 @@
     <div class="form-login">
         <p>
             Увійдіть у свій акаунт. Якщо ви не маєте акаунту, 
-            <a class="text-link" href="{% url 'users:register' %}">зареєструйтеся</a>.
+            <a class="text-link" href="{% url 'register' %}">зареєструйтеся</a>.
         </p>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <a class="text-link reset" href="{% url 'books:work' %}">Forgot password?</a>
+            {% comment %} <a class="text-link reset" href="{% url 'books:work' %}">Forgot password?</a> {% endcomment %}
+            <a class="text-link reset" href="{% url 'password_reset' %}">Forgot password?</a>
             <br>
             <button type="submit">Log in</button>
         </form>

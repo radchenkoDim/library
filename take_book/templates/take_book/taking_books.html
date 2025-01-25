@@ -21,7 +21,7 @@
                 <tr>
                     <td>
                         {% if user.is_staff %}
-                            <a href="{% url 'users:profile_user' book.user.id %}">{{ book.user }}</a>
+                            <a href="{% url 'profile_user' book.user.id %}">{{ book.user }}</a>
                         {% else %}
                             {{ book.user }}
                         {% endif %}

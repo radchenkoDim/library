@@ -69,8 +69,6 @@ INSTALLED_APPS = [
     'users',
 ]
 
-INSTALLED_APPS += ['django_extensions']
-
 MIDDLEWARE = [
     # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',

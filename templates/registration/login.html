@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %} - Log in{% endblock %}
+
 {% block menu_login %}active{% endblock %}
 
 {% block body %}
@@ -18,10 +20,10 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            {% comment %} <a class="text-link reset" href="{% url 'books:work' %}">Forgot password?</a> {% endcomment %}
             <a class="text-link reset" href="{% url 'password_reset' %}">Forgot password?</a>
             <br>
             <button type="submit">Log in</button>
         </form>
     </div>
+
 {% endblock %}

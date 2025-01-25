@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %} - {{ user.username }}{% endblock %}
+
 {% block menu_profile %}active{% endblock %}
 
 {% block body %}
@@ -24,7 +26,6 @@
     {% endif %}
 
     {% if taking_books %}
-
         <p>Взяті книги:</p>
         <form action="{% url 'take_book:return_book' %}" method="post">
             {% csrf_token %}
@@ -52,7 +53,8 @@
             </table>
         </form>
     {% else %}
-        <p>Ви ще не взяли жодної книги. Це можна зробити на сторінці 
+        <p>
+            Ви ще не взяли жодної книги. Це можна зробити на сторінці 
             <a class="text-link" href="{% url 'take_book:take_book' %}">Взяти книгу</a>.
         </p>
     {% endif %}

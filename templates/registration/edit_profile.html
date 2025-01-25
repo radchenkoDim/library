@@ -1,16 +1,18 @@
 {% extends "layout.html" %}
 
+{% block title %} - Редагування профілю{% endblock %}
+
 {% block menu_profile %}active{% endblock %}
 
 {% block body %}
     <h1>Редагувати профіль</h1>
 
     <div class="form">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="blue" type="submit">Зберегти</button>
-    </form>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="blue" type="submit">Зберегти</button>
+        </form>
     </div>
 
     <a class="text-link ml" href="{% url 'profile' %}">Повернутись до профілю</a>

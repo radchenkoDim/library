@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %} - Взяти книгу{% if book %} - {{ book.num }}. {{ book.title }}{% endif %}{% endblock %}
+
 {% block menu_take_book %}active{% endblock %}
 
 {% block body %}
@@ -20,6 +22,5 @@
             <button class="light-blue" type="submit">Взяти книгу</button>
         </form>
     </div>
-    <br>
     <a class="text-link" href="javascript:history.back()">Повернутися назад</a>
 {% endblock %}

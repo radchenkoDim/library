@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django import forms
+from django.contrib.auth.forms import PasswordResetForm
 
 User = get_user_model()
 
@@ -34,3 +35,12 @@ class UserChengeForm(forms.ModelForm):
             'role': 'Роль',
             'telegram_tag': 'Тег в Telegram',
         }
+
+
+class CustomPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(label='E-mail', max_length=254, widget=forms.EmailInput(attrs={'autocomplete': 'email'}))
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not User.objects.filter(email=email).exists():
+            raise ValidationError("Користувача з таким e-mail не існує.")
+        return email

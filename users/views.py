@@ -9,6 +9,10 @@ from users.models import User
 from dateutil.relativedelta import relativedelta
 from datetime import datetime
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.forms import PasswordResetForm
+from users.forms import CustomPasswordResetForm
+from django.urls import reverse_lazy
 
 
 def is_admin(user):
@@ -39,6 +43,20 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+
+# def custom_password_reset(request):
+#     form = PasswordResetForm(request.POST)
+#     return render(request, 'registration/password_reset_form.html', {'form': form})
+
+class CustomPasswordResetView(PasswordResetView):
+    template_name = 'registration/custom_password_reset_form.html'
+    form_class = CustomPasswordResetForm
+    success_url = reverse_lazy('password_reset_done')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Лист з інструкціями по скиданню пароля відправлено на вашу пошту.')
+        return super().form_valid(form)
 
 
 @login_required

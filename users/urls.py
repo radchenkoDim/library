@@ -1,5 +1,6 @@
 from . import views
 from django.urls import path, include
+from .views import CustomPasswordResetView
 
 
 app_name = 'users'
@@ -9,4 +10,6 @@ urlpatterns = [
     path('profile/<int:user_id>/', views.profile_user, name='profile_user'),
     path('register/', views.register, name='register'),
     path('edit/', views.edit_profile, name='edit_profile'),
+
+    path('custom_password_reset/', CustomPasswordResetView.as_view(), name='custom_password_reset')
 ]

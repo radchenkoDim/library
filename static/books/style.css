@@ -675,6 +675,11 @@ h1 {
   }
 }
 
+.flex-container {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
 .helptext {
   color: #777;
   font-size: 14px;

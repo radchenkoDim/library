@@ -41,7 +41,7 @@ CSRF_TRUSTED_ORIGINS = [
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = 'index'
-LOGIN_URL = 'users:login'
+LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'index'
 
 INTERNAL_IPS = [
@@ -50,12 +50,20 @@ INTERNAL_IPS = [
 
 # DEFAULT_FROM_EMAIL = 'webmaster@example.com'
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 8025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'default_from_email@email.com'
 
 MESSAGE_TAGS = {
     message_constants.DEBUG: 'debug',

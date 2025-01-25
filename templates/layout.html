@@ -31,10 +31,10 @@
                 {% if user.is_staff %}
                     <a class="head-link {% block menu_admin %}{% endblock %}" href="{% url 'admin:index' %}">Admin</a>
                 {% endif %}
-                <a class="head-link {% block menu_profile %}{% endblock %}" href="{% url 'users:profile' %}">{{ user.username }}</a>
+                <a class="head-link {% block menu_profile %}{% endblock %}" href="{% url 'profile' %}">{{ user.username }}</a>
             {% else %}
-                <a class="head-link {% block menu_register %}{% endblock %}" href="{% url 'users:register' %}">Sign up</a>
-                <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'users:login' %}">Log in</a>
+                <a class="head-link {% block menu_register %}{% endblock %}" href="{% url 'register' %}">Sign up</a>
+                <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'login' %}">Log in</a>
             {% endif %}
         </div>
     </div>

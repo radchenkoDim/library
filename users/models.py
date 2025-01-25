@@ -12,6 +12,7 @@ class User(AbstractUser):
         ('10', '10 клас'),
         ('11', '11 клас'),
         ('teacher', 'Викладач/Куратор'),
+        ('graduate', 'Випускник'),
     ]
     role = models.CharField(
         max_length=10, 

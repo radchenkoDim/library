@@ -84,6 +84,7 @@ body {
 }
 @media (max-width: 768px) {
   .container {
+    width: 100%;
     border-radius: none;
     box-shadow: none;
   }
@@ -101,32 +102,30 @@ h1 {
   gap: 20px; /* Відступи між блоками */
   justify-content: center;
 }
-
-.help-index > div {
+.help-index div {
   border-radius: 8px;
   background-color: #9ac7e9;
+  color: white;
   padding: 15px;
   text-align: left;
 }
-.help-index > div:hover {
+.help-index div:hover {
   background-color: #ef8368;
   transform: scale(1.02);
   transition: all 0.3s ease;
 }
-.help-index > div h3 {
+.help-index div h3 {
   font-size: 18px;
   margin-bottom: 10px;
-  color: white;
   text-align: center;
 }
-.help-index > div p {
-  color: white;
+.help-index div p {
   font-size: 14px;
   line-height: 1.5;
 }
-.help-index > div a {
-  color: white;
+.help-index div a {
   text-decoration: underline;
+  color: white;
 }
 
 .input-table {
@@ -395,6 +394,18 @@ h1 {
   text-decoration: underline;
 }
 
+.button-table {
+  color: #ef8368;
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.button-table:hover {
+  color: #9ac7e9;
+}
+
 .errorlist {
   padding: 0;
 }
@@ -439,25 +450,246 @@ h1 {
   background-color: #436CA2;
 }
 
-.form {
+.form-login {
   display: block;
-  width: 40%;
-  margin: 0 auto;
-  align-items: center;
+  width: 40%; /* Ширина контейнера */
+  margin: 0 auto; /* Центрування контейнера */
+  margin-bottom: 20px;
   padding: 20px;
+  border: 2px solid #9ac7e9;
   border-radius: 8px;
-  border: 3px solid #9ac7e9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  /* Стиль для селектора */
 }
-.form input {
-  width: 90%;
-  padding: 7px;
+.form-login label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  pointer-events: none; /* Вимикає події наведення для label */
+}
+.form-login input,
+.form-login select {
+  width: 100%;
+  padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
-  margin: 5px 0;
+  box-sizing: border-box;
 }
-.form input:focus {
+.form-login input:focus,
+.form-login select:focus {
   outline: none;
-  border-color: #9ac7e9;
+  border-color: #436CA2;
   box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+}
+.form-login input:hover,
+.form-login select:hover {
+  border-color: #ef8368;
+  transition: all 0.3s ease;
+}
+.form-login select {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+}
+.form-login select:hover {
+  background-color: #e6e6e6;
+}
+.form-login ul {
+  margin-right: 16px;
+  color: #777;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.form-login button {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #9ac7e9;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.form-login button:hover {
+  background-color: white;
+  color: #9ac7e9;
+  text-decoration: underline;
+}
+.form-login p {
+  margin-bottom: 0;
+}
+.form-login .reset {
+  font-size: 14px;
+}
+.form-login button {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #9ac7e9;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+  margin-top: 10px;
+}
+.form-login button:hover {
+  background-color: white;
+  color: #9ac7e9;
+  text-decoration: underline;
+}
+
+.form-register {
+  display: block;
+  width: 50%; /* Ширина контейнера */
+  margin: 0 auto; /* Центрування контейнера */
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid #9ac7e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  /* Стиль для селектора */
+}
+.form-register label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  pointer-events: none; /* Вимикає події наведення для label */
+}
+.form-register input,
+.form-register select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.form-register input:focus,
+.form-register select:focus {
+  outline: none;
+  border-color: #436CA2;
+  box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+}
+.form-register input:hover,
+.form-register select:hover {
+  border-color: #ef8368;
+  transition: all 0.3s ease;
+}
+.form-register select {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+}
+.form-register select:hover {
+  background-color: #e6e6e6;
+}
+.form-register ul {
+  margin-right: 16px;
+  color: #777;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.form-register button {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #436CA2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.form-register button:hover {
+  background-color: white;
+  color: #436CA2;
+  text-decoration: underline;
+}
+
+.form {
+  display: block;
+  width: 50%; /* Ширина контейнера */
+  margin: 0 auto; /* Центрування контейнера */
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid #9ac7e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  /* Стиль для селектора */
+}
+.form label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  pointer-events: none; /* Вимикає події наведення для label */
+}
+.form input,
+.form select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.form input:focus,
+.form select:focus {
+  outline: none;
+  border-color: #436CA2;
+  box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+}
+.form input:hover,
+.form select:hover {
+  border-color: #ef8368;
+  transition: all 0.3s ease;
+}
+.form select {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+}
+.form select:hover {
+  background-color: #e6e6e6;
+}
+.form ul {
+  margin-right: 16px;
+  color: #777;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.form button {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #9ac7e9;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.form button:hover {
+  background-color: white;
+  color: #9ac7e9;
+  text-decoration: underline;
+}
+
+.helptext {
+  color: #777;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.ml {
+  margin-left: 25%;
 }/*# sourceMappingURL=style.css.map */

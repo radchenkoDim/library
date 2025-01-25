@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "ftnk", "Noto Sans", sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
@@ -128,6 +128,9 @@ h1 {
 .help-index div a {
   text-decoration: underline;
   color: white;
+}
+.help-index div a:hover {
+  color: #eaeaea;
 }
 
 .input-table {

@@ -4,35 +4,38 @@
 
 {% block body %}
     <h1>{{ book.title }}</h1>
-    <p>Номер: {{ book.num }}</p>
-    
-    {% if book.author %}
-        <p>Автор: <a class="text-link" href="{% url 'books:author' book.author %}">{{ book.author }}</a></p>
-    {% else %}
-        <p>Автор: <i>Немає даних</i></p>
-    {% endif %}
 
-    {% if book.category %}
-        <p>Категорія: <a class="text-link" href="{% url 'books:category' book.category.name %}">{{ book.category }}</a></p>
-    {% else %}
-        <p>Категорія: <i>Немає даних</i></p>
-    {% endif %}
+    <div class="form">
+        <p>Номер: {{ book.num }}</p>
+        
+        {% if book.author %}
+            <p>Автор: <a class="text-link" href="{% url 'books:author' book.author %}">{{ book.author }}</a></p>
+        {% else %}
+            <p>Автор: <i>Немає даних</i></p>
+        {% endif %}
 
-    <p>Рік видання: {{ book.year|default:"<i>Немає даних</i>" }}</p>
+        {% if book.category %}
+            <p>Категорія: <a class="text-link" href="{% url 'books:category' book.category.name %}">{{ book.category }}</a></p>
+        {% else %}
+            <p>Категорія: <i>Немає даних</i></p>
+        {% endif %}
 
-    {% if book.publisher.name %}
-        <p>Видавництво: <a class="text-link" href="{% url 'books:publisher' book.publisher.name %}">{{ book.publisher.name }}</a></p>
-    {% else %}
-        <p>Видавництво: <i>Немає даних</i></p>
-    {% endif %}
-    
-    <p>Кількість копій: {{ book.quantity|default:"<i>Немає даних</i>" }}</p>
-    <p>Кількість вільних копій: {{ book.free_quantity }}</p>
-    <p>Хто взяв: {{ taked_by|join:", "|default:"<i>Книга вільна</i>" }}</p>
+        <p>Рік видання: {{ book.year|default:"<i>Немає даних</i>" }}</p>
 
-    {% if book.free_quantity > 0 %}
-        <a class="text-link" href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a> 
-    {% endif %}
+        {% if book.publisher.name %}
+            <p>Видавництво: <a class="text-link" href="{% url 'books:publisher' book.publisher.name %}">{{ book.publisher.name }}</a></p>
+        {% else %}
+            <p>Видавництво: <i>Немає даних</i></p>
+        {% endif %}
+        
+        <p>Кількість копій: {{ book.quantity|default:"<i>Немає даних</i>" }}</p>
+        <p>Кількість вільних копій: {{ book.free_quantity }}</p>
+        <p>Хто взяв: {{ taked_by|join:", "|default:"<i>Книга вільна</i>" }}</p>
+
+        {% if book.free_quantity > 0 %}
+            <a class="text-link" href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a> 
+        {% endif %}
+    </div>
     <br>
-    <a class="text-link" href="javascript:history.back()">Повернутись</a>
+    <a class="text-link ml" href="javascript:history.back()">Повернутись</a>
 {% endblock %}

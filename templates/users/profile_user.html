@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %} - Профіль {{ user_n.username }}{% endblock %}
+
 {% block menu_profile %}active{% endblock %}
 
 {% block body %}
@@ -16,7 +18,6 @@
     </ul>
 
     {% if taking_books %}
-
         <p>Взяті книги:</p>
         <form action="{% url 'take_book:return_book' %}" method="post">
             {% csrf_token %}

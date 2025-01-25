@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 
+{% block title %} - Хочу книгу{% endblock %}
+
 {% block menu_want_book %}active{% endblock %}
 
 {% block body %}
     <h1>Хочу книгу</h1>
+    
     <div class="form">
         <p>Тут ви можете створити запит на книгу, яку хотіли б бачити у бібліотеці.</p>
         <form action="{% url 'take_book:want_book_form' %}" method="post">

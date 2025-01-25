@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %} - {{ book }}{% endblock %}
+
 {% block menu_table %}active{% endblock %}
 
 {% block body %}
@@ -36,6 +38,5 @@
             <a class="text-link" href="{% url 'take_book:take_book' %}?book_num={{ book.num }}">Взяти книгу</a> 
         {% endif %}
     </div>
-    <br>
     <a class="text-link ml" href="javascript:history.back()">Повернутись</a>
 {% endblock %}

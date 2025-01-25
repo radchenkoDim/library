@@ -6,12 +6,12 @@
     <h1>Хочу книгу</h1>
 
     <p>
-        Тут ви можете написати про книгу яку ви хочете бачити в бібліотеці. 
-        Або можете проголосувати за книги запит на які вже залишили інші користувачі.
+        Тут ви можете написати запит на книгу, яку ви хочете бачити в бібліотеці. 
+        Або можете проголосувати за книги, запит на які вже залишили інші користувачі.
     </p>
-
-    <a href="{% url 'take_book:want_book_form' %}" class="text-link">Написати про книгу</a>
-
+    <a href="{% url 'take_book:want_book_form' %}" class="text-link">Створити запит</a>
+    <p class="little">Запити інших користувачів:</p>
+    
     <table class="book-data-table">
         <thead>
             <tr>
@@ -29,11 +29,11 @@
                         <td>{{ book.votes }}</td>
                         <td>
                             {% if book.user == user %}
-                                <i>Ви створили цю книгу</i>
+                                <i>Ви створили цей запит</i>
                             {% elif user.is_authenticated and book.id in voted_books %}
                                 <i>Ви вже проголосували</i>
                             {% else %}
-                                <button class="orange" type="submit">Проголосувати</button>
+                                <button class="button-table " type="submit">Проголосувати</button>
                             {% endif %}
                         </td>
                     </form>

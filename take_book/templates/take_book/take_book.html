@@ -10,14 +10,16 @@
     <p>
         Щоб взяти книгу введіть її номер, що написаний на одній з перших сторінок біля печатки "Майбутні". 
         Знайти книгу можна у таблиці на сторінці <a class="text-link" href="{% url 'books:table' %}">Таблиця</a>.
-        При винекненні питань пишіть на телеґрам <span class="italic">@radchenkoDim</span>.
+        При винекненні питань пишіть на телеґрам <i>@radchenkoDim</i>.
     </p>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button class="light-blue" type="submit">Взяти книгу</button>
-    </form>
+    <div class="form">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="light-blue" type="submit">Взяти книгу</button>
+        </form>
+    </div>
     <br>
     <a class="text-link" href="javascript:history.back()">Повернутися назад</a>
 {% endblock %}

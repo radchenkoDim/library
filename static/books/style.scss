@@ -6,11 +6,11 @@ $base-font-size: 16px;
 $base-padding: 8px 12px;
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #ebebeb;
+    background-color: #fff;
     color: #333;
 
     @media (max-width: 768px) {
@@ -26,8 +26,8 @@ body {
     align-items: center;
     padding: 10px 20px;
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
+    z-index: 100;
 
     .head-link, .menu a {
         color: #333;
@@ -92,25 +92,62 @@ body {
     }
 }
 
+.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $blue;
+}
+
 // container
 .container {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-
-    @media (max-width: 768px) {
-        border-radius: none;
-        box-shadow: none;
-    }
 }
 
 h1 {
     text-align: center;
     color: #444;
     margin-top: 5px;
+}
+
+.help-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+
+    div {
+        border-radius: 8px;
+        background-color: $light-blue;
+        color: white;
+        padding: 15px;
+        text-align: left;
+    
+        &:hover {
+            background-color: $orange;
+            transform: scale(1.02);
+            transition: all 0.3s ease;
+        }
+    
+        h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    
+        p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    
+        a {
+            text-decoration: underline;
+            color: white;
+        }
+    }
 }
 
 // table page
@@ -125,6 +162,11 @@ h1 {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
+
+    &:hover {
+        border-color: $orange;
+        transition: all 0.3s ease;
+    }
 
     &:focus {
         outline: none;
@@ -180,7 +222,6 @@ h1 {
 
 @mixin mobile-table() {
     @media (max-width: 768px) {
-        margin-top: 50px;
         thead {
             display: none;
         }
@@ -189,7 +230,7 @@ h1 {
             tr {
                 display: block;
                 margin-bottom: 10px;
-                border-bottom: 2px solid $orange;
+                border-bottom: 2px solid $light-blue;
 
                 td {
                     padding: 5px 10px;
@@ -197,20 +238,11 @@ h1 {
                     text-align: left;
                     background-color: #f2f2f2;
                     position: relative;
+                    z-index: 1;
                 }
 
                 td:first-child {
                     font-weight: bold;
-                    padding-left: 35px;
-
-                    &:before {
-                        content: 'ID';
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        color: #333;
-                        padding: 5px 0 5px 10px;
-                    }
                 }
             }
         }
@@ -230,15 +262,13 @@ h1 {
 .category-table {
     @include table($light-blue, #e9ecef, inherit);
     @include mobile-table();
-    // margin: 0;
 }
 
 .highlight {
-    background-color: yellow;
-    color: black;
+    background-color: $blue;
+    color: white;
 }
 
-// загальний стиль кнопок
 @mixin button($color) {
     margin: 5px;
     padding: $base-padding;
@@ -258,7 +288,6 @@ h1 {
     }
 }
 
-// стиль кнопок по класах
 .blue {
     @include button($blue);
 }
@@ -271,6 +300,18 @@ h1 {
 .disabled {
     @include button($disabled);
     cursor: not-allowed;
+}
+.button-table {
+    color: $orange;
+    font-weight: bold;
+    text-decoration: underline;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        color: $light-blue;
+    }
 }
 
 .errorlist {
@@ -291,24 +332,121 @@ h1 {
     margin: 0;
 }
 
+.margin-top {
+    margin-top: 20px;
+}
+
 .text-link {
     text-decoration: none;
     color: #007BFF;
     font-weight: 500;
     transition: color 0.1s ease;
+
+    &:hover {
+        color: #0056b3;
+    }
+
+    &:focus {
+        color: #0056b3;
+    }
 }
 
-.text-link:hover, 
-.text-link:focus {
-    color: #0056b3;
-    text-decoration: underline;
-}
-
-.active::after {
-    content: '';
+@mixin form($width, $color, $color_button: $light-blue) {
     display: block;
-    width: 100%;
-    height: 2px;
-    background-color: $blue;
+    width: $width;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 2px solid $color;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+
+    label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 5px;
+        pointer-events: none; /* Вимикає події наведення для label */
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        box-sizing: border-box;
+
+        &:focus {
+            outline: none;
+            border-color: $blue;
+            box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+        }
+
+        &:hover {
+            border-color: $orange;
+            transition: all 0.3s ease;
+        }
+    }
+
+    select {
+        background-color: #f9f9f9;
+        color: #333;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #e6e6e6;
+        }
+    }
+
+    ul {
+        margin-right: 16px;
+        color: #777;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    button {
+        @include button($color_button);
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 }
 
+.form-login {
+    @include form(40%, $light-blue);
+    p {
+        margin-bottom: 0;
+    }
+    .reset {
+        font-size: 14px;
+    }
+    button {
+        @include button($light-blue);
+        margin-top: 10px;
+    }
+}
+
+.form-register {
+    @include form(50%, $light-blue, $blue);
+}
+
+.form {
+    @include form(50%, $light-blue);
+}
+
+.helptext {
+    color: #777;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.ml {
+    margin-left: 25%;
+    @media (max-width: 768px) {
+        margin-left: 5px;
+    }
+}

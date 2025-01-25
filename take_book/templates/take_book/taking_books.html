@@ -4,7 +4,8 @@
 
 {% block body %}
     <h1>Взяті книги</h1>
-    
+    <p class="little">Всі книги, які взяли користувачі:</p>
+
     <table class="book-data-table">
         <thead>
             <tr>
@@ -18,7 +19,13 @@
         <tbody>
             {% for book in books %}
                 <tr>
-                    <td><a href="{% url 'users:profile_user' book.user.id %}">{{ book.user }}</td>
+                    <td>
+                        {% if user.is_staff %}
+                            <a href="{% url 'users:profile_user' book.user.id %}">{{ book.user }}</a>
+                        {% else %}
+                            {{ book.user }}
+                        {% endif %}
+                    </td>
                     <td><a href="{% url 'books:book' book.book.num %}">{{ book.book.num }}</a></td>
                     <td><a href="{% url 'books:book' book.book.num %}">{{ book.book.title }}</a></td>
                     <td>{{ book.take_date }}</td>

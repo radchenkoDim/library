@@ -2,8 +2,10 @@
 
 {% block body %}
     <h1>Home page</h1>
+    
     {% if user.is_authenticated %}
         <h2>Вітаю, {{ user }}</h2>
+
         <p>Пояснення до функцій сайту:</p>
         <div class="help-index">
             <div class="how-take">

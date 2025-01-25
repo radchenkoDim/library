@@ -60,6 +60,6 @@
     <a class="text-link" href="{% url 'users:edit_profile' %}">Редагувати профіль</a> <br>
     <form action="{% url 'users:logout' %}" method="post">
         {% csrf_token %}
-        <button class="orange" type="submit">Logout</button>
+        <button class="orange margin-top" type="submit">Logout</button>
     </form>
 {% endblock %}

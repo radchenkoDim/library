@@ -5,7 +5,7 @@
 {% block body %}
     <h1>Хочу книгу</h1>
     <div class="form">
-        <p>Тут ви можете написати яку книгу ви хотіли б бачити у бібліотеці.</p>
+        <p>Тут ви можете створити запит на книгу, яку хотіли б бачити у бібліотеці.</p>
         <form action="{% url 'take_book:want_book_form' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}

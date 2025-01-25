@@ -39,7 +39,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 AUTH_USER_MODEL = 'users.User'
 
-LOGIN_REDIRECT_URL = 'users:profile'
+LOGIN_REDIRECT_URL = 'index'
 LOGIN_URL = 'users:login'
 LOGOUT_REDIRECT_URL = 'index'
 

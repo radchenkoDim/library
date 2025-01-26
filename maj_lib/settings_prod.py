@@ -27,7 +27,7 @@ EMAIL_USE_SSL = False
 # import certifi, os
 # os.environ['SSL_CERT_FILE'] = certifi.where()
 
-FILES_VULUME_PATH = Path(os.environ["FILES_VULUME_PATH"])
+FILES_VOLUME_PATH = Path(os.environ["FILES_VOLUME_PATH"])
 
-MEDIA_ROOT = FILES_VULUME_PATH / "media"
-STATIC_ROOT = FILES_VULUME_PATH / 'staticfiles'
+MEDIA_ROOT = FILES_VOLUME_PATH / "media"
+STATIC_ROOT = FILES_VOLUME_PATH / 'staticfiles'

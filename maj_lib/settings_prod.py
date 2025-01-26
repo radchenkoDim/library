@@ -2,7 +2,7 @@ from .settings_base import *
 import os
 from pathlib import Path
 
-DEBUG = False
+#DEBUG = False
 
 DATABASES = {
     "default": {

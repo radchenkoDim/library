@@ -2,4 +2,5 @@ __pycache__
 .DS_Store
 db.sqlite3
 db copy.sqlite3
-.env
+media
+staticfiles

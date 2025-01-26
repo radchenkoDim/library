@@ -1,5 +1,8 @@
 from .settings_base import *
 import os
+from pathlib import Path
+
+DEBUG = False
 
 DATABASES = {
     "default": {
@@ -21,6 +24,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-
 # import certifi, os
 # os.environ['SSL_CERT_FILE'] = certifi.where()
+
+FILES_VULUME_PATH = Path(os.environ["FILES_VULUME_PATH"])
+
+MEDIA_ROOT = FILES_VULUME_PATH / "media"
+STATIC_ROOT = FILES_VULUME_PATH / 'staticfiles'

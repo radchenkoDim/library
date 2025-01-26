@@ -29,7 +29,7 @@ class BookAdmin(admin.ModelAdmin):
             'fields': ('num', 'title', 'author', 'category')
         }),
         ('Додаткові дані', {
-            'fields': ('year', 'tom', 'quantity', 'publisher', 'notes')
+            'fields': ('cover', 'year', 'tom', 'quantity', 'publisher', 'notes')
         }),
     )
 

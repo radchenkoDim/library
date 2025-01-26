@@ -4,7 +4,7 @@ from books.models import Book
 
 
 def table(request):
-    queryset = Book.objects.all().select_related("category") #.values("num", "title", "author", "category")
+    queryset = Book.objects.all().select_related("category").order_by("-num") #.values("num", "title", "author", "category")
     json_data = serialize('json', queryset, use_natural_foreign_keys=True, fields=('num', 'title', 'author', 'category'))
     return render(request, "books/table.html", {
         "books": queryset,

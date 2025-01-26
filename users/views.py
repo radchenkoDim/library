@@ -19,7 +19,7 @@ def profile_own(request):
     return render(request, "users/profile.html", {"taking_books": taking_books, "username": username})
 
 
-@user_passes_test(is_admin)
+@login_required
 def profile_user(request, user_id):
     taking_books = TakingBook.objects.filter(user=user_id).order_by('return_date')
     user_n = get_object_or_404(User, id=user_id)

@@ -25,6 +25,7 @@ class Book(models.Model):
     num = models.IntegerField(unique=True)
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255, blank=True, null=True)
+    cover = models.ImageField(upload_to="covers", blank=True, null=True)
     category = models.ForeignKey(
         Category, 
         null=True, 

@@ -30,7 +30,7 @@
             <a class="head-link {% block menu_table %}{% endblock %}" href="{% url 'books:table' %}">Книги</a>
             <a class="head-link {% block menu_take_book %}{% endblock %}" href="{% url 'take_book:take_book' %}">Взяти книгу</a>
             <a class="head-link {% block menu_taking_books %}{% endblock %}" href="{% url 'take_book:taking_books' %}">Взяті книги</a>
-            <a class="head-link {% block menu_want_book %}{% endblock %}" href="{% url 'take_book:want_book' %}">Хочу книгу</a>
+            <a class="head-link {% block menu_want_book %}{% endblock %}" href="{% url 'take_book:want_book' %}">Запити</a>
             {% if user.is_authenticated %}
                 {% if user.is_staff %}
                     <a class="head-link {% block menu_admin %}{% endblock %}" href="{% url 'admin:index' %}">Admin</a>

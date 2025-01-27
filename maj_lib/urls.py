@@ -14,6 +14,7 @@ urlpatterns = [
     path('books/', include("books.urls")),
     path('take_book/', include("take_book.urls")),
     path('users/', include('users.urls')),
+    path('rules/', TemplateView.as_view(template_name='rules.html'), name='rules'),
 ] # + debug_toolbar_urls()
 
 urlpatterns += [re_path(r'^%s(?P<path>.*)$' % settings.MEDIA_URL[1:], serve, {'document_root': settings.MEDIA_ROOT})]

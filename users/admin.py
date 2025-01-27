@@ -13,6 +13,7 @@ class CustomUserAdmin(UserAdmin):
         ('Роль користувача', {'fields': ('role',)}),
         ('Статус', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         ('Дати', {'fields': ('last_login', 'date_joined')}),
+        ('Додатково', {'fields': ('avatar', )}),
     )
     add_fieldsets = (
         (None, {

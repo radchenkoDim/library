@@ -1,21 +1,30 @@
 $blue: #436CA2;
 $light-blue: #9ac7e9;
 $orange: #ef8368;
-$disabled: #ccc;
-$base-font-size: 16px;
+$link-color: #007bff;
+$link-color-hover: #0056b3;
+$base-color: #333;
+$base-font-size: 18px;
+$small-font-size: 14px;
+$mobile-font-size: 14px;
 $base-padding: 8px 12px;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$bored-size: 2px;
+$transition: all 0.3s ease;
+$footer-gap: 50px;
+$gap: 20px;
+
 
 body {
     font-family: "ftnk", "Noto Sans", sans-serif;
     line-height: 1.6;
+    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #fff;
     color: #333;
 
     @media (max-width: 768px) {
-        font-size: 14px;
-        background-color: white;
+        font-size: $mobile-font-size;
     }
 }
 
@@ -25,19 +34,18 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
-    background-color: white;
+    background-color: #fff;
     position: relative;
     z-index: 100;
 
-    .head-link, .menu a {
-        color: #333;
+    .head-link {
+        color: $base-color;
         text-decoration: none;
         font-size: $base-font-size;
         font-weight: bold;
         margin: 0 15px;
         padding: $base-padding;
-        border-radius: 4px;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
 
         &:hover {
             color: $orange;
@@ -76,8 +84,8 @@ body {
             position: absolute;
             top: 100%;
             right: 0;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            box-shadow: $box-shadow;
             border-radius: 4px;
             width: 100%;
 
@@ -100,61 +108,100 @@ body {
     background-color: $blue;
 }
 
-// container
 .container {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin content($width: 60%, $color: $light-blue, $color_button: $light-blue) {
+    display: block;
+    width: $width;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 20px;
+    border: $bored-size solid $color;
+    border-radius: 8px;
+    box-shadow: $box-shadow;
+    box-sizing: border-box;
+
+    h3 {
+        text-align: left;
+        margin-top: 40px;
+        margin-bottom: 0;
+
+        &:first-child {
+            margin-top: 16px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.content {
+    @include content();
+}
+
+.book {
+    @include content(50%)
 }
 
 h1 {
     text-align: center;
     color: #444;
-    margin-top: 5px;
+    margin-top: 10px;
+
+    @media (max-width: 768px) {
+        margin-top: 0;
+    }
 }
 
-.help-index {
+h3 {
+    font-size: $base-font-size;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.help {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    gap: $gap;
     justify-content: center;
 
     div {
         border-radius: 8px;
         background-color: $light-blue;
-        color: white;
+        color: #fff;
         padding: 15px;
         text-align: left;
     
         &:hover {
             background-color: $orange;
             transform: scale(1.02);
-            transition: all 0.3s ease;
-        }
-    
-        h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            text-align: center;
+            transition: $transition;
         }
     
         p {
-            font-size: 14px;
+            font-size: $small-font-size;
             line-height: 1.5;
         }
     
         a {
             text-decoration: underline;
-            color: white;
+            color: #fff;
 
             &:hover {
-                color: #eaeaea;
+                color: #ccc;
             }
         }
     }
 }
 
-// table page
 .input-table {
     margin-bottom: 20px;
     padding: 0 20px 0 0;
@@ -165,21 +212,26 @@ h1 {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: $small-font-size;
+    transition: all 0.3s ease;
 
     &:hover {
         border-color: $orange;
-        transition: all 0.3s ease;
     }
 
     &:focus {
         outline: none;
-        border-color: $light-blue;
-        box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+        border-color: $blue;
+        box-shadow: $box-shadow;
     }
 }
 
-@mixin table($color, $hover-color, $color-link) {
+.highlight {
+    background-color: $blue;
+    color: #fff;
+}
+
+@mixin table($color: $light-blue, $hover-color: #e9ecef, $color-link: inherit) {
     width: 100%;
     border-collapse: collapse;
     margin: 10px 0 20px;
@@ -191,7 +243,7 @@ h1 {
         th {
             padding: 10px;
             text-align: left;
-            font-size: 14px;
+            font-size: $small-font-size;
         }
     }
 
@@ -209,7 +261,7 @@ h1 {
 
             td {
                 padding: 10px;
-                font-size: 14px;
+                font-size: $small-font-size;
 
                 a {
                     text-decoration: none;
@@ -253,40 +305,35 @@ h1 {
     }
 }
 
-.profile-table {
-    @include table($light-blue, #e9ecef, #333);
-}
-
 .book-data-table {
-    @include table($light-blue, #e9ecef, inherit);
+    @include table();
     @include mobile-table();
     margin: 0;
 }
 
-.category-table {
-    @include table($light-blue, #e9ecef, inherit);
-    @include mobile-table();
+.profile-table {
+    @include table($color-link: #333);
 }
 
-.highlight {
-    background-color: $blue;
-    color: white;
+.detail-table {
+    @include table();
+    @include mobile-table();
 }
 
 @mixin button($color) {
     margin: 5px;
     padding: $base-padding;
     background-color: $color;
-    color: white;
+    color: #fff;
     font-weight: bold;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
-    transition: 0.2s;
+    font-size: $small-font-size;
+    transition: $transition;
 
     &:hover {
-        background-color: white;
+        background-color: #fff;
         color: $color;
         text-decoration: underline;
     }
@@ -300,10 +347,6 @@ h1 {
 }
 .orange {
     @include button($orange);
-}
-.disabled {
-    @include button($disabled);
-    cursor: not-allowed;
 }
 .button-table {
     color: $orange;
@@ -320,7 +363,7 @@ h1 {
 
 .errorlist {
     li {
-        color: red;
+        color: #ff0000;
         list-style: none;
     }
     padding: 0;
@@ -330,7 +373,7 @@ h1 {
 }
 
 .little {
-    font-size: 13px;
+    font-size: $small-font-size - 1px;
     padding: 5px;
     color: #777;
     margin: 0;
@@ -346,33 +389,22 @@ h1 {
 
 .text-link {
     text-decoration: none;
-    color: #007BFF;
+    color: $link-color;
     font-weight: 500;
-    transition: color 0.1s ease;
+    transition: $transition;
 
-    &:hover {
-        color: #0056b3;
-    }
-
+    &:hover,
     &:focus {
-        color: #0056b3;
+        color: $link-color-hover;
     }
 }
 
-@mixin form($width, $color, $color_button: $light-blue) {
-    display: block;
-    width: $width;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 2px solid $color;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
+@mixin form($width: 80%, $color: $light-blue, $color_button: $light-blue) {
+    @include content($width, $color, $color_button);
+    font-size: $small-font-size;
 
     label {
         display: block;
-        font-size: 14px;
         margin-bottom: 5px;
         pointer-events: none; /* Вимикає події наведення для label */
     }
@@ -383,24 +415,23 @@ h1 {
         padding: 8px;
         border: 1px solid #ddd;
         border-radius: 4px;
-        font-size: 14px;
         box-sizing: border-box;
 
         &:focus {
             outline: none;
             border-color: $blue;
-            box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+            box-shadow: $box-shadow;
         }
 
         &:hover {
             border-color: $orange;
-            transition: all 0.3s ease;
+            transition: $transition;
         }
     }
 
     select {
         background-color: #f9f9f9;
-        color: #333;
+        color: $base-color;
         cursor: pointer;
 
         &:hover {
@@ -411,16 +442,13 @@ h1 {
     ul {
         margin-right: 16px;
         color: #777;
-        font-size: 14px;
+        font-size: $small-font-size;
         margin-top: 5px;
     }
 
     button {
         @include button($color_button);
-    }
-
-    @media (max-width: 768px) {
-        width: 100%;
+        margin-top: 10px;
     }
 }
 
@@ -454,25 +482,21 @@ h1 {
 }
 
 .form-login {
-    @include form(40%, $light-blue);
+    @include form(40%);
     p {
         margin-bottom: 0;
     }
     .reset {
-        font-size: 14px;
-    }
-    button {
-        @include button($light-blue);
-        margin-top: 10px;
+        font-size: $small-font-size;
     }
 }
 
 .form-register {
-    @include form(50%, $light-blue, $blue);
+    @include form(50%, $color_button: $blue);
 }
 
 .form {
-    @include form(50%, $light-blue);
+    @include form(50%);
 }
 
 .flex-container {
@@ -482,7 +506,7 @@ h1 {
 
 .helptext {
     color: #777;
-    font-size: 14px;
+    font-size: $small-font-size;
     margin-top: 5px;
 }
 
@@ -490,5 +514,150 @@ h1 {
     margin-left: 25%;
     @media (max-width: 768px) {
         margin-left: 5px;
+    }
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    position: relative;
+    z-index: 100;
+    border-top: 3px solid $orange;
+
+    .footer-logo {
+        display: flex;
+        width: 70%;
+        margin: 70px auto;
+        align-items: center;
+    }
+
+    .footer-container {
+        display: grid;
+        width: 70%;
+        grid-template-columns: repeat(3, 1fr);
+        margin: auto;
+        margin-top: auto;
+        gap: $footer-gap;
+        justify-content: left;
+
+        p {
+            font-size: $small-font-size;
+            letter-spacing: 2px;
+            color: #999;
+            margin: 0;
+            text-align: left;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 0;
+    
+            li {
+                text-align: left;
+            }
+        }
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: $transition;
+        font-size: $small-font-size;
+
+        &:hover {
+            color: $orange;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-container {
+            grid-template-columns: repeat(1, 1fr);
+            gap: $footer-gap;
+            justify-content: center;
+
+            .footer-group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                p {
+                    text-align: center;
+                }
+
+                ul {
+                    text-align: center;
+
+                    li {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.copyright {
+    text-align: center;
+    font-size: $small-font-size;
+    color: #999;
+    margin-top: 50px;
+}
+
+.find-error {
+    font-size: $small-font-size;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    color: #777;
+}
+
+.librarians {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+        text-align: center;
+        margin: 0;
+    }
+
+    ul {
+        display: contents;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin: 10px;
+        }
+    }
+
+    p {
+        font-size: $base-font-size;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.librarians-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+
+    @media (max-width: 768px) {
+        width: 80px;
+        height: 80px;
     }
 }

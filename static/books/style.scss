@@ -424,6 +424,35 @@ h1 {
     }
 }
 
+.book {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+
+    .cover {
+        width: 100%;
+        float: left;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+    }
+
+    .book-info {
+        display: flex;
+        @include form(100%, $light-blue);
+        align-items: center;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        
+        .cover {
+            display: none;
+        }
+    }
+}
+
 .form-login {
     @include form(40%, $light-blue);
     p {

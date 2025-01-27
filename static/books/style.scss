@@ -4,6 +4,7 @@ $orange: #ef8368;
 $link-color: #007bff;
 $link-color-hover: #0056b3;
 $base-color: #333;
+$max-width: 800px;
 $base-font-size: 18px;
 $small-font-size: 14px;
 $mobile-font-size: 14px;
@@ -109,7 +110,7 @@ body {
 }
 
 .container {
-    max-width: 800px;
+    max-width: $max-width;
     margin: 20px auto;
     padding: 20px;
     min-height: 100vh;
@@ -527,23 +528,28 @@ h3 {
 .footer {
     background-color: black;
     color: white;
-    text-align: center;
-    padding: 20px;
+    padding-bottom: 20px;
     margin-top: auto;
     position: relative;
     z-index: 100;
     border-top: 3px solid $orange;
+    
+    
+    .footer-container {
+        max-width: $max-width;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
 
     .footer-logo {
         display: flex;
-        width: 70%;
         margin: 70px auto;
         align-items: center;
     }
 
-    .footer-container {
+    .footer-content {
         display: grid;
-        width: 70%;
         grid-template-columns: repeat(3, 1fr);
         margin: auto;
         margin-top: auto;
@@ -620,7 +626,7 @@ h3 {
 .find-error {
     font-size: $small-font-size;
     margin-top: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     color: #777;
 }
 

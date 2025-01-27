@@ -843,42 +843,44 @@ h3 {
 .footer {
   background-color: black;
   color: white;
-  text-align: center;
-  padding: 20px;
+  padding-bottom: 20px;
   margin-top: auto;
   position: relative;
   z-index: 100;
   border-top: 3px solid #ef8368;
 }
+.footer .footer-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
 .footer .footer-logo {
   display: flex;
-  width: 70%;
   margin: 70px auto;
   align-items: center;
 }
-.footer .footer-container {
+.footer .footer-content {
   display: grid;
-  width: 70%;
   grid-template-columns: repeat(3, 1fr);
   margin: auto;
   margin-top: auto;
   gap: 50px;
   justify-content: left;
 }
-.footer .footer-container p {
+.footer .footer-content p {
   font-size: 14px;
   letter-spacing: 2px;
   color: #999;
   margin: 0;
   text-align: left;
 }
-.footer .footer-container ul {
+.footer .footer-content ul {
   list-style: none;
   padding: 0;
   text-align: left;
   margin-top: 0;
 }
-.footer .footer-container ul li {
+.footer .footer-content ul li {
   text-align: left;
 }
 .footer a {
@@ -924,7 +926,7 @@ h3 {
 .find-error {
   font-size: 14px;
   margin-top: 50px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   color: #777;
 }
 

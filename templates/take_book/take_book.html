@@ -6,21 +6,20 @@
 
 {% block body %}
     <h1>Взяти книгу</h1>
-    {% if book %}
-        <h2>{{ book.num }}. {{ book.title }}</h2>
-    {% endif %}
-    <p>
-        Щоб взяти книгу введіть її номер, що написаний на одній з перших сторінок біля печатки "Майбутні". 
-        Знайти книгу можна у таблиці на сторінці <a class="text-link" href="{% url 'books:table' %}">Таблиця</a>.
-        При винекненні питань пишіть на телеґрам <i>@radchenkoDim</i>.
-    </p>
-
+    
     <div class="form">
+        <h3>✍️ Введіть номер книги</h3>
+        {% if book %}
+            <p><strong>{{ book.num }}. {{ book.title }}</strong></p>
+        {% endif %}
+        <p>номер написаний на одній з перших сторінок біля печатки "Майбутні".</p>
+        <p>Знайти книгу можна у таблиці на сторінці <a class="text-link" href="{% url 'books:table' %}">Таблиця</a>.</p>
+        <p>При винекненні питань пишіть на телеґрам <i>@radchenkoDim</i>.</p>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button class="light-blue" type="submit">Взяти книгу</button>
         </form>
     </div>
-    <a class="text-link" href="javascript:history.back()">Повернутися назад</a>
+    <a class="text-link ml" href="javascript:history.back()">Повернутися</a>
 {% endblock %}

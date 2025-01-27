@@ -16,7 +16,6 @@
                 <th>Номер</th>
                 <th>Назва</th>
                 <th>Дата взяття</th>
-                <th>Дата повернення</th>
             </tr>
         </thead>
         <tbody>
@@ -32,14 +31,6 @@
                     <td><a href="{% url 'books:book' book.book.num %}">{{ book.book.num }}</a></td>
                     <td><a href="{% url 'books:book' book.book.num %}">{{ book.book.title }}</a></td>
                     <td>{{ book.take_date }}</td>
-
-                    <td>
-                        {% if book.return_date %}
-                            {{ book.return_date }}
-                        {% else %}
-                            <i>Не повернено</i>
-                        {% endif %}
-                    </td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -5,22 +5,37 @@
 {% block menu_want_book %}active{% endblock %}
 
 {% block body %}
-    <h1>{{ book }}</h1>
-    <p>Автор: {{ book.author }}</p>
-    <p>Видавництво: {{ book.publisher }}</p>
+    <h1>Запит</h1>
 
-    {% if book.where|urlize != book.where %}
-        <p>Де можна знайти: <a class="text-link" href="{{ book.where }}">Посилання</a></p>
-    {% else %}
-        <p>Де можна знайти: {{ book.where }}</p>
-    {% endif %}
+    <div class="content">
+        <p>Книга: <strong>{{ book }}</strong></p>
+        <p>Автор: {{ book.author }}</p>
+        <p>Видавництво: {{ book.publisher }}</p>
 
-    {% if book.votes > 0 %}
-        <p>Кількість голосів: {{ book.votes }}</p>
-        <p>Проголосували: {{ users|join:", " }}</p>
-    {% else %}
-        <p><i>За книгу ще ніхто не проголосував</i></p>
-    {% endif %}
+        {% if book.where|urlize != book.where %}
+            <p>Де можна знайти: <a class="text-link" href="{{ book.where }}">Посилання</a></p>
+        {% else %}
+            <p>Де можна знайти: {{ book.where }}</p>
+        {% endif %}
 
-    <a class="text-link" href="javascript:history.back()">Повернутись</a>
+        <p>Запит від <strong>{{ book.user }}</strong></p>
+
+        {% if book.votes > 2 %}
+            <p>Кількість голосів: {{ book.votes }}</p>
+            <p>Проголосували:
+            <ul>
+                {% for user in users %}
+                    <li>{{ user }}</li>
+                {% endfor %}
+            </ul>
+            </p>
+        {% elif book.votes > 0 %}
+            <p>Кількість голосів: {{ book.votes }}</p>
+            <p>Проголосували: {{ users|join:", " }}</p>
+        {% else %}
+            <p><i>За книгу ще ніхто не проголосував</i></p>
+        {% endif %}
+    </div>
+
+    <a class="text-link ml" href="javascript:history.back()">Повернутись</a>
 {% endblock %}

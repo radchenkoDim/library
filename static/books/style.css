@@ -95,7 +95,7 @@ body {
 
 .content {
   display: block;
-  width: 60%;
+  width: 50%;
   margin: 0 auto;
   margin-bottom: 20px;
   padding: 20px;
@@ -235,9 +235,6 @@ h3 {
 .book-data-table tbody tr {
   border-bottom: 1px solid #ddd;
 }
-.book-data-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
 .book-data-table tbody tr:hover {
   background-color: #e9ecef;
 }
@@ -278,6 +275,7 @@ h3 {
   width: 100%;
   border-collapse: collapse;
   margin: 10px 0 20px;
+  margin-top: 0;
 }
 .profile-table thead {
   background-color: #9ac7e9;
@@ -290,9 +288,6 @@ h3 {
 }
 .profile-table tbody tr {
   border-bottom: 1px solid #ddd;
-}
-.profile-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
 }
 .profile-table tbody tr:hover {
   background-color: #e9ecef;
@@ -325,9 +320,6 @@ h3 {
 }
 .detail-table tbody tr {
   border-bottom: 1px solid #ddd;
-}
-.detail-table tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
 }
 .detail-table tbody tr:hover {
   background-color: #e9ecef;
@@ -491,12 +483,25 @@ h3 {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+  font-size: 14px;
   align-items: center;
   margin-bottom: 0;
 }
+.book .book-info h3 {
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+.book .book-info h3:first-child {
+  margin-top: 16px;
+}
+@media (max-width: 768px) {
+  .book .book-info {
+    width: 100%;
+  }
+}
 .book .book-info label {
   display: block;
-  font-size: 14px;
   margin-bottom: 5px;
   pointer-events: none; /* Вимикає події наведення для label */
 }
@@ -506,14 +511,13 @@ h3 {
   padding: 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 14px;
   box-sizing: border-box;
 }
 .book .book-info input:focus,
 .book .book-info select:focus {
   outline: none;
   border-color: #436CA2;
-  box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .book .book-info input:hover,
 .book .book-info select:hover {
@@ -538,23 +542,19 @@ h3 {
   margin: 5px;
   padding: 8px 12px;
   background-color: #9ac7e9;
-  color: white;
+  color: #fff;
   font-weight: bold;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s;
+  transition: all 0.3s ease;
+  margin-top: 10px;
 }
 .book .book-info button:hover {
-  background-color: white;
+  background-color: #fff;
   color: #9ac7e9;
   text-decoration: underline;
-}
-@media (max-width: 768px) {
-  .book .book-info {
-    width: 100%;
-  }
 }
 @media (max-width: 768px) {
   .book {
@@ -648,6 +648,9 @@ h3 {
 }
 .form-login p {
   margin-bottom: 0;
+}
+.form-login #id_password {
+  margin-bottom: 5px;
 }
 .form-login .reset {
   font-size: 14px;
@@ -965,5 +968,30 @@ h3 {
   .librarians-avatar {
     width: 80px;
     height: 80px;
+  }
+}
+
+.rules {
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid #9ac7e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+.rules h3 {
+  text-align: left;
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+.rules h3:first-child {
+  margin-top: 16px;
+}
+@media (max-width: 768px) {
+  .rules {
+    width: 100%;
   }
 }/*# sourceMappingURL=style.css.map */

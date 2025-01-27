@@ -117,7 +117,7 @@ body {
     flex-direction: column;
 }
 
-@mixin content($width: 60%, $color: $light-blue, $color_button: $light-blue) {
+@mixin content($width: 50%, $color: $light-blue, $color_button: $light-blue) {
     display: block;
     width: $width;
     margin: 0 auto;
@@ -251,9 +251,9 @@ h3 {
         tr {
             border-bottom: 1px solid #ddd;
 
-            &:nth-child(even) {
-                background-color: #f2f2f2;
-            }
+            // &:nth-child(even) {
+            //     background-color: #f2f2f2;
+            // }
 
             &:hover {
                 background-color: $hover-color;
@@ -313,6 +313,7 @@ h3 {
 
 .profile-table {
     @include table($color-link: #333);
+    margin-top: 0;
 }
 
 .detail-table {
@@ -483,9 +484,15 @@ h3 {
 
 .form-login {
     @include form(40%);
+
     p {
         margin-bottom: 0;
     }
+
+    #id_password {
+        margin-bottom: 5px;
+    }
+
     .reset {
         font-size: $small-font-size;
     }
@@ -660,4 +667,8 @@ h3 {
         width: 80px;
         height: 80px;
     }
+}
+
+.rules {
+    @include content(70%);
 }

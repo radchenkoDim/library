@@ -73,7 +73,6 @@ def detail(request, taking_book_id):
     })
 
 
-@login_required
 def want_book(request):
     books = WantBook.objects.all()
     voted_books = []
@@ -129,10 +128,10 @@ def want_book_form(request):
 
 @login_required
 def want_book_success(request):
-    return render(request, 'take_book/want_book_success.html')
+    book = WantBook.objects.last()
+    return render(request, 'take_book/want_book_success.html', {'book': book})
 
 
-@login_required
 def taking_books(request):
     taking_books = TakingBook.objects.filter(return_date__isnull=True).order_by('take_date')
     return render(request, 'take_book/taking_books.html', {'books': taking_books})

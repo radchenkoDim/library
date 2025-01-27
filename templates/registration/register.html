@@ -5,9 +5,10 @@
 {% block menu_register %}active{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1>Sign up</h1>
 
     <div class="form-register">
+        <p>Зареєструйтеся та отримайте доступ до всіх можливостей бібліотеки.</p>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}

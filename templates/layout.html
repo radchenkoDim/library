@@ -90,20 +90,18 @@
 
         <div class="footer-container">
             <div class="footer-group">
-                <p>Бібліотека</p>
-                <ul>
-                    <li><a href="#">Долучитися до команди</a></li>
-                    <li><a href="{% url 'librarians' %}">Бібліотекарі</a></li>
-                    <li><a href="{% url 'rules' %}">Правила</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-group">
                 <p>Книги</p>
                 <ul>
                     <li><a href="{% url 'books:table' %}">Наші книги</a></li>
                     <li><a href="{% url 'take_book:want_book' %}">Запити на книги</a></li>
-                    <li><a href="{% url 'rules' %}">Подарувати книгу</a></li>
+                    <li><a href="{% url 'take_book:taking_books' %}">Взяті книги</a></li>
+                </ul>
+            </div>
+            <div class="footer-group">
+                <p>Бібліотека</p>
+                <ul>
+                    <li><a href="{% url 'librarians' %}">Бібліотекарі</a></li>
+                    <li><a href="{% url 'rules' %}">Правила</a></li>
                 </ul>
             </div>
         </div>

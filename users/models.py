@@ -20,3 +20,4 @@ class User(AbstractUser):
         default='unknown'
     )
     telegram_tag = models.CharField(max_length=100, blank=True, null=True)
+    avatar = models.ImageField(upload_to="avatars", blank=True, null=True)

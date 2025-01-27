@@ -2,7 +2,7 @@ $blue: #436CA2;
 $light-blue: #9ac7e9;
 $orange: #ef8368;
 $disabled: #ccc;
-$base-font-size: 16px;
+$base-font-size: 18px;
 $base-padding: 8px 12px;
 
 body {
@@ -363,7 +363,7 @@ h1 {
     }
 }
 
-@mixin form($width, $color, $color_button: $light-blue) {
+@mixin content($width, $color, $color_button: $light-blue) {
     display: block;
     width: $width;
     margin: 0 auto;
@@ -373,6 +373,15 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+
+@mixin form($width, $color, $color_button: $light-blue) {
+    @include content($width, $color, $color_button);
 
     label {
         display: block;
@@ -422,10 +431,6 @@ h1 {
     button {
         @include button($color_button);
     }
-
-    @media (max-width: 768px) {
-        width: 100%;
-    }
 }
 
 .form-login {
@@ -468,13 +473,14 @@ h1 {
     }
 }
 
+// footer
 .footer-logo {
     display: flex;
-    width: 80%;
+    width: 70%;
     margin: 70px auto;
     align-items: center;
 }
-// footer
+
 .footer {
     background-color: black;
     color: white;
@@ -489,9 +495,10 @@ h1 {
     .footer-container {
         display: grid;
         width: 70%;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         margin: auto;
-        gap: 150px;
+        margin-top: auto;
+        gap: 50px;
         justify-content: left;
 
         p {
@@ -525,28 +532,33 @@ h1 {
             color: $orange;
         }
     }
+}
 
-    // .social {
-    //     display: flex;
-    //     justify-content: center;
-    //     margin-top: 10px;
-
-    //     a {
-    //         margin: 0 10px;
-    //     }
-    // }
-
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .footer {
         .footer-container {
             grid-template-columns: repeat(1, 1fr);
             gap: 50px;
             justify-content: center;
-        }
-        .footer-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+
+            .footer-group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                p {
+                    text-align: center;
+                }
+
+                ul {
+                    text-align: center;
+
+                    li {
+                        text-align: center;
+                    }
+                }
+            }
         }
     }
 }
@@ -563,4 +575,16 @@ h1 {
     margin-top: 50px;
     margin-bottom: 40px;
     color: #777;
+}
+
+.rules {
+    @include form(80%, $light-blue);
+    h3 {
+        margin-top: 40px;
+        margin-bottom: 0;
+
+        &:first-child {
+            margin-top: 16px;
+        }
+    }
 }

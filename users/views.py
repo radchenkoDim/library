@@ -52,3 +52,8 @@ def edit_profile(request):
         form = UserChengeForm(instance=user)
 
     return render(request, 'registration/edit_profile.html', {'form': form})
+
+
+def librarians(request):
+    librarians = User.objects.filter(is_staff=True)
+    return render(request, 'users/librarians.html', {'librarians': librarians})

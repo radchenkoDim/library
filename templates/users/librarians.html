@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Бібліотекарі</h1>
+
+    <div class="form">
+    <p>Список бібліотекарів:</p>
+    <ul>
+        {% for librarian in librarians %}
+            <li>{{ librarian.first_name }}</li>
+            <li>{{ librarian.telegram_tag }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+{% endblock %}

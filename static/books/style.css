@@ -27,7 +27,7 @@ body {
 .head .head-link, .head .menu a {
   color: #333;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   margin: 0 15px;
   padding: 8px 12px;
@@ -448,6 +448,11 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
 }
+@media (max-width: 768px) {
+  .form-login {
+    width: 100%;
+  }
+}
 .form-login label {
   display: block;
   font-size: 14px;
@@ -505,11 +510,6 @@ h1 {
   color: #9ac7e9;
   text-decoration: underline;
 }
-@media (max-width: 768px) {
-  .form-login {
-    width: 100%;
-  }
-}
 .form-login p {
   margin-bottom: 0;
 }
@@ -545,6 +545,11 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .form-register {
+    width: 100%;
+  }
 }
 .form-register label {
   display: block;
@@ -603,11 +608,6 @@ h1 {
   color: #436CA2;
   text-decoration: underline;
 }
-@media (max-width: 768px) {
-  .form-register {
-    width: 100%;
-  }
-}
 
 .form {
   display: block;
@@ -619,6 +619,11 @@ h1 {
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .form {
+    width: 100%;
+  }
 }
 .form label {
   display: block;
@@ -677,11 +682,6 @@ h1 {
   color: #9ac7e9;
   text-decoration: underline;
 }
-@media (max-width: 768px) {
-  .form {
-    width: 100%;
-  }
-}
 
 .flex-container {
   margin-top: 16px;
@@ -705,7 +705,7 @@ h1 {
 
 .footer-logo {
   display: flex;
-  width: 80%;
+  width: 70%;
   margin: 70px auto;
   align-items: center;
 }
@@ -723,9 +723,10 @@ h1 {
 .footer .footer-container {
   display: grid;
   width: 70%;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin: auto;
-  gap: 150px;
+  margin-top: auto;
+  gap: 50px;
   justify-content: left;
 }
 .footer .footer-container p {
@@ -754,20 +755,29 @@ h1 {
 .footer a:hover {
   color: #ef8368;
 }
+
 @media (max-width: 768px) {
   .footer .footer-container {
     grid-template-columns: repeat(1, 1fr);
     gap: 50px;
     justify-content: center;
   }
-  .footer .footer-group {
+  .footer .footer-container .footer-group {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
+  .footer .footer-container .footer-group p {
+    text-align: center;
+  }
+  .footer .footer-container .footer-group ul {
+    text-align: center;
+  }
+  .footer .footer-container .footer-group ul li {
+    text-align: center;
+  }
 }
-
 .copyright {
   text-align: center;
   font-size: 14px;
@@ -780,4 +790,85 @@ h1 {
   margin-top: 50px;
   margin-bottom: 40px;
   color: #777;
+}
+
+.rules {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 2px solid #9ac7e9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  .rules {
+    width: 100%;
+  }
+}
+.rules label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  pointer-events: none; /* Вимикає події наведення для label */
+}
+.rules input,
+.rules select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.rules input:focus,
+.rules select:focus {
+  outline: none;
+  border-color: #436CA2;
+  box-shadow: 0 0 4px rgba(67, 108, 162, 0.2);
+}
+.rules input:hover,
+.rules select:hover {
+  border-color: #ef8368;
+  transition: all 0.3s ease;
+}
+.rules select {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+}
+.rules select:hover {
+  background-color: #e6e6e6;
+}
+.rules ul {
+  margin-right: 16px;
+  color: #777;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.rules button {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #9ac7e9;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.rules button:hover {
+  background-color: white;
+  color: #9ac7e9;
+  text-decoration: underline;
+}
+.rules h3 {
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+.rules h3:first-child {
+  margin-top: 16px;
 }/*# sourceMappingURL=style.css.map */

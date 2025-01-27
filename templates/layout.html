@@ -11,10 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    {% comment %} <link rel="preload" as="style" href="/api/fonts/webtype/css" class="">
-    <link rel="preload" as="style" href="/api/fonts/typetoday/css" class="">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto:400&amp;subset=latin,vietnamese,khmer,cyrillic-ext,greek-ext,greek,devanagari,latin-ext,cyrillic" class=""> {% endcomment %}
-
     <link rel="icon" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_144.png" type="image/png" class="">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_114.png" class="">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_72.png" class="">
@@ -42,10 +38,12 @@
             {% endif %}
         </div>
     </div>
+
     <div class="container">
         {% block body %}
         {% endblock %}
     </div>
+    
     <footer class="footer">
         <div class="footer-logo">
             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 858.030029296875 201.94000244140625" preserveAspectRatio="xMidYMid meet" role="img">
@@ -90,49 +88,28 @@
                 </svg>
         </div>
 
-
-
         <div class="footer-container">
-        <div class="footer-group">
-            <p>Приклад</p>
-            <ul>
-                <li><a href="#">Посилання</a></li>
-                <li><a href="#">Посилання</a></li>
-                <li><a href="#">Посилання</a></li>
-            </ul>
+            <div class="footer-group">
+                <p>Бібліотека</p>
+                <ul>
+                    <li><a href="#">Долучитися до команди</a></li>
+                    <li><a href="#">Бібліотекарі</a></li>
+                    <li><a href="{% url 'rules' %}">Правила</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-group">
+                <p>Книги</p>
+                <ul>
+                    <li><a href="{% url 'books:table' %}">Наші книги</a></li>
+                    <li><a href="{% url 'take_book:want_book' %}">Запити на книги</a></li>
+                    <li><a href="{% url 'rules' %}">Подарувати книгу</a></li>
+                </ul>
+            </div>
         </div>
 
-        <div class="footer-group">
-            <p>Приклад2</p>
-            <ul>
-                <li><a href="#">Посилання</a></li>
-                <li><a href="#">Посилання</a></li>
-                <li><a href="#">Посилання</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-group">
-            <p>Приклад3</p>
-            <ul>
-                <li><a href="#">Посилання</a></li>
-                <li><a href="#">Посилання</a></li>
-                <li><a href="#">Посилання</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-group">
-            <p>Приклад4</p>
-            <ul>
-                <li><a href="#">Посилання</a></li>
-                <li><a href="#">Посилання</a></li>
-                <li><a href="#">Посилання</a></li>
-            </ul>
-        </div>
-        
-    </div>
-    <p class="copyright">© 2025 Бібліотека Майбутні</p>
-    <p class="find-error">Якщо знайдете помилку або якщо маєте пропозиції чи питання, пишіть на тґ <i>@radchenkoDim</i>.</p>
-
+        <p class="copyright">© 2025 Dmytro Radchenko</p>
+        <p class="find-error">Якщо знайдете помилку або якщо маєте пропозиції чи питання, пишіть на тґ <i>@radchenkoDim</i>.</p>
     </footer>
 
     <script>

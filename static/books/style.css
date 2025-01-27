@@ -828,91 +828,45 @@ h3 {
   color: #777;
 }
 
-.rules {
-  display: block;
-  width: 80%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  padding: 20px;
-  border: 2px solid #9ac7e9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  font-size: 14px;
+.librarians {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
 }
-.rules h3 {
-  text-align: left;
-  margin-top: 40px;
-  margin-bottom: 0;
+.librarians h3 {
+  text-align: center;
+  margin: 0;
 }
-.rules h3:first-child {
-  margin-top: 16px;
+.librarians ul {
+  display: contents;
+}
+.librarians ul li {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  margin: 10px;
+}
+.librarians p {
+  font-size: 18px;
+  margin: 0;
 }
 @media (max-width: 768px) {
-  .rules {
-    width: 100%;
+  .librarians {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
-.rules label {
-  display: block;
-  margin-bottom: 5px;
-  pointer-events: none; /* Вимикає події наведення для label */
+
+.librarians-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
 }
-.rules input,
-.rules select {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-.rules input:focus,
-.rules select:focus {
-  outline: none;
-  border-color: #436CA2;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.rules input:hover,
-.rules select:hover {
-  border-color: #ef8368;
-  transition: all 0.3s ease;
-}
-.rules select {
-  background-color: #f9f9f9;
-  color: #333;
-  cursor: pointer;
-}
-.rules select:hover {
-  background-color: #e6e6e6;
-}
-.rules ul {
-  margin-right: 16px;
-  color: #777;
-  font-size: 14px;
-  margin-top: 5px;
-}
-.rules button {
-  margin: 5px;
-  padding: 8px 12px;
-  background-color: #9ac7e9;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-.rules button:hover {
-  background-color: #fff;
-  color: #9ac7e9;
-  text-decoration: underline;
-}
-.rules h3 {
-  margin-top: 40px;
-  margin-bottom: 0;
-}
-.rules h3:first-child {
-  margin-top: 16px;
+@media (max-width: 768px) {
+  .librarians-avatar {
+    width: 80px;
+    height: 80px;
+  }
 }/*# sourceMappingURL=style.css.map */

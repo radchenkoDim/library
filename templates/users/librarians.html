@@ -1,16 +1,26 @@
 {% extends "layout.html" %}
 
+{% load static %}
+
 {% block body %}
     <h1>Бібліотекарі</h1>
 
-    <div class="form">
-    <p>Список бібліотекарів:</p>
-    <ul>
-        {% for librarian in librarians %}
-            <li><img src="{{ librarian.avatar.url }}" alt="{{ librarian.first_name }}"></li>
-            <li>{{ librarian.first_name }}</li>
-            <li>{{ librarian.telegram_tag }}</li>
-        {% endfor %}
-    </ul>
+    {% comment %} <p>Список бібліотекарів:</p> {% endcomment %}
+    <div class="librarians">
+        <ul>
+            {% for librarian in librarians %}
+                <li>
+                    {% if librarian.avatar %}
+                        <img class="librarians-avatar" src="{{ librarian.avatar.url }}" alt="{{ librarian.first_name }}">
+                    {% else %}
+                        <img class="librarians-avatar" src="{% static 'img/default_avatar.png' %}" alt="{{ librarian.first_name }}">
+                    {% endif %}
+                    <div>
+                        <h3>{{ librarian.first_name }} {{ librarian.last_name }}</h3>
+                        <p>{{ librarian.telegram_tag }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}

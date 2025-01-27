@@ -588,14 +588,47 @@ h3 {
     color: #777;
 }
 
-.rules {
-    @include form(80%, $light-blue);
-    h3 {
-        margin-top: 40px;
-        margin-bottom: 0;
+.librarians {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap;
+    align-items: center;
+    justify-content: center;
 
-        &:first-child {
-            margin-top: 16px;
+    h3 {
+        text-align: center;
+        margin: 0;
+    }
+
+    ul {
+        display: contents;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            margin: 10px;
         }
+    }
+
+    p {
+        font-size: $base-font-size;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.librarians-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+
+    @media (max-width: 768px) {
+        width: 80px;
+        height: 80px;
     }
 }

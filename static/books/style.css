@@ -894,24 +894,24 @@ h3 {
   color: #ef8368;
 }
 @media (max-width: 768px) {
-  .footer .footer-container {
+  .footer .footer-content {
     grid-template-columns: repeat(1, 1fr);
     gap: 50px;
     justify-content: center;
   }
-  .footer .footer-container .footer-group {
+  .footer .footer-content .footer-group {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  .footer .footer-container .footer-group p {
+  .footer .footer-content .footer-group p {
     text-align: center;
   }
-  .footer .footer-container .footer-group ul {
+  .footer .footer-content .footer-group ul {
     text-align: center;
   }
-  .footer .footer-container .footer-group ul li {
+  .footer .footer-content .footer-group ul li {
     text-align: center;
   }
 }
@@ -928,6 +928,11 @@ h3 {
   margin-top: 50px;
   margin-bottom: 10px;
   color: #777;
+}
+@media (max-width: 768px) {
+  .find-error {
+    text-align: center;
+  }
 }
 
 .librarians {

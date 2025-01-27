@@ -589,7 +589,7 @@ h3 {
     }
 
     @media (max-width: 768px) {
-        .footer-container {
+        .footer-content {
             grid-template-columns: repeat(1, 1fr);
             gap: $footer-gap;
             justify-content: center;
@@ -628,6 +628,10 @@ h3 {
     margin-top: 50px;
     margin-bottom: 10px;
     color: #777;
+
+    @media (max-width: 768px) {
+        text-align: center;
+    }
 }
 
 .librarians {

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1>Додати книгу</h1>
+
+    <div class="form">
+    <h3>📚 Нова книга</h3>
+    <p>Тут ви можете додати нову книгу в бібліотеку.</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Додати</button>
+    </form>
+    </div>
+{% endblock %}  

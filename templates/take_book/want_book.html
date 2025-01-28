@@ -21,25 +21,34 @@
                 <th>Книга</th>
                 <th>Кількість голосів</th>
                 <th>Проголосувати</th>
+                {% if user.is_staff %}
+                    <th>Дії</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
             {% for book in books %}
                 <tr>
-                    <form action="{% url 'take_book:vote' book.id %}" method="post">
+                    <td><a href="{% url 'take_book:voted_book' book.id %}">{{ book.title }}</td>
+                    <td>{{ book.votes }}</td>
+                    <td>
+                        <form action="{% url 'take_book:vote' book.id %}" method="post">
                         {% csrf_token %}
-                        <td><a href="{% url 'take_book:voted_book' book.id %}">{{ book.title }}</td>
-                        <td>{{ book.votes }}</td>
+                        {% if book.user == user %}
+                            <i>Ви створили цей запит</i>
+                        {% elif user.is_authenticated and book.id in voted_books %}
+                            <i>Ви вже проголосували</i>
+                        {% else %}
+                            <button class="button-table " type="submit">Проголосувати</button>
+                        {% endif %}
+                        </form>
+                    </td>
+                    {% if user.is_staff %}
                         <td>
-                            {% if book.user == user %}
-                                <i>Ви створили цей запит</i>
-                            {% elif user.is_authenticated and book.id in voted_books %}
-                                <i>Ви вже проголосували</i>
-                            {% else %}
-                                <button class="button-table " type="submit">Проголосувати</button>
-                            {% endif %}
+                            <a href="{% url 'books:add' %}?want_book_id={{ book.id }}">➕</a>
+                            {% comment %} <a href="{% url 'take_book:delete' books.id %}">🔴</a> {% endcomment %}
                         </td>
-                    </form>
+                    {% endif %}
                 </tr>
             {% endfor %}
         </tbody>

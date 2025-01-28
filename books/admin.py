@@ -39,8 +39,7 @@ class BookAdmin(admin.ModelAdmin):
     # Додавання початкових значень
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
-        max_num = Book.objects.aggregate(Max('num'))['num__max']
-        form.base_fields['num'].initial = max_num + 1
+        form.base_fields['num'].initial = Book.get_next_num()
         return form
 
     # Додавання кастомної дії

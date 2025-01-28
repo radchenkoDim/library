@@ -28,9 +28,6 @@
             <a class="head-link {% block menu_taking_books %}{% endblock %}" href="{% url 'take_book:taking_books' %}">Взяті книги</a>
             <a class="head-link {% block menu_want_book %}{% endblock %}" href="{% url 'take_book:want_book' %}">Запити</a>
             {% if user.is_authenticated %}
-                {% if user.is_staff %}
-                    <a class="head-link {% block menu_admin %}{% endblock %}" href="{% url 'admin:index' %}">Admin</a>
-                {% endif %}
                 <a class="head-link {% block menu_profile %}{% endblock %}" href="{% url 'profile' %}">{{ user.username }}</a>
             {% else %}
                 <a class="head-link {% block menu_register %}{% endblock %}" href="{% url 'register' %}">Sign up</a>
@@ -97,6 +94,9 @@
                     <li><a href="{% url 'books:table' %}">Наші книги</a></li>
                     <li><a href="{% url 'take_book:want_book' %}">Запити на книги</a></li>
                     <li><a href="{% url 'take_book:taking_books' %}">Взяті книги</a></li>
+                    {% if user.is_staff %}
+                        <li><a href="{% url 'books:add' %}">Додати книгу</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="footer-group">
@@ -104,6 +104,9 @@
                 <ul>
                     <li><a href="{% url 'librarians' %}">Бібліотекарі</a></li>
                     <li><a href="{% url 'rules' %}">Правила</a></li>
+                    {% if user.is_staff %}
+                        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

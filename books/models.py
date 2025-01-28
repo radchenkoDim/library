@@ -47,3 +47,13 @@ class Book(models.Model):
     
     def free_quantity(self):
         return self.quantity - self.takingbook_set.filter(return_date__isnull=True).count()
+    
+    @classmethod
+    def get_free_num(cls):
+        nums = cls.objects.values_list('num', flat=True)
+        return [x for x in range(1, cls.get_next_num() + 1) if x not in nums][0]
+
+    @classmethod
+    def get_next_num(cls):
+        max_num = cls.objects.aggregate(models.Max('num'))['num__max']
+        return max_num + 1 if max_num else 1

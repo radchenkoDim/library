@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.core.serializers import serialize
 from books.models import Book
+from .forms import AddBookForm
+from take_book.models import WantBook
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 def table(request):
@@ -20,6 +23,33 @@ def book(request, book_num):
         "publisher": book.publisher,
         "taked_by": taked_by
     })
+
+
+@staff_member_required
+def add_book(request):
+    want_book = None
+    if "want_book_id" in request.GET:
+        want_book = get_object_or_404(WantBook, id=request.GET["want_book_id"])
+
+    if request.method == "POST":
+        form = AddBookForm(request.POST, request.FILES)
+        if form.is_valid():
+            if want_book:
+                want_book.status = "aproved"
+                want_book.save()
+            form.save()
+            return redirect("index")
+    else:
+        initial = {"num": Book.get_free_num(),}
+        if want_book:
+            initial.update({
+                "title": want_book.title,
+                "author": want_book.author,
+                "publisher": want_book.publisher,
+            })
+        form = AddBookForm(initial=initial)
+    
+    return render(request, "books/add_book.html", {"form": form})
 
 
 def category(request, category_name):

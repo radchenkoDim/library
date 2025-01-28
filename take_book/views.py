@@ -74,7 +74,7 @@ def detail(request, taking_book_id):
 
 
 def want_book(request):
-    books = WantBook.objects.all()
+    books = WantBook.objects.filter(status='new').order_by('-votes')
     voted_books = []
 
     if request.user.is_authenticated:

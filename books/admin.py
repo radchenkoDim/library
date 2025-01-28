@@ -39,7 +39,7 @@ class BookAdmin(admin.ModelAdmin):
     # Додавання початкових значень
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
-        form.base_fields['num'].initial = Book.get_next_num()
+        form.base_fields['num'].initial = Book.get_free_num()
         return form
 
     # Додавання кастомної дії

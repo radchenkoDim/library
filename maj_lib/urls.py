@@ -12,6 +12,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
     
     path('books/', include("books.urls")),
+    path('api/books/', include("books.api_urls")),
     path('take_book/', include("take_book.urls")),
     path('users/', include('users.urls')),
     path('rules/', TemplateView.as_view(template_name='rules.html'), name='rules'),

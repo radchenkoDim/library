@@ -122,7 +122,13 @@
             const menu = document.querySelector(".menu");
 
             toggleButton.addEventListener("click", function () {
-                menu.classList.toggle("active");
+            menu.classList.toggle("active");
+            });
+
+            document.addEventListener("click", function (event) {
+            if (!menu.contains(event.target) && !toggleButton.contains(event.target)) {
+                menu.classList.remove("active");
+            }
             });
         });
     </script>

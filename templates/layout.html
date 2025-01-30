@@ -44,6 +44,9 @@
     <footer class="footer">
         <div class="footer-container">
 
+        {% if is_ios %}
+            <img class="footer-logo-ios" src="{% static 'img/mai_logo2.png' %}" alt="МАІ">
+        {% else %}
         <div class="footer-logo">
             <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 858.030029296875 201.94000244140625" preserveAspectRatio="xMidYMid meet" role="img">
                 <defs>
@@ -86,6 +89,7 @@
                 </g>
             </svg>
         </div>
+        {% endif %}
 
         <div class="footer-content">
             <div class="footer-group">
@@ -112,9 +116,6 @@
         </div>
 
         <p class="copyright">2025 Dmytro Radchenko</p>
-        {% if is_ios %}
-            <p>ios</p>
-        {% endif %}
         <p class="find-error">Якщо знайдете помилку або якщо маєте пропозиції чи питання, пишіть на тґ <i>@radchenkoDim</i>.</p>
     </div>
     </footer>

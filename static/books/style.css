@@ -946,12 +946,22 @@ h3 {
   margin: 70px auto;
   align-items: center;
 }
-.footer .footer-logo-ios {
+@media (max-width: 768px) {
+  .footer .footer-logo {
+    display: none;
+  }
+}
+.footer .footer-logo-mobile {
+  display: none;
   width: 100px;
   margin: 0 auto;
-  display: flex;
   align-items: center;
   margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .footer .footer-logo-mobile {
+    display: flex;
+  }
 }
 .footer .footer-content {
   display: grid;

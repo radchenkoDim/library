@@ -556,14 +556,22 @@ h3 {
         display: flex;
         margin: 70px auto;
         align-items: center;
+
+        @media (max-width: 768px) {
+            display: none;
+        }
     }
 
-    .footer-logo-ios {
+    .footer-logo-mobile {
+        display: none;
         width: 100px;
         margin: 0 auto;
-        display: flex;
         align-items: center;
         margin-bottom: 40px;
+
+        @media (max-width: 768px) {
+            display: flex;
+        }
     }
 
     .footer-content {

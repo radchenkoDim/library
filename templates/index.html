@@ -1,11 +1,21 @@
 {% extends "layout.html" %}
 
+{% comment %} {% load static %} {% endcomment %}
+
+{% block title %} - Головна{% endblock %}
+
+{% comment %} {% block head %}
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+    </style>
+{% endblock %} {% endcomment %}
+
 {% block body %}
-    <h1>Бібліотека Майбутні</h1>
+    <h1>Привіт! Це – бібліотека демократичної<br> школи Майбутні</h1>
     
     {% if user.is_authenticated %}
-        <h2>Вітаю, {{ user }}</h2>
-
         <p>Пояснення до функцій сайту:</p>
         <div class="help">
             <div>
@@ -34,12 +44,16 @@
         </div>
 
         {% else %}
-            <h2>Вітаю!</h2>
-                    <p>
-                        Щоб отримати доступ до всіх можливостей бібліотеки треба <a class="text-link" href="{% url 'register' %}">зареєструватися
-                        </a> або <a class="text-link" href="{% url 'login' %}">увійти в систему</a>. Без реєстрації можна переглянути 
-                        <a class="text-link" href="{% url 'books:table' %}">таблицю книг</a>.
-                    </p>
+            <div class="info">
+                <p>
+                    Щоб отримати доступ до всіх можливостей бібліотеки треба 
+                    <a class="text-link" href="{% url 'register' %}">зареєструватися</a> або 
+                    <a class="text-link" href="{% url 'login' %}">увійти в систему</a>.
+                </p>
+                <p>
+                    Без реєстрації можна переглянути <a class="text-link" href="{% url 'books:table' %}">таблицю книг</a>.
+                </p>
+            </div>
         {% endif %}
-    <p><a class="text-link" href="{% url 'rules' %}">Правила бібліотеки</a></p>
+    {% comment %} <p><a class="text-link" href="{% url 'rules' %}">Правила бібліотеки</a></p> {% endcomment %}
 {% endblock %}

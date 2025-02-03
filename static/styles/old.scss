@@ -1,11 +1,11 @@
 $blue: #436CA2;
-$light-blue: #9ac7e9;
+$light-blue: #8CC5EC;
 $orange: #ef8368;
 $link-color: #007bff;
 $link-color-hover: #0056b3;
 $base-color: #333;
-$max-width: 800px;
-$base-font-size: 18px;
+$max-width: 1000px;
+$base-font-size: 28px;
 $small-font-size: 14px;
 $mobile-font-size: 14px;
 $base-padding: 8px 12px;
@@ -15,17 +15,61 @@ $transition: all 0.3s ease;
 $footer-gap: 50px;
 $gap: 20px;
 
+// @font-face {
+//     font-family: 'FuturaPTHeavy';
+//     src: url('../fonts/FuturaPTHeavy.otf') format('opentype');
+// }
+
+// @font-face {
+//     font-family: 'FuturaPTMedium';
+//     src: url('../fonts/FuturaPTMedium.otf') format('opentype');
+// }
 
 body {
-    font-family: "ftnk", "Noto Sans", sans-serif;
-    line-height: 1.6;
-    height: 100%;
+    font-family: Futura PT;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 35.9px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    // font-family: "FuturaPTMedium", "Noto Sans", sans-serif;
+    // line-height: 1.6;
+    // height: 100%;
     margin: 0;
     padding: 0;
-    color: #333;
+    // color: #000;
 
     @media (max-width: 768px) {
         font-size: $mobile-font-size;
+    }
+}
+
+.container {
+    // max-width: $max-width;
+    // margin: 0 auto;
+    // padding: 20px;
+    // padding-top: 0;
+    // min-height: 100vh;
+    // display: flex;
+    // flex-direction: column;
+
+    width: 1280px;
+    height: 1516px;
+    top: 251px;
+    left: 280px;
+    gap: 0px;
+    opacity: 0px;
+    background-color: $light-blue;
+}
+
+h1 {
+    margin-top: 65px;
+    text-align: left;
+
+    @media (max-width: 768px) {
+        margin-top: 0;
     }
 }
 
@@ -36,6 +80,7 @@ body {
     align-items: center;
     padding: 10px 20px;
     background-color: #fff;
+    margin: 0;
     position: relative;
     z-index: 100;
 
@@ -109,15 +154,6 @@ body {
     background-color: $blue;
 }
 
-.container {
-    max-width: $max-width;
-    margin: 20px auto;
-    padding: 20px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
 @mixin content($width: 50%, $color: $light-blue, $color_button: $light-blue) {
     display: block;
     width: $width;
@@ -150,16 +186,6 @@ body {
 
 .book {
     @include content(50%)
-}
-
-h1 {
-    text-align: center;
-    color: #444;
-    margin-top: 10px;
-
-    @media (max-width: 768px) {
-        margin-top: 0;
-    }
 }
 
 h3 {

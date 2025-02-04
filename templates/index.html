@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 
-{% comment %} {% load static %} {% endcomment %}
+{% load static %}
 
 {% block title %} - Головна{% endblock %}
 
@@ -53,6 +53,28 @@
                 <p>
                     Без реєстрації можна переглянути <a class="text-link" href="{% url 'books:table' %}">таблицю книг</a>.
                 </p>
+            </div>
+            <div class="list-books">
+
+                <h2>ЩО ПОЧИТАТИ?</h2>
+                <div class="books">
+                    <div class="index-book">
+                        <img src="{% static 'img/books/suchasnist.png' %}" alt="Сучасність">
+                        <p><a href="{% url 'books:book' 566 %}">Сучасність. Навігатор з історії України<br><span>2023</span></a></p>
+                    </div>
+                    <div class="index-book">
+                        <img src="{% static 'img/books/TPD.jpeg' %}" alt="The Politics of Design">
+                        <p><a href="{% url 'books:book' 532 %}">The Politics of Design<br><span>2017</span></a></p>
+                    </div>
+                    <div class="index-book">
+                        <img src="{% static 'img/books/the_way.jpeg' %}" alt="Роботи">
+                        <p>The Way Things Work<br><span>2015</span></p>
+                    </div>
+                    <div class="index-book">
+                        <img src="{% static 'img/books/skot.jpeg' %}" alt="Роботи">
+                        <p><a href="{% url 'books:book' 428 %}">Скотт Пілігрим<br><span>2020</span></a></p>
+                    </div>
+                </div>
             </div>
         {% endif %}
     {% comment %} <p><a class="text-link" href="{% url 'rules' %}">Правила бібліотеки</a></p> {% endcomment %}

@@ -58,10 +58,10 @@ function filterBooks(query) {
     return data.filter(book => {
         const bookf = book['fields'];
         return (
-            bookf['num'].toString().includes(query) ||
-            bookf['title'].toLowerCase().includes(query) ||
-            bookf['author'].toLowerCase().includes(query) ||
-            bookf['category'].toLowerCase().includes(query)
+            bookf['num']?.toString().includes(query) ||
+            bookf['title']?.toLowerCase().includes(query) ||
+            bookf['author']?.toLowerCase().includes(query) ||
+            bookf['category']?.toLowerCase().includes(query)
         );
     });
 }

@@ -26,17 +26,18 @@ html, body {
 
 .page {
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
 }
 
 .container {
-    // display: flex;
-    // flex-direction: column;
-    // position: relative;
+    position: relative;
     max-width: $max-width;
     padding: 0 60px;
+    margin: 0 auto;
     min-height: 100vh;
+    overflow: visible;
+    z-index: 100;
 
     @media (max-width: 768px) {
         padding: 0 30px;
@@ -128,7 +129,7 @@ html, body {
             background-color: $light-blue;
             // background-color: white;
             width: calc(100% - 30px);
-            z-index: 99;
+            z-index: 90;
 
             .head-link {
                 margin-left: 0;
@@ -172,6 +173,19 @@ h1 {
     }
 }
 
+h2 {
+    font-family: Futura PT;
+    font-size: 18px;
+    font-weight: 450;
+    line-height: 24px;
+    letter-spacing: 0.08em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+    margin-bottom: 30px;
+}
+
 p {
     font-family: Futura PT;
     font-size: 28px;
@@ -206,6 +220,7 @@ p {
     color: white;
     border-top: 6px solid $orange;
     margin-top: auto;
+    position: relative;
     z-index: 100;
 
     .footer-logo-svg {
@@ -216,6 +231,7 @@ p {
 
     .container {
         margin: 94px auto 0;
+        padding-bottom: 76px;
         min-height: 500px;
         // padding-bottom: 76px;
 
@@ -295,7 +311,7 @@ p {
         }
 
         p:last-child {
-            margin-bottom: 76px;
+            // margin-bottom: 76px;
         }
     }
 }
@@ -303,7 +319,7 @@ p {
 @media (max-width: 768px) {
     .footer {
         .container {
-            padding-bottom: auto;
+            padding-bottom: 30px;
             min-height: auto;
 
             .footer-content {
@@ -326,10 +342,14 @@ p {
     }
 }
 
+.l-padding {
+    padding-left: 30px;
+}
 
 // index.html
 .info {
     width: 736px;
+    margin-bottom: 65px;
 
     p {
         margin-top: 0;
@@ -338,5 +358,77 @@ p {
 
     @media (max-width: 768px) {
         width: 100%;
+    }
+}
+
+.list-books {
+    .books {
+        display: flex;
+        justify-content: left;
+        overflow-x: auto;
+        position: relative;
+        gap: 80px;
+        z-index: 1000; // Ensure it is above the container padding
+        // padding: 0 60px; // Add padding to match the container
+        // margin: -60px 0; // Adjust margin to compensate for the padding
+
+        .index-book {
+            // margin-right: 77px;
+            
+            img {
+                // width: 200px;
+                height: 303px;
+                box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+                margin-bottom: 22px;
+            }
+
+            p {
+                width: 200px;
+                margin-bottom: 0;
+
+                font-family: Futura PT;
+                font-size: 22px;
+                font-weight: 450;
+                line-height: 24px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                
+                a {
+                    text-decoration: none;
+                    color: #000;
+                    transition: all 0.3s ease;
+                    
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+            }
+
+            span {
+                font-family: Futura PT;
+                font-size: 22px;
+                font-weight: 450;
+                line-height: 28px;
+                text-align: left;
+                text-underline-position: from-font;
+                text-decoration-skip-ink: none;
+                color: #636363;
+            }
+        }
+
+        @media (max-width: 768px) {
+            margin-bottom: 50px;
+
+            // .index-book {
+            //     &:first-child {
+            //         margin-left: 30px;
+            //     }
+
+            //     &:last-child {
+            //         margin-right: 30px;
+            //     }
+            // }
+        }
     }
 }

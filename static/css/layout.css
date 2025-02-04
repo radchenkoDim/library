@@ -20,14 +20,16 @@ html, body {
 
 .page {
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 .container {
+  position: relative;
   max-width: 1200px;
   padding: 0 60px;
+  margin: 0 auto;
   min-height: 100vh;
+  overflow: visible;
+  z-index: 100;
 }
 @media (max-width: 768px) {
   .container {
@@ -107,7 +109,7 @@ html, body {
     right: 0;
     background-color: #8CC5EC;
     width: calc(100% - 30px);
-    z-index: 99;
+    z-index: 90;
   }
   .head .menu.active .head-link {
     margin-left: 0;
@@ -147,6 +149,19 @@ h1 {
   }
 }
 
+h2 {
+  font-family: Futura PT;
+  font-size: 18px;
+  font-weight: 450;
+  line-height: 24px;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  margin-bottom: 30px;
+}
+
 p {
   font-family: Futura PT;
   font-size: 28px;
@@ -181,6 +196,7 @@ p {
   color: white;
   border-top: 6px solid #ef8368;
   margin-top: auto;
+  position: relative;
   z-index: 100;
 }
 @media (max-width: 768px) {
@@ -190,6 +206,7 @@ p {
 }
 .footer .container {
   margin: 94px auto 0;
+  padding-bottom: 76px;
   min-height: 500px;
 }
 .footer .container .footer-content {
@@ -263,13 +280,9 @@ p {
   margin-top: 0;
   margin-bottom: 14px;
 }
-.footer .container p:last-child {
-  margin-bottom: 76px;
-}
-
 @media (max-width: 768px) {
   .footer .container {
-    padding-bottom: auto;
+    padding-bottom: 30px;
     min-height: auto;
   }
   .footer .container .footer-content {
@@ -286,8 +299,13 @@ p {
     margin-bottom: 30px;
   }
 }
+.l-padding {
+  padding-left: 30px;
+}
+
 .info {
   width: 736px;
+  margin-bottom: 65px;
 }
 .info p {
   margin-top: 0;
@@ -296,5 +314,55 @@ p {
 @media (max-width: 768px) {
   .info {
     width: 100%;
+  }
+}
+
+.list-books .books {
+  display: flex;
+  justify-content: left;
+  overflow-x: auto;
+  position: relative;
+  gap: 80px;
+  z-index: 1000;
+}
+.list-books .books .index-book img {
+  height: 303px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+  margin-bottom: 22px;
+}
+.list-books .books .index-book p {
+  width: 200px;
+  margin-bottom: 0;
+  font-family: Futura PT;
+  font-size: 22px;
+  font-weight: 450;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+}
+.list-books .books .index-book p a {
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+}
+.list-books .books .index-book p a:hover {
+  color: #ef8368;
+}
+.list-books .books .index-book span {
+  font-family: Futura PT;
+  font-size: 22px;
+  font-weight: 450;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  color: #636363;
+}
+@media (max-width: 768px) {
+  .list-books .books {
+    margin-bottom: 50px;
   }
 }/*# sourceMappingURL=layout.css.map */

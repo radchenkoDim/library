@@ -404,13 +404,17 @@ p {
 
         .index-book {
             margin-right: 60px;
-
             
-            img {
+            .cover {
                 // width: 200px;
                 height: 303px;
                 box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
-                margin-bottom: 22px;
+                // margin-bottom: 22px;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    box-shadow: 10px 10px 20px $orange;
+                }
             }
 
             p {
@@ -470,5 +474,26 @@ p {
         }
 
         // margin-left: 30px;
+    }
+}
+
+.without-cover {
+    display: flex;
+    width: 200px;
+    height: 303px;
+    background-color: #f4f4f4;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+    margin-bottom: 22px;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    .default-cover {
+        width: 200px;
+        height: 200px;
+    }
+
+    &:hover {
+        box-shadow: 10px 10px 20px $orange;
     }
 }

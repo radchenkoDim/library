@@ -15,7 +15,7 @@
 {% block body %}
     <h1 class="content">Привіт! Це – бібліотека демократичної<br> школи Майбутні</h1>
     
-    {% if user.is_authenticated %}
+    {% comment %} {% if user.is_authenticated %}
         <p>Пояснення до функцій сайту:</p>
         <div class="help">
             <div>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        {% else %}
+        {% else %} {% endcomment %}
         <div class="content">
             <div class="info">
                 <p>
@@ -58,27 +58,90 @@
         </div>
 
             <div class="list-books">
-
-                <h2>ЩО ПОЧИТАТИ?</h2>
+                <h2>ПРИКЛАД ДИЗАЙНУ</h2>
                 <div class="books">
+
                     <div class="index-book">
-                        <img src="{% static 'img/books/suchasnist.png' %}" alt="Сучасність">
+                        <a href="{% url 'books:book' 566 %}">
+                            <img class="cover" src="{% static 'img/books/suchasnist.png' %}" alt="Сучасність">
+                        </a>
                         <p><a href="{% url 'books:book' 566 %}">Сучасність. Навігатор з історії України<br><span>2023</span></a></p>
                     </div>
+
                     <div class="index-book">
-                        <img src="{% static 'img/books/TPD.jpeg' %}" alt="The Politics of Design">
+                        <a href="{% url 'books:book' 532 %}">
+                            <img class="cover" src="{% static 'img/books/TPD.jpeg' %}" alt="The Politics of Design">
+                        </a>
                         <p><a href="{% url 'books:book' 532 %}">The Politics of Design<br><span>2017</span></a></p>
                     </div>
+
                     <div class="index-book">
-                        <img src="{% static 'img/books/the_way.jpeg' %}" alt="The Way Things Work">
-                        <p>The Way Things Work<br><span>2015</span></p>
+                        <a href="#">
+                            <img class="cover" src="{% static 'img/books/the_way.jpeg' %}" alt="The Way Things Work">
+                        </a>
+                        <p><a href="#">The Way Things Work<br><span>2015</span></a></p>
                     </div>
+
                     <div class="index-book">
-                        <img src="{% static 'img/books/skot.jpeg' %}" alt="Скотт Пілігрим">
+                        <a href="{% url 'books:book' 428 %}">
+                            <img class="cover" src="{% static 'img/books/skot.jpeg' %}" alt="Скотт Пілігрим">
+                        </a>
                         <p><a href="{% url 'books:book' 428 %}">Скотт Пілігрим<br><span>2020</span></a></p>
                     </div>
+
                 </div>
             </div>
-        {% endif %}
+
+            
+            <div class="list-books">
+                <h2>НОВІ КНИГИ! (ОСТАННІ 4 КНИГИ)</h2>
+                <div class="books">
+                    {% for book in new_books %}
+                        <div class="index-book">
+                            {% if book.cover %}
+                                <a href="{% url 'books:book' book.num %}">
+                                    <img class="cover" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                                </a>
+                            {% else %}
+                                <a href="{% url 'books:book' book.num %}">
+                                    <div class="without-cover">
+                                        <img class="default-cover" src="{% static 'img/mai-logo5.png' %}">
+                                    </div>
+                                </a>
+                            {% endif %}
+                            <p><a href="{% url 'books:book' book.num %}">{{ book.title }}<br>
+                                {% if book.year %}
+                                    <span>{{ book.year }}</span>
+                                {% endif %}
+                            </a></p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="list-books">
+                <h2>ЩО ПОЧИТАТИ?</h2>
+                <div class="books">
+                    {% for book in books %}
+                        <div class="index-book">
+                            {% if book.cover %}
+                                <img class="cover" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                            {% else %}
+                            <a href="{% url 'books:book' book.num %}">
+                                <div class="without-cover">
+                                    <img class="default-cover" src="{% static 'img/mai-logo5.png' %}">
+                                </div>
+                            </a>
+                            {% endif %}
+                            <p><a href="{% url 'books:book' book.num %}">{{ book.title }}<br>
+                                {% if book.year %}
+                                    <span>{{ book.year }}</span>
+                                {% endif %}
+                            </a></p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% comment %} {% endif %} {% endcomment %}
     {% comment %} <p><a class="text-link" href="{% url 'rules' %}">Правила бібліотеки</a></p> {% endcomment %}
 {% endblock %}

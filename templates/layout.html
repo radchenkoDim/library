@@ -20,8 +20,11 @@
     {% endblock %}
 </head>
 <body>
+
 <div class="page">
+
     <div id="top-container" class="container">
+
         <div class="head">
             <a class="head-link" href="{% url 'index' %}">бібліотека</a>
             <button class="menu-toggle" aria-label="Toggle menu">меню</button>
@@ -38,14 +41,18 @@
                 {% endif %}
             </div>
         </div>
-        <div class="content">
-        {% block body %}
-        {% endblock %}
+
+        <div id="main-content">
+            {% block body %}
+            {% endblock %}
         </div>
+
     </div>
+
         
     <footer class="footer">
         <div class="container">
+            <div class="content">
             <div class="footer-logo-svg">
                 <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 858.030029296875 201.94000244140625" preserveAspectRatio="xMidYMid meet" role="img">
                     <defs>
@@ -119,6 +126,7 @@
 
             <p class="copyright">© 2025 Dmytro Radchenko</p>
             <p class="copyright">Якщо знайдете помилку або якщо маєте пропозиції чи питання, пишіть на тґ @radchenkoDim.</p>
+        </div>
         </div>
     </footer>
 </div>

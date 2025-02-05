@@ -2,7 +2,7 @@ $blue: #436CA2;
 $light-blue: #8CC5EC;
 // $light-blue: #9ac7e9;
 $orange: #ef8368;
-$max-width: 1200px;
+$max-width: 1300px;
 
 html, body {
     background-color: $light-blue;
@@ -47,6 +47,18 @@ html, body {
     }
 }
 
+#top-container {
+    padding: 0;
+}
+
+.content {
+    padding: 0 60px;
+
+    @media (max-width: 768px) {
+        padding: 0 30px;
+    }
+}
+
 .non_active {
     display: none;
 }
@@ -57,7 +69,8 @@ html, body {
     align-items: center;
     // position: relative;
     padding: 0;
-    margin: 54px 0 65px;
+    margin: 54px 60px 65px;
+
     z-index: 100;
 
     background-color: none;
@@ -109,7 +122,7 @@ html, body {
     }
 
     @media (max-width: 768px) {
-        margin: 30px 0 50px;
+        margin: 30px 30px 50px;
 
         .menu {
             display: none;
@@ -125,13 +138,14 @@ html, body {
             display: flex;
             flex-direction: column;
             justify-content: left;
+            padding-left: 30px;
             gap: 10px;
             top: 65px;
-            left: 30px;
+            left: 0;
             right: 0;
-            background-color: $light-blue;
             // background-color: white;
-            width: calc(100% - 30px);
+            background-color: $light-blue;
+            width: 100%;
             z-index: 90;
 
             .head-link {
@@ -234,9 +248,22 @@ p {
 
     .container {
         margin: 94px auto 0;
+        padding: 0;
         padding-bottom: 76px;
         min-height: 500px;
         // padding-bottom: 76px;
+
+        // position: relative;
+        // max-width: $max-width;
+        // padding: 0 60px;
+        // margin: 0 auto;
+        // min-height: 100vh;
+        // overflow: visible;
+        // z-index: 100;
+
+        // @media (max-width: 768px) {
+        //     padding: 0 30px;
+        // }
 
         .footer-content {
             display: flex;
@@ -361,6 +388,8 @@ p {
 }
 
 .list-books {
+    padding-left: 60px;
+
     .books {
         display: flex;
         justify-content: left;
@@ -373,6 +402,7 @@ p {
 
         .index-book {
             // margin-right: 77px;
+
             
             img {
                 // width: 200px;
@@ -429,5 +459,28 @@ p {
             //     }
             // }
         }
+    }
+
+    @media (max-width: 768px) {
+        padding: 0;
+
+        h2 {
+            margin-left: 30px;
+        }
+
+        .books {
+            gap: 20px;
+            
+            .index-book {
+                margin-left: 30px;
+                margin-right: 30px;
+
+                // img:last-child {
+                //     margin-right: 30px;
+                // }
+            }
+        }
+
+        // margin-left: 30px;
     }
 }

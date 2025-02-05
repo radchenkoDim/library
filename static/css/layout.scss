@@ -18,6 +18,9 @@ html, body {
     margin: 0;
     padding: 0;
 
+    height: 100%;
+    overflow-y: scroll;
+
     @media (max-width: 768px) {
         font-size: 22px;
         line-height: 26px;
@@ -308,10 +311,6 @@ p {
             color: #636363;
             margin-top: 0;
             margin-bottom: 14px;
-        }
-
-        p:last-child {
-            // margin-bottom: 76px;
         }
     }
 }

@@ -16,6 +16,20 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_114.png" class="">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_72.png" class="">
     <link rel="apple-touch-icon-precomposed" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_57.png" class="">
+
+    <script>
+        {% if user.is_authenticated %}
+            var user = {
+                username: "{{ user.username }}",
+                is_authenticated: true
+            };
+        {% else %}
+            var user = {
+                is_authenticated: false
+            };
+        {% endif %}
+    </script>
+
     {% block head %}
     {% endblock %}
 </head>
@@ -26,7 +40,7 @@
     <div id="top-container" class="container">
 
         <div class="head">
-            <a class="head-link" href="{% url 'index' %}">бібліотека</a>
+            <a class="head-link" id="home-link" href="{% url 'index' %}">головна</a>
             <button class="menu-toggle" aria-label="Toggle menu">меню</button>
             <div class="menu">
                 <a class="head-link {% block menu_table %}{% endblock %}" href="{% url 'books:table' %}">книги</a>
@@ -34,10 +48,10 @@
                 <a class="head-link {% block menu_taking_books %}{% endblock %}" href="{% url 'take_book:taking_books' %}">взяті книги</a>
                 <a class="head-link {% block menu_want_book %}{% endblock %}" href="{% url 'take_book:want_book' %}">запити</a>
                 {% if user.is_authenticated %}
-                    <a class="head-link {% block menu_profile %}{% endblock %}" href="{% url 'profile' %}">{{ user.username }}</a>
+                    <a class="head-link register {% block menu_profile %}{% endblock %}" href="{% url 'profile' %}" id="profile-link">{{ user.username }}</a>
                 {% else %}
-                    {% comment %} <a class="head-link right {% block menu_register %}{% endblock %}" href="{% url 'register' %}">Sign up</a> {% endcomment %}
-                    <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'login' %}">увійти</a>
+                    <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'login' %}" id="login-link">увійти</a>
+                    {% comment %} <a class="head-link {% block menu_register %}{% endblock %}" id="sign-up-link" href="{% url 'register' %}">зареєструватись</a> {% endcomment %}
                 {% endif %}
             </div>
         </div>
@@ -131,6 +145,6 @@
     </footer>
 </div>
 
-<script src="{% static 'js/menu.js' %}"></script>
+<script src="{% static 'js/layout.js' %}"></script>
 </body>
 </html>

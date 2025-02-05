@@ -140,7 +140,7 @@ html, body {
             justify-content: left;
             padding-left: 30px;
             gap: 10px;
-            top: 65px;
+            top: 30px;
             left: 0;
             right: 0;
             // background-color: white;
@@ -159,14 +159,27 @@ html, body {
                     margin-top: 45px;
                 }
 
-                &:last-child {
-                    margin-left: 0;
-                    margin-top: 30px;
+            }
 
-                    font-size: 22px;
-                    font-weight: 450;
-                    line-height: 28.2px;
-                }
+            @mixin register() {
+                font-size: 22px;
+                font-weight: 450;
+                line-height: 28.2px;
+            }
+
+            #login-link {
+                @include register();
+                margin-top: 30px;
+            }
+
+            #sign-up-link {
+                @include register();
+            }
+
+            #profile-link {
+                @include register();
+                margin-top: 30px;
+                text-transform: none;
             }
         }
     }
@@ -251,19 +264,6 @@ p {
         padding: 0;
         padding-bottom: 76px;
         min-height: 500px;
-        // padding-bottom: 76px;
-
-        // position: relative;
-        // max-width: $max-width;
-        // padding: 0 60px;
-        // margin: 0 auto;
-        // min-height: 100vh;
-        // overflow: visible;
-        // z-index: 100;
-
-        // @media (max-width: 768px) {
-        //     padding: 0 30px;
-        // }
 
         .footer-content {
             display: flex;
@@ -388,20 +388,22 @@ p {
 }
 
 .list-books {
-    padding-left: 60px;
+    // padding-left: 60px;
+    padding: 0 60px;
 
     .books {
         display: flex;
         justify-content: left;
         overflow-x: auto;
         position: relative;
-        gap: 80px;
+        gap: 20px;
         z-index: 1000; // Ensure it is above the container padding
         // padding: 0 60px; // Add padding to match the container
         // margin: -60px 0; // Adjust margin to compensate for the padding
+        margin-bottom: 50px;
 
         .index-book {
-            // margin-right: 77px;
+            margin-right: 60px;
 
             
             img {
@@ -445,24 +447,14 @@ p {
                 color: #636363;
             }
         }
-
-        @media (max-width: 768px) {
-            margin-bottom: 50px;
-
-            // .index-book {
-            //     &:first-child {
-            //         margin-left: 30px;
-            //     }
-
-            //     &:last-child {
-            //         margin-right: 30px;
-            //     }
-            // }
-        }
     }
 
     @media (max-width: 768px) {
         padding: 0;
+
+        .index-book {
+            margin-bottom: 50px;
+        }
 
         h2 {
             margin-left: 30px;
@@ -474,10 +466,6 @@ p {
             .index-book {
                 margin-left: 30px;
                 margin-right: 30px;
-
-                // img:last-child {
-                //     margin-right: 30px;
-                // }
             }
         }
 

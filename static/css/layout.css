@@ -1,17 +1,17 @@
 html, body {
-  background-color: #8CC5EC;
   font-family: Futura PT;
   font-size: 28px;
   font-weight: 600;
   line-height: 32px;
-  text-align: center;
+  text-align: left;
   text-underline-position: from-font;
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
-  margin: 0;
-  padding: 0;
-  height: 100%;
+  background-color: #8CC5EC;
   overflow-y: scroll;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
 @media (max-width: 768px) {
   html, body {
@@ -75,19 +75,19 @@ html, body {
   color: #ef8368;
 }
 .head .menu-toggle {
+  font-family: Futura PT;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
   display: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  font-family: Futura PT;
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 28.2px;
-  text-align: center;
-  text-underline-position: from-font;
-  -webkit-text-decoration-skip-ink: none;
-          text-decoration-skip-ink: none;
 }
 .head .menu {
   display: flex;
@@ -181,7 +181,6 @@ h2 {
   font-size: 18px;
   font-weight: 450;
   line-height: 24px;
-  letter-spacing: 0.08em;
   text-align: left;
   text-underline-position: from-font;
   -webkit-text-decoration-skip-ink: none;
@@ -251,7 +250,6 @@ p {
   font-size: 18px;
   font-weight: 450;
   line-height: 24px;
-  letter-spacing: 0.08em;
   text-align: left;
   text-underline-position: from-font;
   -webkit-text-decoration-skip-ink: none;
@@ -310,6 +308,9 @@ p {
 }
 
 @media (max-width: 768px) {
+  .footer {
+    padding-bottom: 36px;
+  }
   .footer .container {
     padding-bottom: 30px;
     min-height: auto;

@@ -1,25 +1,25 @@
 $blue: #436CA2;
 $light-blue: #8CC5EC;
-// $light-blue: #9ac7e9;
 $orange: #ef8368;
 $max-width: 1300px;
 
-html, body {
-    background-color: $light-blue;
-
+@mixin font($size, $weight, $line-height, $text-align: left) {
     font-family: Futura PT;
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 32px;
-    text-align: center;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line-height;
+    text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+}
 
-    margin: 0;
-    padding: 0;
-
-    height: 100%;
+html, body {
+    @include font(28px, 600, 32px, center);
+    background-color: $light-blue;
     overflow-y: scroll;
+    height: 100%;
+    padding: 0;
+    margin: 0;
 
     @media (max-width: 768px) {
         font-size: 22px;
@@ -29,8 +29,6 @@ html, body {
 
 .page {
     overflow: hidden;
-    // display: flex;
-    // flex-direction: column;
 }
 
 .container {
@@ -67,7 +65,6 @@ html, body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // position: relative;
     padding: 0;
     margin: 54px 60px 65px;
 
@@ -80,7 +77,6 @@ html, body {
         text-decoration: none;
         line-height: 35.9px;
         transition: all 0.3s ease;
-        // padding: 0 20px;
 
         &:hover {
             color: $orange;
@@ -88,19 +84,12 @@ html, body {
     }
 
     .menu-toggle {
+        @include font(22px, 600, 28.2px, center);
         display: none;
         background: none;
         border: none;
         cursor: pointer;
         padding: 0;
-
-        font-family: Futura PT;
-        font-size: 22px;
-        font-weight: 600;
-        line-height: 28.2px;
-        text-align: center;
-        text-underline-position: from-font;
-        text-decoration-skip-ink: none;
     }
 
     .menu {
@@ -143,7 +132,6 @@ html, body {
             top: 30px;
             left: 0;
             right: 0;
-            // background-color: white;
             background-color: $light-blue;
             width: 100%;
             z-index: 90;
@@ -186,14 +174,7 @@ html, body {
 }
 
 h1 {
-    font-family: Futura PT;
-    font-size: 52px;
-    font-weight: 600;
-    line-height: 54px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-
+    @include font(52px, 600, 54px);
     margin-top: 0;
     margin-bottom: 20px;
 
@@ -204,26 +185,12 @@ h1 {
 }
 
 h2 {
-    font-family: Futura PT;
-    font-size: 18px;
-    font-weight: 450;
-    line-height: 24px;
-    letter-spacing: 0.08em;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-
+    @include font(18px, 450, 24px);
     margin-bottom: 30px;
 }
 
 p {
-    font-family: Futura PT;
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 32px;
-    text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
+    @include font(28px, 600, 32px);
 
     @media (max-width: 768px) {
         font-size: 22px;
@@ -244,8 +211,6 @@ p {
 }
 
 .footer {
-    // display: flex;
-    // flex-direction: column;
     background-color: black;
     color: white;
     border-top: 6px solid $orange;
@@ -275,14 +240,7 @@ p {
                 margin-bottom: 120px;
 
                 p {
-                    font-family: Futura PT;
-                    font-size: 18px;
-                    font-weight: 450;
-                    line-height: 24px;
-                    letter-spacing: 0.08em;
-                    text-align: left;
-                    text-underline-position: from-font;
-                    text-decoration-skip-ink: none;
+                    @include font(18px, 450, 24px);
                     color: #797979;
                     margin-bottom: 8px;
                 }
@@ -295,13 +253,7 @@ p {
                 }
 
                 a {
-                    font-family: Futura PT;
-                    font-size: 22px;
-                    font-weight: 450;
-                    line-height: 24px;
-                    text-align: left;
-                    text-underline-position: from-font;
-                    text-decoration-skip-ink: none;
+                    @include font(22px, 450, 24px);
                     text-decoration: none;
                     transition: all 0.3s ease;
                     color: white;
@@ -328,13 +280,7 @@ p {
         }
 
         .copyright {
-            font-family: Futura PT;
-            font-size: 20px;
-            font-weight: 450;
-            line-height: 28px;
-            text-align: left;
-            text-underline-position: from-font;
-            text-decoration-skip-ink: none;
+            @include font(20px, 450, 28px);
             color: #636363;
             margin-top: 0;
             margin-bottom: 14px;
@@ -344,6 +290,8 @@ p {
 
 @media (max-width: 768px) {
     .footer {
+        padding-bottom: 36px;
+        
         .container {
             padding-bottom: 30px;
             min-height: auto;
@@ -372,6 +320,7 @@ p {
     padding-left: 30px;
 }
 
+
 // index.html
 .info {
     width: 736px;
@@ -388,7 +337,6 @@ p {
 }
 
 .list-books {
-    // padding-left: 60px;
     padding: 0 60px;
 
     .books {
@@ -397,19 +345,15 @@ p {
         overflow-x: auto;
         position: relative;
         gap: 20px;
-        z-index: 1000; // Ensure it is above the container padding
-        // padding: 0 60px; // Add padding to match the container
-        // margin: -60px 0; // Adjust margin to compensate for the padding
+        z-index: 1000;
         margin-bottom: 50px;
 
         .index-book {
             margin-right: 60px;
             
             .cover {
-                // width: 200px;
                 height: 303px;
                 box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
-                // margin-bottom: 22px;
                 transition: all 0.3s ease;
 
                 &:hover {
@@ -420,14 +364,7 @@ p {
             p {
                 width: 200px;
                 margin-bottom: 0;
-
-                font-family: Futura PT;
-                font-size: 22px;
-                font-weight: 450;
-                line-height: 24px;
-                text-align: left;
-                text-underline-position: from-font;
-                text-decoration-skip-ink: none;
+                @include font(22px, 450, 24px);
                 
                 a {
                     text-decoration: none;
@@ -441,13 +378,7 @@ p {
             }
 
             span {
-                font-family: Futura PT;
-                font-size: 22px;
-                font-weight: 450;
-                line-height: 28px;
-                text-align: left;
-                text-underline-position: from-font;
-                text-decoration-skip-ink: none;
+                @include font(22px, 450, 28px);
                 color: #636363;
             }
         }
@@ -472,8 +403,6 @@ p {
                 margin-right: 30px;
             }
         }
-
-        // margin-left: 30px;
     }
 }
 

@@ -3,8 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const menu = document.querySelector(".menu");
     const content = document.getElementById("main-content");
     const homeLink = document.getElementById("home-link");
-    // const loginLink = document.getElementById("login-link");
-    // const signUpLink = document.getElementById("sign-up-link");
 
     toggleButton.addEventListener("click", function () {
         menu.classList.toggle("active");

@@ -51,8 +51,8 @@
                     <a class="head-link register {% block menu_profile %}{% endblock %}" href="{% url 'profile' %}" id="profile-link">{{ user.username }}</a>
                 {% else %}
                     <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'login' %}" id="login-link">увійти</a>
-                    {% comment %} <a class="head-link {% block menu_register %}{% endblock %}" id="sign-up-link" href="{% url 'register' %}">зареєструватись</a> {% endcomment %}
                 {% endif %}
+                {% comment %} <a class="head-link {% block menu_register %}{% endblock %}" id="sign-up-link" href="{% url 'register' %}">зареєструватись</a> {% endcomment %}
             </div>
         </div>
 

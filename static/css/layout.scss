@@ -461,7 +461,7 @@ p {
     margin: 10px 0 20px;
 
     @media (max-width: 768px) {
-        font-weight: 500;
+        font-weight: 450;
     }
 
     thead {
@@ -530,4 +530,25 @@ p {
 .highlight {
     background-color: $orange;
     // color: #fff;
+}
+
+.book-page-cover {
+    height: 512px;
+    display: inline-block;
+    margin-right: 60px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+
+    @media (max-width: 768px) {
+        height: auto;
+        width: 100%;
+    }
+}
+
+.book-page {
+    margin-top: 50px;
+}
+
+.book-info {
+    display: inline-block;
+    margin-bottom: 100px;
 }

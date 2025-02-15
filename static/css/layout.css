@@ -479,7 +479,7 @@ p {
 }
 @media (max-width: 768px) {
   .book-data-table {
-    font-weight: 500;
+    font-weight: 450;
   }
 }
 .book-data-table thead {
@@ -533,4 +533,26 @@ p {
 
 .highlight {
   background-color: #ef8368;
+}
+
+.book-page-cover {
+  height: 512px;
+  display: inline-block;
+  margin-right: 60px;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+}
+@media (max-width: 768px) {
+  .book-page-cover {
+    height: auto;
+    width: 100%;
+  }
+}
+
+.book-page {
+  margin-top: 50px;
+}
+
+.book-info {
+  display: inline-block;
+  margin-bottom: 100px;
 }/*# sourceMappingURL=layout.css.map */

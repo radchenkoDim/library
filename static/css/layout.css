@@ -7,7 +7,7 @@ html, body {
   text-underline-position: from-font;
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
-  background-color: #8CC5EC;
+  background-color: #f0f0f0;
   overflow-y: scroll;
   height: 100%;
   padding: 0;
@@ -86,6 +86,7 @@ html, body {
   display: none;
   background: none;
   border: none;
+  color: #000;
   cursor: pointer;
   padding: 0;
 }
@@ -185,6 +186,19 @@ h2 {
   -webkit-text-decoration-skip-ink: none;
           text-decoration-skip-ink: none;
   margin-bottom: 30px;
+}
+
+h6 {
+  font-family: Futura PT;
+  font-size: 20px;
+  font-weight: 450;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 p {
@@ -454,7 +468,7 @@ p {
           text-decoration-skip-ink: none;
   width: 600px;
   padding: 10px;
-  border: 1px solid #ef8368;
+  border: 2px solid #bbb;
   background-color: #f4f4f4;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -470,7 +484,6 @@ p {
 #filterInput:focus {
   outline: none;
   border-color: #436CA2;
-  box-shadow: 0 0 10px #436CA2;
 }
 
 .book-data-table {
@@ -556,4 +569,100 @@ p {
 .book-info {
   display: inline-block;
   margin-bottom: 100px;
+}
+
+.take-book-form p {
+  margin: 0;
+}
+.take-book-form input {
+  font-family: Futura PT;
+  font-size: 22px;
+  font-weight: 450;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  width: 100px;
+  border: none;
+  border-bottom: 3px solid #ef8368;
+  background-color: inherit;
+  transition: all 0.3s ease;
+}
+.take-book-form input:focus {
+  outline: none;
+  border-color: #436CA2;
+}
+
+button, .button {
+  font-family: Futura PT;
+  font-size: 22px;
+  font-weight: 450;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  padding: 10px 20px;
+  border: 3px solid #ef8368;
+  border-radius: 50px;
+  background-color: #ef8368;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover, .button:hover {
+  background-color: inherit;
+  border: 3px solid black;
+  color: #ef8368;
+}
+button:active, .button:active {
+  transform: scale(0.95);
+}
+
+.want_book_list {
+  padding: 0;
+  margin: 0;
+}
+.want_book_list li {
+  text-decoration: none;
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.blue-text {
+  color: #436CA2;
+}
+
+.emoji-link {
+  text-decoration: none;
+}
+
+.form input {
+  font-family: Futura PT;
+  font-size: 22px;
+  font-weight: 450;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  width: 300px;
+  padding: 6px;
+  border: 2px solid #bbb;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+  .form input {
+    width: 90%;
+  }
+}
+.form input:hover {
+  border-color: #ef8368;
+}
+.form input:focus {
+  outline: none;
+  border-color: #436CA2;
 }/*# sourceMappingURL=layout.css.map */

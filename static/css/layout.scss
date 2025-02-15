@@ -2,6 +2,7 @@ $blue: #436CA2;
 $light-blue: #8CC5EC;
 $orange: #ef8368;
 $light-orange: #f6f0ee;
+$white: #f0f0f0;
 $max-width: 1300px;
 
 @mixin font($size, $weight, $line-height, $text-align: left) {
@@ -16,7 +17,7 @@ $max-width: 1300px;
 
 html, body {
     @include font(28px, 600, 32px, center);
-    background-color: $light-blue;
+    background-color: $white;
     overflow-y: scroll;
     height: 100%;
     padding: 0;
@@ -89,6 +90,7 @@ html, body {
         display: none;
         background: none;
         border: none;
+        color: #000;
         cursor: pointer;
         padding: 0;
     }
@@ -188,6 +190,12 @@ h1 {
 h2 {
     @include font(18px, 450, 24px);
     margin-bottom: 30px;
+}
+
+h6 {
+    @include font(20px, 450, 28px);
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 p {
@@ -437,7 +445,7 @@ p {
     @include font(22px, 450, 28px);
     width: 600px;
     padding: 10px;
-    border: 1px solid $orange;
+    border: 2px solid #bbb;
     background-color: #f4f4f4;
     border-radius: 8px;
     transition: all 0.3s ease;
@@ -453,7 +461,7 @@ p {
     &:focus {
         outline: none;
         border-color: $blue;
-        box-shadow: 0 0 10px $blue;
+        // box-shadow: 0 0 10px $blue;
     }
 }
 
@@ -553,4 +561,94 @@ p {
 .book-info {
     display: inline-block;
     margin-bottom: 100px;
+}
+
+.take-book-form {
+    p {
+        margin: 0;
+    }
+
+    input {
+        @include font(22px, 450, 28px);
+        width: 100px;
+        border: none;
+        border-bottom: 3px solid $orange;
+        background-color: inherit;
+        transition: all 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $blue;
+        }
+    }
+}
+
+button {
+    @include font(22px, 450, 28px);
+    padding: 10px 20px;
+    border: 3px solid $orange;
+    border-radius: 50px;
+    background-color: $orange;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: inherit;
+        border: 3px solid black;
+        color: $orange;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+.button {
+    @extend button;
+}
+
+.want_book_list {
+    padding: 0;
+    margin: 0;
+
+    li {
+        text-decoration: none;
+        list-style: none;
+        margin-bottom: 20px;
+    }
+}
+
+.blue-text {
+    color: $blue;
+}
+
+.emoji-link {
+    text-decoration: none;
+}
+
+.form {
+    input {
+        @include font(22px, 450, 28px);
+        width: 300px;
+        padding: 6px;
+        border: 2px solid #bbb;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        @media (max-width: 768px) {
+            width: 90%;
+        }
+
+        &:hover {
+            border-color: $orange;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $blue;
+            // box-shadow: 0 0 10px $blue;
+        }
+    }
 }

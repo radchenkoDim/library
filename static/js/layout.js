@@ -48,3 +48,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
+const body = document.querySelector('body');
+let back_color = ''
+
+switch (back_color) {
+    case 'blue':
+        body.style.backgroundColor = '#436CA2';
+        break;
+    case 'light-blue':
+        body.style.backgroundColor = '#8CC5EC';
+        break
+    case 'orange':
+        body.style.backgroundColor = '#ef8368';
+        break
+    default:
+        break;
+}

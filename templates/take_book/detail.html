@@ -1,18 +1,23 @@
 {% extends "layout.html" %}
 
+{% load static %}
+
 {% block title %} - Взяти книгу{% endblock %}
 
 {% block menu_take_book %}active{% endblock %}
 
 {% block body %}
-    <h1>Книгу успішно взято!</h1>
+    <h1 class="content">Книгу успішно взято!</h1>
 
     <div class="content">
-    <h3>🥰 Приємного читання</h3>
-    <p>Дякуємо, що взяли книгу {{ taking_book.book }}<p>
-    <p>Коли варто повернути? Через 1 місяць, це буде <strong>{{ need_to_return_date }}</strong></p>
+        <div class="info">
+            <p>Дякуємо, що взяли книгу {{ taking_book.book }}<p>
+            <p>
+                Книгу варто повернути
+                <span class="blue-text">через 1 місяць, це буде {{ need_to_return_date }}</span>
+            </p>
+            <p>
+                Переглянути взяті вами книги та<br> повернути їх можна на сторінці <a class="text-link" href="{% url 'profile' %}">профіль</a>.
+        </div>
     </div>
-
-    <a class="text-link ml" href="{% url 'take_book:take_book' %}">Взяти ще одну книгу</a>
-    <a class="text-link ml" href="{% url 'profile' %}">Профіль</a>
 {% endblock %}

@@ -123,7 +123,6 @@ html, body {
     top: 30px;
     left: 0;
     right: 0;
-    background-color: #8CC5EC;
     width: 100%;
     z-index: 90;
   }
@@ -437,4 +436,101 @@ p {
 }
 .without-cover:hover {
   box-shadow: 10px 10px 20px #ef8368;
+}
+
+.input-table {
+  margin-bottom: 20px;
+}
+
+#filterInput {
+  font-family: Futura PT;
+  font-size: 22px;
+  font-weight: 450;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  width: 600px;
+  padding: 10px;
+  border: 1px solid #ef8368;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+@media (max-width: 768px) {
+  #filterInput {
+    width: 90%;
+  }
+}
+#filterInput:hover {
+  border-color: #ef8368;
+}
+#filterInput:focus {
+  outline: none;
+  border-color: #436CA2;
+  box-shadow: 0 0 10px #436CA2;
+}
+
+.book-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0 20px;
+}
+@media (max-width: 768px) {
+  .book-data-table {
+    font-weight: 500;
+  }
+}
+.book-data-table thead {
+  background-color: #8CC5EC;
+  color: #fff;
+}
+.book-data-table thead th {
+  padding: 10px;
+  text-align: left;
+  font-size: 22px;
+}
+.book-data-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+.book-data-table tbody tr:hover {
+  background-color: #e9ecef;
+}
+.book-data-table tbody tr td {
+  padding: 10px;
+  font-size: 22px;
+}
+@media (max-width: 768px) {
+  .book-data-table tbody tr td:first-child {
+    font-size: 22px;
+    padding-right: 0;
+  }
+}
+.book-data-table tbody tr td a {
+  text-decoration: none;
+  color: inherit;
+}
+.book-data-table tbody tr td a:hover {
+  text-decoration: underline;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.little {
+  font-family: Futura PT;
+  font-size: 20px;
+  font-weight: 450;
+  line-height: 28px;
+  text-align: left;
+  text-underline-position: from-font;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  margin-bottom: 5px;
+}
+
+.highlight {
+  background-color: #ef8368;
 }/*# sourceMappingURL=layout.css.map */

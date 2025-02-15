@@ -8,22 +8,39 @@
     <script>
         const data={{ books_json|safe }};
     </script>
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+    </style>
 {% endblock %}
 
 {% block menu_table %}active{% endblock %}
 
 {% block body %}
 <div id="books-data">
-    <h1>Таблиця книг</h1>
-    <div class="input-table">
-        <p class="little">Знайти книгу:</p>
-        <input type="text" id="filterInput" placeholder="search">
+    <h1 class="content">Таблиця книг</h1>
+
+    <div class="content">
+        <div class="info">
+            <p>
+                У нас в бібліотеці вже {{ books_count }} {{ book_end }}! 
+                Тут можна знайти одну з них та дізнатись більше про неї
+            </p>
+        </div>
     </div>
-    <p class="little">Натиснувши на книгу можна перейти на сторінку книги.</p>
+
+    <div class="input-table content">
+        <p class="little">Знайти книгу:</p>
+        <input type="text" id="filterInput" placeholder="пошук...">
+    </div>
+
+    <p class="little content">Натиснувши на назву книги можна перейти на її сторінку.</p>
+    <div class="content table-container">
     <table class="book-data-table">
         <thead>
-            <tr>
-                <th><button class="light-blue" id="sortButton">№</button></th>
+            <tr class="table-head-fix">
+                <th>№</th>
                 <th>Назва</th>
                 <th>Автор</th>
                 <th>Категорія</th>
@@ -44,6 +61,7 @@
             {% endfor %}
         </tbody>
     </table>
+</div>
 </div>
 <script src="{% static 'js/books/script.js' %}"></script>
 {% endblock %}

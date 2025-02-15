@@ -132,7 +132,7 @@ html, body {
             top: 30px;
             left: 0;
             right: 0;
-            background-color: $light-blue;
+            // background-color: $light-blue;
             width: 100%;
             z-index: 90;
 
@@ -425,4 +425,109 @@ p {
     &:hover {
         box-shadow: 10px 10px 20px $orange;
     }
+}
+
+.input-table {
+    margin-bottom: 20px;
+}
+
+#filterInput {
+    @include font(22px, 450, 28px);
+    width: 600px;
+    padding: 10px;
+    border: 1px solid $orange;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+
+    &:hover {
+        border-color: $orange;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $blue;
+        box-shadow: 0 0 10px $blue;
+    }
+}
+
+@mixin table($color: $light-blue, $hover-color: #e9ecef, $color-link: inherit) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 20px;
+
+    @media (max-width: 768px) {
+        font-weight: 500;
+    }
+
+    thead {
+        background-color: $color;
+        color: #fff;
+
+        th {
+            padding: 10px;
+            text-align: left;
+            font-size: 22px;
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid #ddd;
+
+            // &:nth-child(even) {
+            //     background-color: #f2f2f2;
+            // }
+
+            &:hover {
+                background-color: $hover-color;
+            }
+
+            td {
+                padding: 10px;
+                font-size: 22px;
+
+                @media (max-width: 768px) {
+                    // font-size: 18px;
+
+                    &:first-child {
+                        font-size: 22px;
+                        // text-align: center;
+                        padding-right: 0;
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+                    color: $color-link;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.book-data-table {
+    @include table($light-blue, #e9ecef, inherit);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.little {
+    @include font(20px, 450, 28px);
+    margin-bottom: 5px;
+}
+
+.highlight {
+    background-color: $orange;
+    // color: #fff;
 }

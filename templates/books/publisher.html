@@ -1,38 +1,36 @@
 {% extends "layout.html" %}
 
+{% load static %}
+
 {% block title %} - {{ publisher }}{% endblock %}
 
 {% block menu_table %}active{% endblock %}
 
 {% block body %}
-    <h1>Видавництво: {{ publisher }}</h1>
+    <h1 class="content">Видавництво: {{ publisher }}</h1>
 
-    <table class="detail-table">
-        <thead>
-            <tr>
-                <th>Номер</th>
-                <th>Назва</th>
-                <th>Автор</th>
-                <th>Категорія</th>
-            </tr>
-        </thead>
-        {% for book in books %}
-            <tr>
-                <td><a href="{% url 'books:book' book.num %}">{{ book.num }}</a></td>
-                <td><a href="{% url 'books:book' book.num %}">{{ book.title }}</a></td>
-                <td>
-                    {% if book.author %}
-                        <a href="{% url 'books:author' book.author %}">{{ book.author }}
+    <div class="list-books">
+        <div class="books">
+            {% for book in books %}
+                <div class="index-book">
+                    {% if book.cover %}
+                        <a href="{% url 'books:book' book.num %}">
+                            <img class="cover" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                        </a>
                     {% else %}
-                        <i>Немає даних</i>
+                    <a href="{% url 'books:book' book.num %}">
+                        <div class="without-cover">
+                            <img class="default-cover" src="{% static 'img/mai-logo5.png' %}">
+                        </div>
+                    </a>
                     {% endif %}
-                </td>
-                <td>
-                    {% if book.category %}
-                        <a href="{% url 'books:category' book.category.name %}">{{ book.category }}</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+                    <p><a href="{% url 'books:book' book.num %}">{{ book.title }}<br>
+                        {% if book.year %}
+                            <span>{{ book.year }}</span>
+                        {% endif %}
+                    </a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 $blue: #436CA2;
 $light-blue: #8CC5EC;
 $orange: #ef8368;
+$light-orange: #f6f0ee;
 $max-width: 1300px;
 
 @mixin font($size, $weight, $line-height, $text-align: left) {
@@ -347,6 +348,7 @@ p {
         gap: 20px;
         z-index: 1000;
         margin-bottom: 50px;
+        margin-top: 50px;
 
         .index-book {
             margin-right: 60px;

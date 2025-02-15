@@ -357,6 +357,7 @@ p {
   gap: 20px;
   z-index: 1000;
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 .list-books .books .index-book {
   margin-right: 60px;

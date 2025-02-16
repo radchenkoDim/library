@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Futura PT";
-  src: url("https://fonts.googleapis.com/css2?family=Futura+PT:wght@400;500;600;700&display=swap");
+  src: url("../fonts/futura/futur.ttf") format("truetype");
 }
 html, body {
   font-family: "Futura PT", sans-serif;

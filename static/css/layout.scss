@@ -11,7 +11,7 @@ $max-width: 1300px;
 }
 
 @mixin font($size, $weight, $line-height, $text-align: left) {
-    font-family: 'Futura PT', sans-serif;
+    font-family: 'Futura PT', 'roboto', sans-serif;
     font-size: $size;
     font-weight: $weight;
     line-height: $line-height;

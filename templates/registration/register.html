@@ -5,14 +5,19 @@
 {% block menu_register %}active{% endblock %}
 
 {% block body %}
-    <h1>Sign up</h1>
+    <h1 class="content">Sign up</h1>
 
-    <div class="form-register">
-        <p>Зареєструйтеся та отримайте доступ до всіх можливостей бібліотеки.</p>
+    <div class="content">
+        <div class="info">
+            <p>Зареєструйтеся та отримайте доступ до всіх можливостей бібліотеки.</p>
+        </div>
+    </div>
+
+    <div class="form-register content">
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button class="blue" type="submit">Register</button>
+            <button style="margin-bottom: 76px;" class="blue" type="submit">Register</button>
         </form>
 
         {% if form.errors %}

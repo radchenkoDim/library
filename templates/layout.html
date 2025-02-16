@@ -126,7 +126,7 @@
                     <p>Бібліотека</p>
                     <ul>
                         <li><a href="{% url 'rules' %}">Правила</a></li>
-                        <li><a href="{% url 'librarians' %}">Бібліотекарі</a></li>
+                        {% comment %} <li><a href="{% url 'librarians' %}">Бібліотекарі</a></li> {% endcomment %}
                         {% if user.is_staff %}
                             <li><a href="{% url 'admin:index' %}">Admin</a></li>
                         {% endif %}

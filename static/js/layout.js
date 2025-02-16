@@ -50,7 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const body = document.querySelector('body');
-let back_color = ''
+
+if (back === 'None') {
+    back_color = '';
+} else {
+    back_color = back;
+}
 
 switch (back_color) {
     case 'blue':

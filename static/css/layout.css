@@ -1,5 +1,9 @@
+@font-face {
+  font-family: "Futura PT";
+  src: url("https://fonts.googleapis.com/css2?family=Futura+PT:wght@400;500;600;700&display=swap");
+}
 html, body {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 28px;
   font-weight: 600;
   line-height: 32px;
@@ -75,7 +79,7 @@ html, body {
   color: #ef8368;
 }
 .head .menu-toggle {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 600;
   line-height: 28.2px;
@@ -158,7 +162,7 @@ html, body {
 }
 
 h1 {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 52px;
   font-weight: 600;
   line-height: 54px;
@@ -177,7 +181,7 @@ h1 {
 }
 
 h2 {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 18px;
   font-weight: 450;
   line-height: 24px;
@@ -189,7 +193,7 @@ h2 {
 }
 
 h6 {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 20px;
   font-weight: 450;
   line-height: 28px;
@@ -202,7 +206,7 @@ h6 {
 }
 
 p {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 28px;
   font-weight: 600;
   line-height: 32px;
@@ -259,7 +263,7 @@ p {
   margin-bottom: 120px;
 }
 .footer .container .footer-content .footer-group p {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 18px;
   font-weight: 450;
   line-height: 24px;
@@ -278,7 +282,7 @@ p {
        text-align-last: left;
 }
 .footer .container .footer-content .footer-group a {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 24px;
@@ -307,7 +311,7 @@ p {
   }
 }
 .footer .container .copyright {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 20px;
   font-weight: 450;
   line-height: 28px;
@@ -386,7 +390,7 @@ p {
 .list-books .books .index-book p {
   width: 200px;
   margin-bottom: 0;
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 24px;
@@ -404,7 +408,7 @@ p {
   color: #ef8368;
 }
 .list-books .books .index-book span {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -457,7 +461,7 @@ p {
 }
 
 #filterInput {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -533,7 +537,7 @@ p {
 }
 
 .little {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 20px;
   font-weight: 450;
   line-height: 28px;
@@ -574,7 +578,7 @@ p {
   margin: 0;
 }
 .take-book-form input {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -594,7 +598,7 @@ p {
 }
 
 button {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -620,7 +624,7 @@ button:active {
 }
 
 .button {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -646,7 +650,7 @@ button:active {
 }
 
 .blue {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -672,7 +676,7 @@ button:active {
 }
 
 .light-blue {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -716,7 +720,7 @@ button:active {
 }
 
 .form input, .form-register input, .form-login input {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -744,7 +748,7 @@ button:active {
   border-color: #436CA2;
 }
 .form select, .form-register select, .form-login select {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -779,7 +783,7 @@ button:active {
   margin-bottom: 5px;
 }
 .form-login .reset {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -798,7 +802,7 @@ button:active {
 }
 
 .helptext, .form-register ul li {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;
@@ -875,7 +879,7 @@ button:active {
   align-items: center;
 }
 .rules-container .rules {
-  font-family: Futura PT;
+  font-family: "Futura PT", sans-serif;
   font-size: 22px;
   font-weight: 450;
   line-height: 28px;

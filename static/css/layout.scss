@@ -5,8 +5,13 @@ $light-orange: #f6f0ee;
 $white: #f0f0f0;
 $max-width: 1300px;
 
+@font-face {
+    font-family: 'Futura PT';
+    src: url('https://fonts.googleapis.com/css2?family=Futura+PT:wght@400;500;600;700&display=swap');
+}
+
 @mixin font($size, $weight, $line-height, $text-align: left) {
-    font-family: Futura PT;
+    font-family: 'Futura PT', sans-serif;
     font-size: $size;
     font-weight: $weight;
     line-height: $line-height;

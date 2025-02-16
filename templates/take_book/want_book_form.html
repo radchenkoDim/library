@@ -5,10 +5,9 @@
 {% block menu_want_book %}active{% endblock %}
 
 {% block body %}
-    <h1>Запит</h1>
+    <h1 class="content">Надіслати запит</h1>
     
-    <div class="form">
-        <h3>🤩 Хочу книгу:</h3>
+    <div class="form content">
         <p>Заповніть ці поля, щоб нам було простіше знайти цю книгу.</p>
         <form action="{% url 'take_book:want_book_form' %}" method="post">
             {% csrf_token %}
@@ -16,5 +15,4 @@
             <button class="light-blue" type="submit">Хочу книгу</button>
         </form>
     </div>
-    <a class="text-link ml" href="{% url 'take_book:want_book' %}">Повернутись</a>
 {% endblock %}

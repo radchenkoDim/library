@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Бібліотека Майбутні{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'books/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'styles/new.css' %}"> {% endcomment %}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,39 +16,58 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_114.png" class="">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_72.png" class="">
     <link rel="apple-touch-icon-precomposed" href="https://c-p.rmcdn1.net/59197b903fefd80052fc7af4/upload-f8d69a40-76c8-11e7-81c2-73dc0427b3e9_57.png" class="">
+
+    <script>
+        {% if user.is_authenticated %}
+            var user = {
+                username: "{{ user.username }}",
+                is_authenticated: true
+            };
+        {% else %}
+            var user = {
+                is_authenticated: false
+            };
+        {% endif %}
+    </script>
+
     {% block head %}
     {% endblock %}
 </head>
 <body>
-    <div class="head">
-        <a class="head-link left" href="{% url 'index' %}">Головна</a>
-        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-        <div class="menu">
-            <a class="head-link {% block menu_table %}{% endblock %}" href="{% url 'books:table' %}">Книги</a>
-            <a class="head-link {% block menu_take_book %}{% endblock %}" href="{% url 'take_book:take_book' %}">Взяти книгу</a>
-            <a class="head-link {% block menu_taking_books %}{% endblock %}" href="{% url 'take_book:taking_books' %}">Взяті книги</a>
-            <a class="head-link {% block menu_want_book %}{% endblock %}" href="{% url 'take_book:want_book' %}">Запити</a>
-            {% if user.is_authenticated %}
-                <a class="head-link {% block menu_profile %}{% endblock %}" href="{% url 'profile' %}">{{ user.username }}</a>
-            {% else %}
-                <a class="head-link {% block menu_register %}{% endblock %}" href="{% url 'register' %}">Sign up</a>
-                <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'login' %}">Log in</a>
-            {% endif %}
+
+<div class="page">
+
+    <div id="top-container" class="container">
+
+        <div class="head">
+            <a class="head-link" id="home-link" href="{% url 'index' %}">головна</a>
+            <button class="menu-toggle" aria-label="Toggle menu">меню</button>
+            <div class="menu">
+                <a class="head-link {% block menu_table %}{% endblock %}" href="{% url 'books:table' %}">книги</a>
+                <a class="head-link {% block menu_take_book %}{% endblock %}" href="{% url 'take_book:take_book' %}">взяти книгу</a>
+                <a class="head-link {% block menu_taking_books %}{% endblock %}" href="{% url 'take_book:taking_books' %}">взяті книги</a>
+                <a class="head-link {% block menu_want_book %}{% endblock %}" href="{% url 'take_book:want_book' %}">запити</a>
+                {% if user.is_authenticated %}
+                    <a class="head-link register {% block menu_profile %}{% endblock %}" href="{% url 'profile' %}" id="profile-link">{{ user.username }}</a>
+                {% else %}
+                    <a class="head-link {% block menu_login %}{% endblock %}" href="{% url 'login' %}" id="login-link">увійти</a>
+                {% endif %}
+                {% comment %} <a class="head-link {% block menu_register %}{% endblock %}" id="sign-up-link" href="{% url 'register' %}">зареєструватись</a> {% endcomment %}
+            </div>
         </div>
+
+        <div id="main-content">
+            {% block body %}
+            {% endblock %}
+        </div>
+
     </div>
 
-    <div class="container">
-        {% block body %}
-        {% endblock %}
-    </div>
-    
+        
     <footer class="footer">
-        <div class="footer-container">
-
-        {% if is_ios %}
-            <img class="footer-logo-mobile" src="{% static 'img/mai_logo2.png' %}" alt="МАІ">
-        {% else %}
-            <div class="footer-logo">
+        <div class="container">
+            <div class="content">
+            <div class="footer-logo-svg">
                 <svg xmlns="http://www.w3.org/2000/svg" id="Layer_2" data-name="Layer 2" viewBox="0 0 858.030029296875 201.94000244140625" preserveAspectRatio="xMidYMid meet" role="img">
                     <defs>
                         <style>
@@ -89,53 +109,42 @@
                     </g>
                 </svg>
             </div>
-            <img class="footer-logo-mobile" src="{% static 'img/mai_logo2.png' %}" alt="МАІ">
-        {% endif %}
 
-        <div class="footer-content">
-            <div class="footer-group">
-                <p>Книги</p>
-                <ul>
-                    <li><a href="{% url 'books:table' %}">Наші книги</a></li>
-                    <li><a href="{% url 'take_book:want_book' %}">Запити на книги</a></li>
-                    <li><a href="{% url 'take_book:taking_books' %}">Взяті книги</a></li>
-                    {% if user.is_staff %}
-                        <li><a href="{% url 'books:add' %}">Додати книгу</a></li>
-                    {% endif %}
-                </ul>
+            <div class="footer-content">
+                <div class="footer-group">
+                    <p>Книги</p>
+                    <ul>
+                        <li><a href="{% url 'books:table' %}">Наші книги</a></li>
+                        <li><a href="{% url 'take_book:want_book' %}">Запити на книги</a></li>
+                        <li><a href="{% url 'take_book:taking_books' %}">Взяті книги</a></li>
+                        {% comment %} {% if user.is_staff %}
+                            <li><a href="{% url 'books:add' %}">Додати книгу</a></li>
+                        {% endif %} {% endcomment %}
+                    </ul>
+                </div>
+                <div class="footer-group">
+                    <p>Бібліотека</p>
+                    <ul>
+                        <li><a href="{% url 'rules' %}">Правила</a></li>
+                        {% comment %} <li><a href="{% url 'librarians' %}">Бібліотекарі</a></li> {% endcomment %}
+                        {% if user.is_staff %}
+                            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-            <div class="footer-group">
-                <p>Бібліотека</p>
-                <ul>
-                    <li><a href="{% url 'librarians' %}">Бібліотекарі</a></li>
-                    <li><a href="{% url 'rules' %}">Правила</a></li>
-                    {% if user.is_staff %}
-                        <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                    {% endif %}
-                </ul>
+
+            <div class="footer-logo-mobile">
+                <img class="mobile" src="{% static 'img/mai_logo3.png' %}" alt="МАІ">
             </div>
+
+            <p class="copyright">© 2025 Dmytro Radchenko</p>
+            <p class="copyright">Якщо знайдете помилку або якщо маєте пропозиції чи питання, пишіть на тґ @radchenkoDim.</p>
         </div>
-
-        <p class="copyright">2025 Dmytro Radchenko</p>
-        <p class="find-error">Якщо знайдете помилку або якщо маєте пропозиції чи питання, пишіть на тґ <i>@radchenkoDim</i>.</p>
-    </div>
+        </div>
     </footer>
+</div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const toggleButton = document.querySelector(".menu-toggle");
-            const menu = document.querySelector(".menu");
-
-            toggleButton.addEventListener("click", function () {
-            menu.classList.toggle("active");
-            });
-
-            document.addEventListener("click", function (event) {
-            if (!menu.contains(event.target) && !toggleButton.contains(event.target)) {
-                menu.classList.remove("active");
-            }
-            });
-        });
-    </script>
+<script src="{% static 'js/layout.js' %}"></script>
 </body>
 </html>

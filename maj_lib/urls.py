@@ -5,11 +5,23 @@ from django.urls import include, path, re_path
 from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.views.static import serve
+from books.models import Book
+
+
+class IndexView(TemplateView):
+    template_name = 'index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["books"] = Book.objects.order_by('?')[:10]
+        context["new_books"] = Book.objects.order_by('-num')[:4]
+        return context
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    # path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('', IndexView.as_view(), name='index'),
     
     path('books/', include("books.urls")),
     path('api/books/', include("books.api_urls")),

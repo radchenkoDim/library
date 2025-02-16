@@ -1,26 +1,36 @@
 {% extends "layout.html" %}
 
+{% load static %}
+
 {% block title %} - {{ author }}{% endblock %}
 
 {% block menu_table %}active{% endblock %}
 
 {% block body %}
-    <h1>Автор: {{ author }}</h1>
+    <h1 class="content">Автор: {{ author }}</h1>
 
-    <table class="detail-table">
-        <thead>
-            <tr>
-                <th>Номер</th>
-                <th>Назва</th>
-                <th>Категорія</th>
-            </tr>
-        </thead>
-        {% for book in books %}
-            <tr>
-                <td><a href="{% url 'books:book' book.num %}">{{ book.num }}</a></td>
-                <td><a href="{% url 'books:book' book.num %}">{{ book.title }}</a></td>
-                <td><a href="{% url 'books:category' book.category %}">{{ book.category }}</a></td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div class="list-books">
+        <div class="books">
+            {% for book in books %}
+                <div class="index-book">
+                    {% if book.cover %}
+                        <a href="{% url 'books:book' book.num %}">
+                            <img class="cover" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                        </a>
+                    {% else %}
+                    <a href="{% url 'books:book' book.num %}">
+                        <div class="without-cover">
+                            <img class="default-cover" src="{% static 'img/mai-logo5.png' %}">
+                        </div>
+                    </a>
+                    {% endif %}
+                    <p><a href="{% url 'books:book' book.num %}">{{ book.title }}<br>
+                        {% if book.year %}
+                            <span>{{ book.year }}</span>
+                        {% endif %}
+                    </a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

@@ -10,7 +10,7 @@ class TakingBookAdmin(admin.ModelAdmin):
 
 @admin.register(WantBook)
 class WantBookAdmin(admin.ModelAdmin):
-    list_display = ('user', 'votes', 'title', 'author', 'publisher', 'date', 'where',)
+    list_display = ('user', 'title', 'author', 'publisher', 'date', 'where',)
     list_filter = ('user', )
 
 

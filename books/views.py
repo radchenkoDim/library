@@ -9,9 +9,22 @@ from django.contrib.admin.views.decorators import staff_member_required
 def table(request):
     queryset = Book.objects.all().select_related("category").order_by("num") #.values("num", "title", "author", "category")
     json_data = serialize('json', queryset, use_natural_foreign_keys=True, fields=('num', 'title', 'author', 'category'))
+
+    books_count = 0
+    for book in queryset:
+        books_count += book.quantity
+
+    book_end = 'книга'
+    if str(books_count)[-1] in ['2', '3', '4']:
+        book_end = 'книги'
+    elif str(books_count)[-1] in ['5', '6', '7', '8', '9', '0'] or str(books_count)[-2:] in ['11', '12', '13', '14']:
+        book_end = 'книг'
+    
     return render(request, "books/table.html", {
         "books": queryset,
-        "books_json": json_data
+        "books_json": json_data,
+        "books_count": books_count,
+        "book_end": book_end
     })
 
 

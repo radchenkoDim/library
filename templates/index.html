@@ -1,45 +1,119 @@
 {% extends "layout.html" %}
 
+{% load static %}
+
+{% block title %} - Головна{% endblock %}
+
+{% block head %}
+    <script>
+        let back = 'light-blue'
+    </script>
+{% endblock %}
+
 {% block body %}
-    <h1>Бібліотека Майбутні</h1>
-    
-    {% if user.is_authenticated %}
-        <h2>Вітаю, {{ user }}</h2>
+    <h1 class="content">Привіт! Це – бібліотека демократичної<br> школи Майбутні</h1>
 
-        <p>Пояснення до функцій сайту:</p>
-        <div class="help">
-            <div>
-                <h3>😁 Як взяти книгу?</h3>
+    <div class="content">
+        <div class="info">
+            {% if user.is_authenticated%}
+                <p>Щоб взяти книгу треба зайти на сторінку <a class="text-link" href="{% url 'take_book:take_book' %}">взяти книгу</a> або на сторінку книги через <a class="text-link" href="{% url 'books:table' %}">таблицю книг</a>.</p>
+                <p>Щоб повернути книгу треба натиснути на кнопку "Повернути" у вас в <a class="text-link" href="{% url 'profile' %}">профілі</a>.</p>
+            {% else %}
                 <p>
-                    Щоб взяти книгу в бібліотеці, перейдіть на сторінку 
-                    <a class="text-link" href="{% url 'take_book:take_book' %}">"Взяти книгу"</a> та виконайте подальші інструкції. 
-                    Або знайдіть книгу у <a class="text-link" href="{% url 'books:table' %}">таблиці книг</a>. Книгу можна взяти на 1 місяць. 
+                    Щоб отримати доступ до всіх можливостей бібліотеки треба 
+                    <a class="text-link" href="{% url 'register' %}">зареєструватися</a> або 
+                    <a class="text-link" href="{% url 'login' %}">увійти в систему</a>.
                 </p>
-            </div>
-
-            <div>
-                <h3>🕑 Як повернути книгу?</h3>
                 <p>
-                    Зайдіть у свій <a class="text-link" href="{% url 'profile' %}">профіль</a> та натисніть кнопку "Повернути книгу". <strong>Важливо відмічати, що ви повернули книгу</strong>, 
-                    інакше інші користувачі не зможуть взяти цю книгу.
+                    Без реєстрації можна переглянути <a class="text-link" href="{% url 'books:table' %}">таблицю книг</a>.
                 </p>
-            </div>
-
-            <div>
-                <h3>✨ Як залишити запит на книгу?</h3>
-                <p>
-                    На сторінці <a class="text-link" href="{% url 'take_book:want_book' %}">"Запити"</a> можна лишити запит на книгу, або проголусувати за запити інших користувачів.
-                </p>
-            </div>
+            {% endif %}
         </div>
+    </div>
 
-        {% else %}
-            <h2>Вітаю!</h2>
-                    <p>
-                        Щоб отримати доступ до всіх можливостей бібліотеки треба <a class="text-link" href="{% url 'register' %}">зареєструватися
-                        </a> або <a class="text-link" href="{% url 'login' %}">увійти в систему</a>. Без реєстрації можна переглянути 
-                        <a class="text-link" href="{% url 'books:table' %}">таблицю книг</a>.
-                    </p>
-        {% endif %}
-    <p><a class="text-link" href="{% url 'rules' %}">Правила бібліотеки</a></p>
+    {% comment %} <div class="list-books">
+        <h2>ПРИКЛАД ДИЗАЙНУ</h2>
+        <div class="books">
+
+            <div class="index-book">
+                <a href="{% url 'books:book' 566 %}">
+                    <img class="cover" src="{% static 'img/books/suchasnist.png' %}" alt="Сучасність">
+                </a>
+                <p><a href="{% url 'books:book' 566 %}">Сучасність. Навігатор з історії України<br><span>2023</span></a></p>
+            </div>
+
+            <div class="index-book">
+                <a href="{% url 'books:book' 532 %}">
+                    <img class="cover" src="{% static 'img/books/TPD.jpeg' %}" alt="The Politics of Design">
+                </a>
+                <p><a href="{% url 'books:book' 532 %}">The Politics of Design<br><span>2017</span></a></p>
+            </div>
+
+            <div class="index-book">
+                <a href="#">
+                    <img class="cover" src="{% static 'img/books/the_way.jpeg' %}" alt="The Way Things Work">
+                </a>
+                <p><a href="#">The Way Things Work<br><span>2015</span></a></p>
+            </div>
+
+            <div class="index-book">
+                <a href="{% url 'books:book' 428 %}">
+                    <img class="cover" src="{% static 'img/books/skot.jpeg' %}" alt="Скотт Пілігрим">
+                </a>
+                <p><a href="{% url 'books:book' 428 %}">Скотт Пілігрим<br><span>2020</span></a></p>
+            </div>
+
+        </div>
+    </div> {% endcomment %}
+
+    
+    <div class="list-books">
+        <h2>НОВІ КНИГИ!</h2>
+        <div class="books">
+            {% for book in new_books %}
+                <div class="index-book">
+                    {% if book.cover %}
+                        <a href="{% url 'books:book' book.num %}">
+                            <img class="cover" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                        </a>
+                    {% else %}
+                        <a href="{% url 'books:book' book.num %}">
+                            <div class="without-cover">
+                                <img class="default-cover" src="{% static 'img/mai-logo5.png' %}">
+                            </div>
+                        </a>
+                    {% endif %}
+                    <p><a href="{% url 'books:book' book.num %}">{{ book.title }}<br>
+                        {% if book.year %}
+                            <span>{{ book.year }}</span>
+                        {% endif %}
+                    </a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="list-books">
+        <h2>ЩО ПОЧИТАТИ?</h2>
+        <div class="books">
+            {% for book in books %}
+                <div class="index-book">
+                    {% if book.cover %}
+                        <img class="cover" src="{{ book.cover.url }}" alt="{{ book.title }}">
+                    {% else %}
+                    <a href="{% url 'books:book' book.num %}">
+                        <div class="without-cover">
+                            <img class="default-cover" src="{% static 'img/mai-logo5.png' %}">
+                        </div>
+                    </a>
+                    {% endif %}
+                    <p><a href="{% url 'books:book' book.num %}">{{ book.title }}<br>
+                        {% if book.year %}
+                            <span>{{ book.year }}</span>
+                        {% endif %}
+                    </a></p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

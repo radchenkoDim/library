@@ -1,0 +1,777 @@
+$blue: #436CA2;
+$light-blue: #8CC5EC;
+$orange: #ef8368;
+$light-orange: #f6f0ee;
+$white: #f0f0f0;
+$max-width: 1300px;
+
+@mixin font($size, $weight, $line-height, $text-align: left) {
+    font-family: Futura PT;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $line-height;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+html, body {
+    @include font(28px, 600, 32px, center);
+    background-color: $white;
+    overflow-y: scroll;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+
+    @media (max-width: 768px) {
+        font-size: 22px;
+        line-height: 26px;
+    }
+}
+
+.page {
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    max-width: $max-width;
+    padding: 0 60px;
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow: visible;
+    z-index: 100;
+
+    @media (max-width: 768px) {
+        padding: 0 30px;
+    }
+}
+
+#top-container {
+    padding: 0;
+}
+
+.content {
+    padding: 0 60px;
+
+    @media (max-width: 768px) {
+        padding: 0 30px;
+    }
+}
+
+.non_active {
+    display: none;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 54px 60px 65px;
+
+    z-index: 100;
+
+    background-color: none;
+
+    .head-link {
+        color: #000;
+        text-decoration: none;
+        line-height: 35.9px;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $orange;
+        }
+    }
+
+    .menu-toggle {
+        @include font(22px, 600, 28.2px, center);
+        display: none;
+        background: none;
+        border: none;
+        color: #000;
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .menu {
+        display: flex;
+        align-items: center;
+        position: relative;
+        gap: 46px;
+        flex-grow: 1;
+
+        .head-link {
+            &:first-child {
+                margin-left: 46px;
+            }
+
+            &:last-child {
+                margin-left: auto;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin: 30px 30px 50px;
+
+        .menu {
+            display: none;
+            position: absolute;
+            height: 100vh;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+
+        .menu.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            padding-left: 30px;
+            gap: 10px;
+            top: 30px;
+            left: 0;
+            right: 0;
+            // background-color: $light-blue;
+            width: 100%;
+            z-index: 90;
+
+            .head-link {
+                margin-left: 0;
+                width: 100%;
+                text-align: left;
+                text-transform: capitalize;
+
+                &:first-child {
+                    margin-left: 0;
+                    margin-top: 45px;
+                }
+
+            }
+
+            @mixin register() {
+                font-size: 22px;
+                font-weight: 450;
+                line-height: 28.2px;
+            }
+
+            #login-link {
+                @include register();
+                margin-top: 30px;
+            }
+
+            #sign-up-link {
+                @include register();
+            }
+
+            #profile-link {
+                @include register();
+                margin-top: 30px;
+                text-transform: none;
+            }
+        }
+    }
+}
+
+h1 {
+    @include font(52px, 600, 54px);
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        font-size: 36px;
+        line-height: 38px;
+    }
+}
+
+h2 {
+    @include font(18px, 450, 24px);
+    margin-bottom: 30px;
+}
+
+h6 {
+    @include font(20px, 450, 28px);
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+p {
+    @include font(28px, 600, 32px);
+
+    @media (max-width: 768px) {
+        font-size: 22px;
+        line-height: 26px;
+    }
+}
+
+.text-link {
+    color: #000;
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    transition: all 0.3s ease;
+
+    &:hover {
+        color: $orange;
+    }
+}
+
+.footer {
+    background-color: black;
+    color: white;
+    border-top: 6px solid $orange;
+    margin-top: auto;
+    position: relative;
+    z-index: 100;
+
+    .footer-logo-svg {
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    .container {
+        margin: 94px auto 0;
+        padding: 0;
+        padding-bottom: 76px;
+        min-height: 500px;
+
+        .footer-content {
+            display: flex;
+            justify-content: left;
+            align-items: top;
+            gap: 79px;
+
+            .footer-group {
+                margin-bottom: 120px;
+
+                p {
+                    @include font(18px, 450, 24px);
+                    color: #797979;
+                    margin-bottom: 8px;
+                }
+
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    text-align-last: left;
+                }
+
+                a {
+                    @include font(22px, 450, 24px);
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    color: white;
+
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+            }
+        }
+
+        .footer-logo-mobile {
+            display: none;
+            margin-top: 58px;
+            margin-bottom: 34px;
+
+            img {
+                width: 100%;
+            }
+
+            @media (max-width: 768px) {
+                display: block;
+            }
+        }
+
+        .copyright {
+            @include font(20px, 450, 28px);
+            color: #636363;
+            margin-top: 0;
+            margin-bottom: 14px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding-bottom: 36px;
+        
+        .container {
+            padding-bottom: 30px;
+            min-height: auto;
+
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+    
+                .footer-group {
+                    margin-bottom: 0;
+    
+                    ul {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            p:last-child {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}
+
+.l-padding {
+    padding-left: 30px;
+}
+
+
+// index.html
+.info {
+    width: 736px;
+    margin-bottom: 65px;
+
+    p {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.list-books {
+    padding: 0 60px;
+
+    .books {
+        display: flex;
+        justify-content: left;
+        overflow-x: auto;
+        position: relative;
+        gap: 20px;
+        z-index: 1000;
+        margin-bottom: 50px;
+        // margin-top: 50px;
+
+        .index-book {
+            margin-right: 60px;
+            
+            .cover {
+                height: 303px;
+                box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+                transition: all 0.3s ease;
+
+                &:hover {
+                    box-shadow: 10px 10px 20px $orange;
+                }
+            }
+
+            p {
+                width: 200px;
+                margin-bottom: 0;
+                @include font(22px, 450, 24px);
+                
+                a {
+                    text-decoration: none;
+                    color: #000;
+                    transition: all 0.3s ease;
+                    
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+            }
+
+            span {
+                @include font(22px, 450, 28px);
+                color: #636363;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        padding: 0;
+
+        .index-book {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            margin-left: 30px;
+        }
+
+        .books {
+            gap: 20px;
+            
+            .index-book {
+                margin-left: 30px;
+                margin-right: 30px;
+            }
+        }
+    }
+}
+
+.without-cover {
+    display: flex;
+    width: 200px;
+    height: 303px;
+    background-color: #f4f4f4;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+    margin-bottom: 22px;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+
+    .default-cover {
+        width: 200px;
+        height: 200px;
+    }
+
+    &:hover {
+        box-shadow: 10px 10px 20px $orange;
+    }
+}
+
+.input-table {
+    margin-bottom: 20px;
+}
+
+#filterInput {
+    @include font(22px, 450, 28px);
+    width: 600px;
+    padding: 10px;
+    border: 2px solid #bbb;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+
+    &:hover {
+        border-color: $orange;
+    }
+
+    &:focus {
+        outline: none;
+        border-color: $blue;
+        // box-shadow: 0 0 10px $blue;
+    }
+}
+
+@mixin table($color: $light-blue, $hover-color: #e9ecef, $color-link: inherit) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 20px;
+
+    @media (max-width: 768px) {
+        font-weight: 450;
+    }
+
+    thead {
+        background-color: $color;
+        color: #fff;
+
+        th {
+            padding: 10px;
+            text-align: left;
+            font-size: 22px;
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid #ddd;
+
+            // &:nth-child(even) {
+            //     background-color: #f2f2f2;
+            // }
+
+            &:hover {
+                background-color: $hover-color;
+            }
+
+            td {
+                padding: 10px;
+                font-size: 22px;
+
+                @media (max-width: 768px) {
+                    // font-size: 18px;
+
+                    &:first-child {
+                        font-size: 22px;
+                        // text-align: center;
+                        padding-right: 0;
+                    }
+                }
+
+                a {
+                    text-decoration: none;
+                    color: $color-link;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.book-data-table {
+    @include table($light-blue, #e9ecef, inherit);
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.little {
+    @include font(20px, 450, 28px);
+    margin-bottom: 5px;
+}
+
+.highlight {
+    background-color: $orange;
+    // color: #fff;
+}
+
+.book-page-cover {
+    height: 512px;
+    display: inline-block;
+    margin-right: 60px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.25);
+
+    @media (max-width: 768px) {
+        height: auto;
+        width: 100%;
+    }
+}
+
+.book-page {
+    margin-top: 50px;
+}
+
+.book-info {
+    display: inline-block;
+    margin-bottom: 100px;
+}
+
+.take-book-form {
+    p {
+        margin: 0;
+    }
+
+    input {
+        @include font(22px, 450, 28px);
+        width: 100px;
+        border: none;
+        border-bottom: 3px solid $orange;
+        background-color: inherit;
+        transition: all 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $blue;
+        }
+    }
+}
+
+@mixin button($color: $orange) {
+    @include font(22px, 450, 28px);
+    padding: 10px 20px;
+    border: 3px solid $color;
+    border-radius: 50px;
+    background-color: $color;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: inherit;
+        border: 3px solid black;
+        color: $color;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+button {
+    @include button();
+}
+
+.button {
+    @include button();
+}
+
+.blue {
+    @include button($blue);
+}
+
+.light-blue {
+    @include button($light-blue);
+}
+
+.want_book_list {
+    padding: 0;
+    margin: 0;
+
+    li {
+        text-decoration: none;
+        list-style: none;
+        margin-bottom: 20px;
+    }
+}
+
+.blue-text {
+    color: $blue;
+}
+
+.emoji-link {
+    text-decoration: none;
+}
+
+.form {
+    input {
+        @include font(22px, 450, 28px);
+        width: 300px;
+        padding: 6px;
+        border: 2px solid #bbb;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        @media (max-width: 768px) {
+            width: 90%;
+        }
+
+        &:hover {
+            border-color: $orange;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $blue;
+            // box-shadow: 0 0 10px $blue;
+        }
+    }
+
+    select {
+        @include font(22px, 450, 28px);
+        width: 300px;
+        padding: 6px;
+        border: 2px solid #bbb;
+        background-color: #f4f4f4;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+
+        @media (max-width: 768px) {
+            width: 90%;
+        }
+
+        &:hover {
+            border-color: $orange;
+        }
+
+        &:focus {
+            outline: none;
+            border-color: $blue;
+            // box-shadow: 0 0 10px $blue;
+        }
+    }
+
+    
+
+    div {
+        margin-bottom: 20px;
+    }
+}
+
+.form-login {
+    @extend .form;
+
+    p {
+        margin-bottom: 5px;
+    }
+
+    .reset {
+        @include font(22px, 450, 28px);
+        text-decoration: none;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        color: $blue;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.helptext {
+    @include font(22px, 450, 28px);
+    color: #636363;
+    margin-bottom: 20px;
+}
+
+.form-register {
+    @extend .form;
+
+    p {
+        margin-bottom: 5px;
+        margin-top: 22px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align-last: left;
+        margin-top: 22px;
+
+        li {
+            @extend .helptext;
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.profile-table {
+    @include table($blue, #e9ecef, inherit);
+}
+
+.rules-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .rules {
+        @include font(22px, 450, 28px);
+        width: 50%;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+
+        h3 {
+            margin-top: 50px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        p:last-child {
+            margin-bottom: 76px;
+        }
+    }
+}

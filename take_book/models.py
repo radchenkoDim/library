@@ -18,7 +18,6 @@ class WantBook(models.Model):
     author = models.CharField(max_length=255)
     publisher = models.CharField(max_length=255)
     where = models.CharField(max_length=255)
-    votes = models.IntegerField(default=0, null=True, blank=True)
     date = models.DateField(default=datetime.now)
     status = models.CharField(choices=[("new", "new"), 
                                        ("approved", "approved"), 

@@ -1,14 +1,16 @@
-from django.shortcuts import render, get_object_or_404, redirect
+import json
+
 from django.contrib.auth.decorators import login_required
-
+from django.shortcuts import render, get_object_or_404, redirect
 from dateutil.relativedelta import relativedelta
-
 from books.models import Book
 from .models import TakingBook, WantBook, Vote
 from .forms import TakeBookForm, ReturnBookForm, WantBookForm
 from django.utils.timezone import now
 from django.contrib import messages
 from utils import get_object_or_none
+from django.http import HttpResponse
+from django.db.models import Count
 
 
 @login_required
@@ -74,7 +76,7 @@ def detail(request, taking_book_id):
 
 
 def want_book(request):
-    books = WantBook.objects.filter(status='new').order_by('-votes')
+    books = WantBook.objects.filter(status='new')
     voted_books = []
 
     if request.user.is_authenticated:
@@ -82,25 +84,25 @@ def want_book(request):
 
     return render(request, 'take_book/want_book.html', {
         'books': books, 
-        'voted_books': voted_books
+        'voted_books': voted_books,
     })
 
 
 @login_required
 def vote(request, want_book_id):
     want_book = get_object_or_404(WantBook, id=want_book_id)
+    json_data = {"error": None, "status": None}
 
     if want_book.user == request.user:
-        return redirect('take_book:want_book')
-    
-    if Vote.objects.filter(user=request.user, want_book=want_book).exists():
-        return redirect('take_book:want_book')
-    
-    Vote.objects.create(user=request.user, want_book=want_book)
-    want_book.votes += 1
-    want_book.save()
+        json_data['error'] = 'Ви не можете голосувати за свою книгу.'
+    elif Vote.objects.filter(user=request.user, want_book=want_book).exists():
+        json_data['error'] = 'Ви вже голосували за цю книгу.'
+    else:
+        Vote.objects.create(user=request.user, want_book=want_book)
+        json_data['status'] = 'success'
+        json_data['votes_count'] = Vote.objects.filter(want_book=want_book).count()
 
-    return redirect('take_book:want_book')
+    return HttpResponse(json.dumps(json_data), content_type='application/json')
 
 
 def voted_book(request, want_book_id):

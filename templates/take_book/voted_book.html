@@ -5,9 +5,17 @@
 {% block menu_want_book %}active{% endblock %}
 
 {% block body %}
-    <h1>Запит</h1>
+    <h1 class="content">Запит</h1>
 
     <div class="content">
+        <div class="info">
+            <p>
+                Запит на книгу <span class="blue-text">{{ book }} - {{ book.author }}</span> видавництва <span class="blue-text">{{ book.publisher }}</span> від <span class="blue-text">{{ book.user }}</span>.
+            </p>
+            <p>
+                За запит проголосувало <span class="blue-text">{{ book.votes }}</span> користувачів.
+            </p>
+        </div>
         <p>Книга: <strong>{{ book }}</strong></p>
         <p>Автор: {{ book.author }}</p>
         <p>Видавництво: {{ book.publisher }}</p>
@@ -20,7 +28,7 @@
 
         <p>Запит від <strong>{{ book.user }}</strong></p>
 
-        {% if book.votes > 2 %}
+        {% comment %} {% if book.votes > 2 %}
             <p>Кількість голосів: {{ book.votes }}</p>
             <p>Проголосували:
             <ul>
@@ -34,8 +42,8 @@
             <p>Проголосували: {{ users|join:", " }}</p>
         {% else %}
             <p><i>За книгу ще ніхто не проголосував</i></p>
-        {% endif %}
+        {% endif %} {% endcomment %}
     </div>
 
-    <a class="text-link ml" href="javascript:history.back()">Повернутись</a>
+    <a class="text-link content" href="javascript:history.back()">Повернутись</a>
 {% endblock %}

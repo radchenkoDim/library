@@ -6,6 +6,7 @@ from django.views.generic import TemplateView
 from django.conf.urls.static import static
 from django.views.static import serve
 from books.models import Book
+from django.shortcuts import render
 
 
 class IndexView(TemplateView):
@@ -16,6 +17,12 @@ class IndexView(TemplateView):
         context["books"] = Book.objects.order_by('?')[:10]
         context["new_books"] = Book.objects.order_by('-num')[:4]
         return context
+
+
+# def custom_handler404(request, exception):
+#     return render(request, '404.html', status=404)
+
+# handler404 = custom_handler404
 
 
 urlpatterns = [

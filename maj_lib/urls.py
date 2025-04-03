@@ -31,6 +31,7 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     
     path('books/', include("books.urls")),
+    path('e_books/', include("e_books.urls")),
     path('api/books/', include("books.api_urls")),
     path('take_book/', include("take_book.urls")),
     path('users/', include('users.urls')),

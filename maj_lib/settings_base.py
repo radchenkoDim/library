@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'debug_toolbar',
     'take_book',
+    'e_books',
     'books',
     'users',
 ]

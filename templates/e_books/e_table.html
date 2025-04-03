@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block head %}
+    <script>
+        const data={{ e_books_json|safe }};
+    </script>
+{% endblock %}
+
+{% block body %}
+
+<h1 class="content">Таблиця електронних книг</h1>
+
+<div class="content">
+    <div class="info">
+        <p>Тут ви можете знайти електроні книги.</p>
+    </div>
+</div>
+
+<div class="input-table content">
+    <p class="placeholder">Знайти книгу:</p>
+    <input type="text" id="filterInput" placeholder="пошук...">
+</div>
+
+<p class="little content">Натиснувши на назву книги можна її переглянути.</p>
+<div class="content table-container">
+    <table class="book-data-table">
+        <thead>
+            <tr class="table-head-fix">
+                <th>Назва</th>
+                <th>Автор</th>
+                <th>Категорія</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if e_books %}
+                {% for book in e_books %}
+                    <tr>
+                        <td><a href="{{ book.file.url }}" target="_blank">{{ book.title }}</a></td>
+                        {% if book.author %}
+                            <td>{{ book.author }}</td>
+                        {% else %}
+                            <td>Немає даних</td>
+                        {% endif %}
+
+                        {% if book.category %}
+                            <td>{{ book.category }}</td>
+                        {% else %}
+                            <td>Немає даних</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>Немає даних</td>
+                    <td>Немає даних</td>
+                    <td>Немає даних</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+<script src="{% static 'js/e_books/script.js' %}"></script>
+
+{% endblock %}
